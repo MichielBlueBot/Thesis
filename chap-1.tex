@@ -5,30 +5,22 @@ The next section will explain the Cox Proportional Hazards method. This method i
 Lastly I will briefly mention Neural Networks and why they are important.
 
 \section{Generalized Linear Models}
-When we think of classical regression, you can imagine a set of numeric explanatory or input variables and a numerical dependent or output variable. In this case we assume that when we try to estimate the output variable by using the input variables, the error that we make will be normally distributed.
+When we think of classical linear models, we can imagine a set of numeric explanatory (or input) variables and a numerical dependent (or output) variable. By making a linear combination of the explanatory variables we attempt to estimate a value for the dependent variable. Depending on the type of dependent variable the linear method gets a different name. In the following sections I will outline several of them.
 
-\lipsum[55]
+\subsection{Linear Regression}
+The simplest version of a linear model is called linear regression. In this case the input variables are combined using a linear combination, and the result of this calculation is immediately used as the final estimate. \\
+//TODO MATH \\
+For the other linear methods we will define a function each time that is applied to the result of the linear combination. We could do the same for linear regression and say that the applied function is the identity. We could schematize this compuation as follows: \\
+//TODO SCHEMA \\
+\subsection{Linear Classification}
+The next method is called linear classification. The difference with linear regression is that we have a different type of output variable. In a classification task we want to predict a class from a list of potential classes. For instance, we could try to predict whether tomorrow will be a sunny day or not. Notice that there are only 2 possible outcomes: 'sunny' or 'not sunny' and we could represent these outcomes as 0 and 1 in our model. This form would be called binary classification because we have 2 possible classes. It is very easy to extend this method to multi-class classification.\\
+The computation in this method starts out exactly the same, combining the input variables using a linear combination. Next, we have to define a threshold to indicate which examples belong to one class or another. In the case of binary classification we would define 1 threshold, and if the result of the linear combination is higher than the threshold we would predict one class. If it is lower, we would predict the other class. We could represent this computation with the following formula and schema: \\
+//TODO MATH AND SCHEMA\\
 
-\subsection{An item}
-Please don't abuse enumerations: short enumerations shouldn't use
-``\verb|itemize|'' or ``\texttt{enumerate}'' environments.
-So \emph{never write}: 
-\begin{quote}
-  The Eiffel tower has three floors:
-  \begin{itemize}
-  \item the first one;
-  \item the second one;
-  \item the third one.
-  \end{itemize}
-\end{quote}
-But write:
-\begin{quote}
-  The Eiffel tower has three floors: the first one, the second one, and the
-  third one.
-\end{quote}
-
-\section{A Second Topic}
-\lipsum[64]
+\subsection{Logistic Regression}
+The third method I want to present is called logistic regression. In this case, the output variable we want to predict comes from a binomial distribution. This means that they are the result of a probabilistic event. An example would be tossing a coin and checking whether the result is heads or tails. While the outcome is binary (heads or tails) we know that there is an underlying probability for the coin to be heads or tails, and we would like to know this probability. \\
+The idea is still the same. We will make a linear combination of the input variables. However this time we will use a logistic function to produce our estimate. The logistic function is a function that maps real numbers onto the range $[0,1]$. This result can then be interpreted as an estimate for the probability. \\
+The logistic regression method is the one that will be most widely used throughout this thesis.
 
 \subsection{Another item}
 \lipsum[56-57]
