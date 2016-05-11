@@ -1,36 +1,73 @@
-\chapter{Machine Learning Models}
+\chapter{Generalized Linear Models}
 \label{cha:1}
-In this chapter the different machine learning methods that are used are being explained in detail. This is necessary because later on I will explain different integration strategies, and these often depend on the specific structure of a machine learning method. The first section explains what Generalized Linear Models are. This name actually indicates a whole collection of different methods, but there is one method that will be of particular interest to us, called 'logistic regression'. This section will be the most extensive as it explains a lot of concepts that can be reused later on, and also because this method is the one that I have used the most in my thesis. \\
-The next section will explain the Cox Proportional Hazards method. This method is used when the data we are dealing with is so-called survival data. \\
-Lastly I will briefly mention Neural Networks and why they are important.
+In this chapter I will explain the current standard in machine learning when it comes to generalized linear models. This term indicates a generalization of simple linear regression that allows for a wide range of output variables. \\
+First I will go over the basics of linear models, gradually building up to the definition of generalized linear models. Next, I will describe what actual data looks like and how this data is transformed into a useful model.\\ After that I will tackle the more recent innovation of regularization that will greatly improve our previous models by exploiting the bias-variance trade-off to reduce overfitting. Lastly I will outline the validation method that will be used to test the performance of the models.
 
-\section{Generalized Linear Models}
+\section{Classical linear models}
 When we think of classical linear models, we can imagine a set of numeric explanatory (or input) variables and a numerical dependent (or output) variable. By making a linear combination of the explanatory variables we attempt to estimate a value for the dependent variable. Depending on the type of dependent variable the linear method gets a different name. In the following sections I will outline several of them.
 
 \subsection{Linear Regression}
 The simplest version of a linear model is called linear regression. In this case the input variables are combined using a linear combination, and the result of this calculation is immediately used as the final estimate. \\
 //TODO MATH \\
-For the other linear methods we will define a function each time that is applied to the result of the linear combination. We could do the same for linear regression and say that the applied function is the identity. We could schematize this compuation as follows: \\
+For the other linear methods we will define a function each time that is applied to the result of the linear combination. We could do the same for linear regression and say that the applied function is the identity function. We could schematize this compuation as follows: \\
 //TODO SCHEMA \\
 \subsection{Linear Classification}
 The next method is called linear classification. The difference with linear regression is that we have a different type of output variable. In a classification task we want to predict a class from a list of potential classes. For instance, we could try to predict whether tomorrow will be a sunny day or not. Notice that there are only 2 possible outcomes: 'sunny' or 'not sunny' and we could represent these outcomes as 0 and 1 in our model. This form would be called binary classification because we have 2 possible classes. It is very easy to extend this method to multi-class classification.\\
-The computation in this method starts out exactly the same, combining the input variables using a linear combination. Next, we have to define a threshold to indicate which examples belong to one class or another. In the case of binary classification we would define 1 threshold, and if the result of the linear combination is higher than the threshold we would predict one class. If it is lower, we would predict the other class. We could represent this computation with the following formula and schema: \\
+The computation in this method starts out exactly the same, combining the input variables using a linear combination. Next, we have to define a threshold to indicate which examples belong to one class or another. In the case of binary classification we would define 1 threshold, and if the result of the linear combination is higher than the threshold we would predict one class. If it is lower, we would predict the other class. The function used here would be called a sign function, which maps real values onto one of 2 possible outcomes. We could represent this computation with the following formula and schema: \\
 //TODO MATH AND SCHEMA\\
 
 \subsection{Logistic Regression}
 The third method I want to present is called logistic regression. In this case, the output variable we want to predict comes from a binomial distribution. This means that they are the result of a probabilistic event. An example would be tossing a coin and checking whether the result is heads or tails. While the outcome is binary (heads or tails) we know that there is an underlying probability for the coin to be heads or tails, and we would like to know this probability. \\
-The idea is still the same. We will make a linear combination of the input variables. However this time we will use a logistic function to produce our estimate. The logistic function is a function that maps real numbers onto the range $[0,1]$. This result can then be interpreted as an estimate for the probability. \\
+The idea is still the same. We will make a linear combination of the input variables. However this time we will use a logistic function to produce our estimate. The logistic function is a function that maps real numbers onto the range $[0,1]$. This result can then be interpreted as an estimate for the probability. We can schematize logistic regression as follows:\\
+//TODO MATH AND SCHEMA \\
+
 The logistic regression method is the one that will be most widely used throughout this thesis.
 
-\subsection{Another item}
-\lipsum[56-57]
+\section{Training a model}
+In order to understand the integration strategies that will be explained later on, it is useful to know how exactly the models come to be. This section will explain what the input data for our linear models actually looks like, and how we get from this data to a model that we can use for future predictions.
+\subsection{The data}
+The data we use consists of two parts: the input data, which can be seen as a matrix where the columns are the explanatory variables and each row is an example (or patient). And secondly the output data, which can be seen as a vector where each value indicates the value of the dependent variable for a single example. \\
+It is easy to see that the length of the output vector has to be equal to the amount of rows in the input matrix, indeed there should be one output value for each example. This amount is often called the size of the dataset and we would like it to be as big as possible. Especially when we are dealing with a large number of explanatory variables, it is essential to have a reasonably amount of examples aswell. This will be discussed in more detail later on //TODO REFERENCE. 
+
+\subsection{Gradient descent}
+In this section I will explain how we get from the input data to the model. The idea here is that we have some for of error measure. The error measure is a sort of rating for our current model as it indicates how big the mistakes are that our current model is making. There are many different error measures we could use. The one that is used in logistic regression is explained in more detail in the following section. \\
+Once we have a way of computing the error that our current model makes, we can try to minimize this error to obtain our 'best' possible model.
+\subsubsection{Error measure}
+In logistic regression the error measure we use is called the cross-entropy error. The formula for this error is the following:
+$$
+	E_{in}(w) = \frac{1}{N}\sum_{n=1}^{N}ln(1+e^{-y_{n}w^{T}x_{n}})
+$$
+where
+\begin{itemize}
+	\item $x_{n}$ is the vector of values for the explanatory variables for example $n$.
+	\item $y_{n}$ is the value of the dependent variable for example $n$.
+	\item $w^T$ is the transpose of the weights vector. These are the parameters of our model that we can adjust.
+	\item $N$ is the size of our dataset.
+	\item $E_{in}(w)$ is the in-sample error. This is the cross-entropy error that we make on the examples in our dataset. It is a function of the weights $w$.
+\end{itemize}
+The origin of this function is explained in appendix //TODO ADD APPENDIX AND REFERENCE. We can however easily notice that this is a reasonable error measure. It is an averaged sum over all examples, where for each example we compute an individual error. \\
+Notice that $w^{T}x_{n}$ is the linear combination of the input variables that our current model suggests. This is the prediction that our current model would make for example $n$ and is a real valued number. On the other hand $y_{n}$ is the actual correct prediction for example $n$ and has a value of 0 or 1.\\
+If the signs of $w^{T}x_{n}$ and $y_{n}$ agree then our current model actually makes a correct prediction for this example. We can see that in this case the exponential becomes close to 0, making our error for example $n$ very small, as we would expect. \\
+If however their signs are opposite, the exponential becomes larger as our incorrect prediction becomes larger. This in turn will increase the error, again as we would expect.\\
+Thus we can see that if we were to minimize this error, we are moving towards a model that tries to make correct predictions.
+\subsubsection{The gradient descent method}
+The way we minimize the error function is by using an iterative approach. We start of with an initial set of weights $w(0)$ and we will improve these weights in order to reduce the total error and thus move towards better models. We can control the amount
+\section{Regularization}
+
+\subsection{The problem of overfitting}
+
+\subsection{The bias and variance trade-off}
+
+\subsection{Regularization methods}
+
+\section{Validation}
+
+\subsection{The sample size dilemma}
+
+\subsection{Cross-validation}
 
 \section{Conclusion}
-The final section of the chapter gives an overview of the important results
-of this chapter. This implies that the introductory chapter and the
-concluding chapter don't need a conclusion.
 
-\lipsum[66]
 
 %%% Local Variables: 
 %%% mode: latex
