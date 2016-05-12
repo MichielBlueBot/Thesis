@@ -45,26 +45,75 @@ where
 	\item $N$ is the size of our dataset.
 	\item $E_{in}(w)$ is the in-sample error. This is the cross-entropy error that we make on the examples in our dataset. It is a function of the weights $w$.
 \end{itemize}
-The origin of this function is explained in appendix //TODO ADD APPENDIX AND REFERENCE. We can however easily notice that this is a reasonable error measure. It is an averaged sum over all examples, where for each example we compute an individual error. \\
+The origin of this function is explained in appendix //TODO ADD APPENDIX AND REFERENCE. We can however easily notice that this is a reasonable error measure. It is an averaged sum over all examples, where for each example we compute an individual error made on that example. \\
 Notice that $w^{T}x_{n}$ is the linear combination of the input variables that our current model suggests. This is the prediction that our current model would make for example $n$ and is a real valued number. On the other hand $y_{n}$ is the actual correct prediction for example $n$ and has a value of 0 or 1.\\
 If the signs of $w^{T}x_{n}$ and $y_{n}$ agree then our current model actually makes a correct prediction for this example. We can see that in this case the exponential becomes close to 0, making our error for example $n$ very small, as we would expect. \\
 If however their signs are opposite, the exponential becomes larger as our incorrect prediction becomes larger. This in turn will increase the error, again as we would expect.\\
 Thus we can see that if we were to minimize this error, we are moving towards a model that tries to make correct predictions.
 \subsubsection{The gradient descent method}
-The way we minimize the error function is by using an iterative approach. We start of with an initial set of weights $w(0)$ and we will improve these weights in order to reduce the total error and thus move towards better models. We can control the amount
-\section{Regularization}
+When trying to minimize a function, a general approach would be to try and compute the derivative of the function, and find the spot where this derivative equals zero. In the case of linear regression it is actually possible to compute this minimum in one step. More details about this can be found in appendix //TODO ADD AND REFERENCE APPENDIX. \\
+In the case of logistic regression however it is not possible to find an analytic solution to this problem. The best we can do is put ourselves somewhere on the error curve and try to move towards the minimum in small steps. This is called an iterative approach. \\
+Remember that our error function looks like this:
+$$
+E_{in}(w) = \frac{1}{N}\sum_{n=1}^{N}ln(1+e^{-y_{n}w^{T}x_{n}})
+$$
+We can now compute its derivative with respect to $w$:
+$$
+\nabla E_{in}(w) = -\frac{1}{N}\sum_{n=1}^{N}\frac{y_{n}x_{n}}{1+e^{y_{n}w^{T}x_{n}}}
+$$
+The problem is to find the set of weights $w$ for which the derivative becomes 0 (or that minimizes the error). We can start out with an initial set of weights $w(0)$ and then iteratively update these weights so we move towards the minimum. Let's call the direction in which we update our weights $v$. The update we make to $w$ then becomes:
+$$
+w(t+1) = w(t) + \eta v
+$$
+where
+\begin{itemize}
+	\item $w(t+1)$ are the updated weights for this iteration.
+	\item $w(t)$ are the current weights before we make a move.
+	\item $v$ is a unit vector pointing in the direction we want to move.
+	\item $\eta$ is a number that indicates how big the move is that we make, also called the step size.
+\end{itemize}
+Remember that the gradient of a function at a certain point always points towards the steepest slope upwards. In our case we would like to find the minimum, so it is a good idea to move our weights in the direction of steepest descent. The direction $v$ that we are moving towards then becomes the normalized opposite direction of the gradient:
+$$
+v = -\frac{\nabla E_{in}(w(t))}{\lVert\nabla E_{in}(w(t))\rVert}
+$$
+We can now summarize the gradient descent method as follows: \\ \\
+\begin{algorithm}[H]
+	\KwData{x, y}
+	initialize weights w(0) \\
+	\While{Stopcondition is not met}{
+		Compute gradient $\nabla E_{in}(w(t))$\\
+		Compute update direction $v$ \\
+		Update weights $w(t+1) = w(t) + \eta v$
+	}
+\caption{Gradient Descent algorithm}
+\end{algorithm}
+There are two more non-trivial issues in this computation: the initialization of the weights and the stopcondition. \\
+Weight initialization is sometimes a very tricky thing to do, in the case of logistic regression however it is acceptable to set $w(0)$ equal to the zero-vector as this corresponds to no correlation between any of the input variables and the output variable, and the result of the sigmoid function would be 0.5 or 50\% meaning the model has no preference for either outcome.\\
+The stopcondition however is a bigger issue and usually the way to go here is to make a combination of several stop criteria. One criteria would be to simply limit the amount of iterations to a fixed number. This could avoid endlessly overfitting. Another criteria is to set up a target error we want to achieve (a small number), and stop when we have reached this target. This however raises the question of picking the target error, and this is mostly an application dependent choice. \\
+In the version of logistic regression explained here, it can however be shown that the error surface we are dealing with is a very nice convex surface. This makes it very easy to find its minimum and we don't need very complex initialization and stopping criteria to get good results. In other machine learning methods however these surfaces aren't always as nice, and the issue of local minima versus global minima becomes a big deal. There has been much research on this topic however and many sofisticated methods have been developped to deal with this issue.
+
+\section{Overfitting}
+Now that we have established a method of computing our models, it is time to deal with an issue known as overfitting. Overfitting points to the fact that there are several mechanisms at work when we are building a model that prevent us from reaching the perfect model. These mechanisms essentially originate from noise and uncertainty in many aspects of the learning process (the input data, choice of model, choice of algorithm, ...). We can however try to decompose this noise into several components and then attempt to influence them by making changes to our model computation. I will present two ways in which overfitting can be tackled: regularization and validation.
 
 \subsection{The problem of overfitting}
-
+Let's introduce some notation. From now on I will refer to the notion of 'in-sample error' or in symbolic notation $E_{in}$ as the error that a model makes on the examples in our training set. The training set consists of the examples that were used to train (compute) the model in the first place. \\
+Similarly I will define 'out-of-sample error' or $E_{out}$ as the error we make on examples that were not used for training the model. Notice that $E_{in}$ is something I could compute because I have access to the training data, but $E_{out}$ is a quantity I cannot exactly compute but I could try to estimate it if I have some examples left that I did not use for training. Notice also that it is $E_{in}$ that we minimize during our model computation, but it is $E_{out}$ that we actually want to minimize! Indeed, $E_{out}$ corresponds to the error that we get when we are going to deploy our model in practice and use it on examples we have never seen before. We can do this because we believe that $E_{in}$ tracks $E_{out}$ to a certain degree. And thus if we manage to minimize $E_{in}$ we also minimize $E_{out}$ to some extent. \\
+We can only speak of overfitting when we are comparing two models. We say that one model, call it model A, is overfitting with respect to another model, model B, when model A managed to get a lower $E_{in}$ than model B, but model B has a lower $E_{out}$. \\
+Another way of looking at it is during the learning process. Let's have model A be the model that we computed when we started from model B and performed one more iteration of the training algorithm. Thus model A is 'more trained' than model B. Now let's suppose model A is overfitting:
+\begin{align}
+E_{in}^{modelA} < E_{in}^{modelB} \\
+E_{out}^{modelA} > E_{out}^{modelB}
+\end{align}
+The additional iteration has decreased the in-sample error, and thus we are able to fit our training data better, but the out-of-sample error has increased, meaning that our model doesn't generalize as well to other examples outside the training set. This means that we are actually fitting our training data too well, while we are not really getting a better grasp of the underlying pattern that we wish to learn. We are overfitting the training data.\\
 \subsection{The bias and variance trade-off}
 
-\subsection{Regularization methods}
+\subsection{Regularization}
 
-\section{Validation}
+\subsection{Validation} 
 
-\subsection{The sample size dilemma}
+\subsubsection{The sample size dilemma}
 
-\subsection{Cross-validation}
+\subsubsection{Cross-validation}
 
 \section{Conclusion}
 
