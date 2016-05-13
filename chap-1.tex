@@ -106,9 +106,80 @@ E_{out}^{modelA} > E_{out}^{modelB}
 \end{align}
 The additional iteration has decreased the in-sample error, and thus we are able to fit our training data better, but the out-of-sample error has increased, meaning that our model doesn't generalize as well to other examples outside the training set. This means that we are actually fitting our training data too well, while we are not really getting a better grasp of the underlying pattern that we wish to learn. We are overfitting the training data.\\
 \subsection{The bias and variance trade-off}
-There are several ways of looking at overfitting and pointing out its origins. I will introduce the notions of bias and variance and how they can describe the noise in our system. Next I will show how we can 
+There are several ways of looking at overfitting and pointing out its origins. I will introduce the notions of bias and variance and how they can describe the noise in our system. \\
+\subsubsection{Average hypothesis}
+First, let me explain the playing field. We are in a situation of learning, where we are given a set of examples that are produced by some target function $f$. It is this target function $f$ that we wish to learn (or in other words model). In order to do this we have to decide on the type of functions that we will use to model. In machine learning this is called the hypothesis set. It is the set of all functions that we consider possible candidates to fit our target $f$. And we will use the examples $x$ in our dataset $D$ to decide which hypothesis we will pick. \\
+Next, let's introduce the notion of average hypothesis $\bar{h}$. Imagine we have a very large number of datasets. For each of these datasets we apply the learning process and we will pick a certain hypothesis $h$ from our hypothesis set. The average hypothesis is then equal to the average of all the hypothesis' just learned. Or in a formula:
+$$
+\bar{h} = \mathbf{E}_{D}[h^{(D)}]
+$$
+where
+\begin{itemize}
+	\item $\bar{h}$ is the average hypothesis.
+	\item $\mathbf{E}_{D}$ is the expected value over an infinite number of datasets
+	\item $h^{(D)}$ is the hypothesis that was learned for a specific dataset D
+\end{itemize}
+We can also look at this average hypothesis as sort of the best we can do with the given hypothesis set. Indeed, when we imagine having an infinite number of datasets we would end up cancelling out much of the variation in the learned hypothesis' and end up with a very good one. \\
+\subsubsection{Bias}
+We can now define the bias as the distance between the average hypothesis $\bar{h}$ and our target function $f$.
+$$
+bias = (\bar{h} - f)^{2}
+$$
+We can see the bias as an error we make due to our own choices. Namely our choice of hypothesis set. If we choose a very simple hypothesis set, we cannot expect to be able to find a fit for a very complex function. The target function simply isn't contained in our hypothesis set. There exists no function in our hypothesis set that exactly fits our target. \\
+Therefore we introduced the notion of average hypothesis. We can view this as the best we can do given our current hypothesis set, and the distance to the target is what we call the bias.
+\subsubsection{Variance}
+This however is not the full story. In a real learning situation we generally never find this average hypothesis, because remember it required a large amount (or even infinite amount) of datasets. We never have this luxury! In reality we always have only one dataset and that is all we can use to navigate through the hypothesis set. This is where the notion of variance comes in. We can define variance as the error we get from not having the best hypothesis possible in our hypothesis set. Or in other words as the distance between the hypothesis set that we actually found by learning from our dataset and the average hypothesis.
+$$
+variance = (h^{(D)} - \bar{h})^{2}
+$$
+Error due to variance mainly comes from two sources: the first is our finite dataset, the second is the complexity of the hypothesis set.\\
+In reality we are given a dataset of $N$ examples and that's all you've got. Most of the time this dataset is not sufficient to find the best hypothesis and thus there will be a variance error made. \\
+Secondly, as we increase the complexity of the hypothesis set, it becomes increasingly difficult to navigate through this set. There are simply many more hypothesis to choose from. Again this makes it harder for our learning process to find the optimal hypothesis and as such will introduce a variance error.
+\subsubsection{The tradeoff}
+Having both bias and variance defined we can see that they are not disconnected, there is a tradeoff. If we look purely at bias we could think that simply choosing a super complex hypothesis set is always optimal. Indeed our bias will be zero since the target function will always be inside our hypothesis set. \\
+However, an increasingly complex hypothesis set makes it harder to actually find the optimal hypothesis. We know that the optimal hypothesis is there, but we just cannot find it. The take-away message here is that we have to choose a hypothesis set complexity based on the resources that we have. In this case the resource is our dataset. The larger the dataset that we can learn from, the more complex hypothesis sets we can afford, and the better our results will be. But there is no gain in choosing overly complex hypothesis sets when you don't have the resources to afford them. This will simply cause you to find hypothesis' that fit your training data very well (imagine fitting 3 datapoints with a 7th order polynomial, you would get an exact fit) but this model will not generalize to anything in the real world, it is a complete overfit.
 \subsection{Regularization}
-
+Now that we have the concepts of bias and variance, let's use this information to try and improve our models. The first method is called regularization. In very simple terms this method will add a very small amount of bias in order to greatly decrease the amount of variance, reducing the overall error we make.
+\subsubsection{Adding bias}
+Remember that bias is defined as the distance between the average (or best) hypothesis $\bar{h}$ and our target function $f$. Adding bias effectively means we are going to make another choice, which will impact the average hypothesis. The choice we are about to introduce is based on the following observation: when confronted with a set of similarly performing models, the simplest model is usually the best. Or in other words we should try to prefer simple models over very complex ones. \\
+This observation does not have a mathematical proof, it is rather an observation from experience and reason. One good argument is the fact that noise is usually of high frequency. Meaning that distortions of our dataset (for instance measurement errors) will often be very scattered and random, while the underlying pattern that really makes up the data will be rather smooth. A similar argument can be made for the error due to bias, when we choose a hypothesis set that does not contain the target function, the error due to bias will be mostly random and of high frequency. Therefore if we want to reduce the impact of this noise in our final model, we should prefer models that are not able to fit these high frequencies exactly. Lastly we can remark that if we look at our current understanding of nature (let's say at a larger scale), systems almost always have smooth transitions. The most important laws of nature that we find are all written down in small, simple formulas. Nature doesn't work with instantaneous changes (high frequency), but rather it has smooth functions that govern the basic principle, and then it adds random noise and fluctuations on top of it. This principle is what we try to extrapolate here to machine learning.\\
+Thus, the choice we will make is that we will prefer simple models over complex ones by adding a constraint to the weights.
+\subsubsection{Regularization types}
+There are many kinds of constraints that we could add to the weights and, depending on the constraint we choose, the regularization gets a different name and it will have a different effect. One of the most famous regularizers is called ridge or weight-decay. The constraint for this regularizer is the following:
+$$
+\sum_{i=1}^{N}w_{i}^{2} \leq C
+$$
+where
+\begin{itemize}
+	\item $w_{i}$ is the weight (model parameter) for the i'th explanatory variable.
+	\item $C$ is the constraint value
+\end{itemize}
+Using this regularizer will result in a preference for models with smaller weights. This keeps certain weights from getting out of control. This form of regularization is also often called the $L_{2}$ penalty. \\
+Another popular regularizer is called the lasso penalty (or $L_{1}$ penalty). The constraint in this case is:
+$$
+\sum_{i=1}^{N}\lvert w_{i}\rvert \leq C
+$$
+In addition to keeping the weights small, this form of regularization also performs parameter selection. This means that instead of just keeping the weights small it will also prefer to make weights actually zero. This will cause the resulting model to have fewer parameters, but the parameters that do survive the penalty are sure to be very important. This regularizer is often used when there is a huge number of explanatory variables, and we wish to find only those that are really descriptive. Later in the thesis I will use datasets that contain gene expression information about cancer patients, these datasets often have thousands of explanatory variables and will provide a good example for using the lasso regularization. \\
+The last form of regularizer I wish to demonstrate is called the elastic net penalty. This regularizer is simply a linear combination of the ridge and lasso penalties and provides a way of balancing the two. It has the following constraint:
+$$
+\alpha \sum_{i=1}^{N}w_{i}^{2} + (1-\alpha)\sum_{i=1}^{N}\lvert w_{i}\rvert \leq C
+$$
+\subsubsection{Lambda}
+Using a regularizer introduces a constraint, this means that we now have to deal with a constrained optimization problem which is much harder to solve than an unconstrained problem. Fortunately, through some clever mathematics it is possible to convert the constrained minimization problem to an unconstrained one by incorporating the regularization constraint in the formula for the error itself. //TODO ADD APPENDIX WITH FULL DERIVATION OR NOT ... The formula for the error with regularization then becomes:
+$$
+E_{in}(w) = \frac{1}{N}\sum_{n=1}^{N}e(x_{n},y_{n},w)+\lambda R(w)
+$$
+where
+\begin{itemize}
+	\item $E_{in}(w)$ is the in-sample error.
+	\item $e(x_{n},y_{n},w)$ is the individual error made on example n. In the case of logistic regression this would be a cross-entropy error term $ln(1+e^{-y_{n}w^{T}x_{n}})$.
+	\item $\lambda$ is the regularization parameter that will be explained below.
+	\item $R(w)$ is the regularization term dependent on the type of regularization used. For instance: $\sum_{i=1}^{N}\lvert w_{i}\rvert$ for lasso, $\sum_{i=1}^{N}w_{i}^{2}$ for ridge, ...
+	\item $x_{n}$ is the n'th sample in the dataset.
+	\item $y_{n}$ is the outcome for the n'th sample in the dataset.
+	\item $w$ is the vector of weights, our model parameters that we are trying to find.
+\end{itemize}
+Notice that we now again have an error measure that we want to minimize, and it is an unconstrained optimization problem. The important new part is $\lambda$. This is the amount of regularization we want to use. It is a new form for the constraint constant $C$ that was earlier introduced in the types of regularization. The higher $\lambda$ the tighter the constraint (lower $C$) and vice versa. The value of $\lambda$ will prove to be critical in getting good models. The way to calculate it is through validation.
 \subsection{Validation} 
 
 \subsubsection{The sample size dilemma}

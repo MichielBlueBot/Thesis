@@ -31,41 +31,48 @@
 \contentsline {section}{\numberline {2.3}Overfitting}{8}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}The problem of overfitting}{8}{subsection.2.3.1}
 \contentsline {subsection}{\numberline {2.3.2}The bias and variance trade-off}{9}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}Regularization}{9}{subsection.2.3.3}
-\contentsline {subsection}{\numberline {2.3.4}Validation}{9}{subsection.2.3.4}
-\contentsline {subsubsection}{The sample size dilemma}{9}{section*.12}
-\contentsline {subsubsection}{Cross-validation}{9}{section*.13}
-\contentsline {section}{\numberline {2.4}Conclusion}{9}{section.2.4}
-\contentsline {chapter}{\chapternumberline {3}The Next Chapter}{11}{chapter.3}
-\contentsline {section}{\numberline {3.1}The First Topic of this Chapter}{11}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}An item}{11}{subsection.3.1.1}
-\contentsline {section}{\numberline {3.2}Figures}{11}{section.3.2}
-\contentsline {section}{\numberline {3.3}Tables}{12}{section.3.3}
-\contentsline {section}{\numberline {3.4}Lorem Ipsum}{12}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}Lorem ipsum dolor sit amet, consectetur adipiscing elit}{12}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}Praesent auctor venenatis posuere}{13}{subsection.3.4.2}
-\contentsline {subsection}{\numberline {3.4.3}Cras vulputate ultricies venenatis}{13}{subsection.3.4.3}
-\contentsline {subsection}{\numberline {3.4.4}Donec nibh ante, consectetur et posuere id, tempus nec arcu}{14}{subsection.3.4.4}
-\contentsline {subsection}{\numberline {3.4.5}Morbi et mauris tempus purus ornare vehicula}{14}{subsection.3.4.5}
-\contentsline {section}{\numberline {3.5}Conclusion}{14}{section.3.5}
-\contentsline {chapter}{\chapternumberline {4}The Final Chapter}{15}{chapter.4}
-\contentsline {section}{\numberline {4.1}The First Topic of this Chapter}{15}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Item 1}{15}{subsection.4.1.1}
-\contentsline {subsubsection}{Sub-item 1}{15}{section*.14}
-\contentsline {subsubsection}{Sub-item 2}{15}{section*.15}
-\contentsline {subsection}{\numberline {4.1.2}Item 2}{16}{subsection.4.1.2}
-\contentsline {section}{\numberline {4.2}The Second Topic}{16}{section.4.2}
-\contentsline {section}{\numberline {4.3}Conclusion}{17}{section.4.3}
-\contentsline {chapter}{\chapternumberline {5}Conclusion}{19}{chapter.5}
-\contentsline {appendix}{\chapternumberline {A}The First Appendix}{23}{appendix.A}
-\contentsline {section}{\numberline {A.1}More Lorem}{23}{section.A.1}
-\contentsline {subsection}{\numberline {A.1.1}Lorem 15--17}{23}{subsection.A.1.1}
-\contentsline {subsection}{\numberline {A.1.2}Lorem 18--19}{24}{subsection.A.1.2}
-\contentsline {section}{\numberline {A.2}Lorem 51}{24}{section.A.2}
-\contentsline {appendix}{\chapternumberline {B}The Last Appendix}{25}{appendix.B}
-\contentsline {section}{\numberline {B.1}Lorem 20-24}{25}{section.B.1}
-\contentsline {section}{\numberline {B.2}Lorem 25-27}{26}{section.B.2}
-\contentsline {chapter}{Bibliography}{27}{section*.17}
+\contentsline {subsubsection}{Average hypothesis}{9}{section*.12}
+\contentsline {subsubsection}{Bias}{9}{section*.13}
+\contentsline {subsubsection}{Variance}{10}{section*.14}
+\contentsline {subsubsection}{The tradeoff}{10}{section*.15}
+\contentsline {subsection}{\numberline {2.3.3}Regularization}{11}{subsection.2.3.3}
+\contentsline {subsubsection}{Adding bias}{11}{section*.16}
+\contentsline {subsubsection}{Regularization types}{11}{section*.17}
+\contentsline {subsubsection}{Lambda}{12}{section*.18}
+\contentsline {subsection}{\numberline {2.3.4}Validation}{13}{subsection.2.3.4}
+\contentsline {subsubsection}{The sample size dilemma}{13}{section*.19}
+\contentsline {subsubsection}{Cross-validation}{13}{section*.20}
+\contentsline {section}{\numberline {2.4}Conclusion}{13}{section.2.4}
+\contentsline {chapter}{\chapternumberline {3}The Next Chapter}{15}{chapter.3}
+\contentsline {section}{\numberline {3.1}The First Topic of this Chapter}{15}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}An item}{15}{subsection.3.1.1}
+\contentsline {section}{\numberline {3.2}Figures}{15}{section.3.2}
+\contentsline {section}{\numberline {3.3}Tables}{16}{section.3.3}
+\contentsline {section}{\numberline {3.4}Lorem Ipsum}{16}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Lorem ipsum dolor sit amet, consectetur adipiscing elit}{16}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Praesent auctor venenatis posuere}{17}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}Cras vulputate ultricies venenatis}{17}{subsection.3.4.3}
+\contentsline {subsection}{\numberline {3.4.4}Donec nibh ante, consectetur et posuere id, tempus nec arcu}{18}{subsection.3.4.4}
+\contentsline {subsection}{\numberline {3.4.5}Morbi et mauris tempus purus ornare vehicula}{18}{subsection.3.4.5}
+\contentsline {section}{\numberline {3.5}Conclusion}{18}{section.3.5}
+\contentsline {chapter}{\chapternumberline {4}The Final Chapter}{19}{chapter.4}
+\contentsline {section}{\numberline {4.1}The First Topic of this Chapter}{19}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Item 1}{19}{subsection.4.1.1}
+\contentsline {subsubsection}{Sub-item 1}{19}{section*.21}
+\contentsline {subsubsection}{Sub-item 2}{19}{section*.22}
+\contentsline {subsection}{\numberline {4.1.2}Item 2}{20}{subsection.4.1.2}
+\contentsline {section}{\numberline {4.2}The Second Topic}{20}{section.4.2}
+\contentsline {section}{\numberline {4.3}Conclusion}{21}{section.4.3}
+\contentsline {chapter}{\chapternumberline {5}Conclusion}{23}{chapter.5}
+\contentsline {appendix}{\chapternumberline {A}The First Appendix}{27}{appendix.A}
+\contentsline {section}{\numberline {A.1}More Lorem}{27}{section.A.1}
+\contentsline {subsection}{\numberline {A.1.1}Lorem 15--17}{27}{subsection.A.1.1}
+\contentsline {subsection}{\numberline {A.1.2}Lorem 18--19}{28}{subsection.A.1.2}
+\contentsline {section}{\numberline {A.2}Lorem 51}{28}{section.A.2}
+\contentsline {appendix}{\chapternumberline {B}The Last Appendix}{29}{appendix.B}
+\contentsline {section}{\numberline {B.1}Lorem 20-24}{29}{section.B.1}
+\contentsline {section}{\numberline {B.2}Lorem 25-27}{30}{section.B.2}
+\contentsline {chapter}{Bibliography}{31}{section*.24}
 \select@language {dutch}
 \select@language {english}
 \select@language {dutch}
