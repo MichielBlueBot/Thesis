@@ -1,10 +1,23 @@
 \chapter{Evaluation of integration strategies}
 \label{cha:evaluation}
 
+
 \section{Introduction}
 \label{sec:evaluation-introduction}
+In this chapter I will show that different integration strategies can have better performance in different situations. I will do this by computing a model using each strategy and then comparing their performance using an appropriate metric.
+\section{Case details}
+\label{sec:evaluation-casedetails}
+The case I am showing here uses datasets created by the University Hospital of Leuven in a study on colorectal cancer patients. There are three source datasets that all contain imaging data: a dataset from MRI (Magnetic Resonance Imaging) scans, a dataset from DWI (Diffusion Weighted Magnetic Resonance Imaging) scans, and a dataset from PET (Positron Emission Tomography) scans. It is important to note that these scans were taken 3 times per patient at different periods in their treatment: one in the beginning, one roughly in the middle, and one near the end. This means that there is some temporal information present in the datasets, but this has simply been encoded in the explanatory variables. For instance: there is a variable in the MRI dataset that shows the size change of the tumour between the first and second scan. In this way we can simply treat this as a regular explanatory variable and we don't have to worry about the temporal aspect. \\ \\
+The dependent variable is a binary outcome based on whether the patient got a pathologically complete response. For a more in-depth explanation on what this means see appendix //TODO EXPLAIN STAGE SYSTEM IN APPENDIX. For now, we can view a positive outcome as a patient who has recovered from the cancer, and a negative outcome as a patient that has not. The aim is now to build a model that gets the variables from the scans as input, and predicts the outcome for that patient.
+\section{Evaluating a logistic regression model}
+\label{sec:evaluation-logisticregression}
+The first comparison will be made for the logistic regression model. This is a model computed for a dependent variable that has a binomial distribution.
+\subsection{Confusion matrix}
+\subsection{Receiver Operating Characteristic curve}
 \section{Predicting stage outcome}
 \label{sec:evaluation-predictingstage}
+\section{Evaluating a cox proportional hazards model}
+\label{sec:evaluation-coxph}
 \section{Predicting survival curves}
 \label{sec:evaluation-predictingsurvival}
 \section{Conclusion}

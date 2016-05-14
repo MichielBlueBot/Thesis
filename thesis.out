@@ -17,25 +17,28 @@
 \BOOKMARK [1][-]{section.2.7}{Conclusion}{chapter.2}% 17
 \BOOKMARK [0][-]{chapter.3}{Integration Strategies}{}% 18
 \BOOKMARK [1][-]{section.3.1}{Introduction}{chapter.3}% 19
-\BOOKMARK [1][-]{section.3.2}{Early integration}{chapter.3}% 20
-\BOOKMARK [1][-]{section.3.3}{Late integration}{chapter.3}% 21
-\BOOKMARK [1][-]{section.3.4}{Intermediate integration}{chapter.3}% 22
-\BOOKMARK [1][-]{section.3.5}{Conclusion}{chapter.3}% 23
-\BOOKMARK [0][-]{chapter.4}{Evaluation of integration strategies}{}% 24
-\BOOKMARK [1][-]{section.4.1}{Introduction}{chapter.4}% 25
-\BOOKMARK [1][-]{section.4.2}{Predicting stage outcome}{chapter.4}% 26
-\BOOKMARK [1][-]{section.4.3}{Predicting survival curves}{chapter.4}% 27
-\BOOKMARK [1][-]{section.4.4}{Conclusion}{chapter.4}% 28
-\BOOKMARK [0][-]{chapter.5}{Tool for automated evaluation}{}% 29
-\BOOKMARK [1][-]{section.5.1}{Introduction}{chapter.5}% 30
-\BOOKMARK [1][-]{section.5.2}{Technologies}{chapter.5}% 31
-\BOOKMARK [1][-]{section.5.3}{Demonstration}{chapter.5}% 32
-\BOOKMARK [1][-]{section.5.4}{Conclusion}{chapter.5}% 33
-\BOOKMARK [0][-]{chapter.6}{Conclusion}{}% 34
-\BOOKMARK [0][-]{appendix.A}{The First Appendix}{}% 35
-\BOOKMARK [1][-]{section.A.1}{More Lorem}{appendix.A}% 36
-\BOOKMARK [1][-]{section.A.2}{Lorem 51}{appendix.A}% 37
-\BOOKMARK [0][-]{appendix.B}{The Last Appendix}{}% 38
-\BOOKMARK [1][-]{section.B.1}{Lorem 20-24}{appendix.B}% 39
-\BOOKMARK [1][-]{section.B.2}{Lorem 25-27}{appendix.B}% 40
-\BOOKMARK [0][-]{section*.17}{Bibliography}{}% 41
+\BOOKMARK [1][-]{section.3.2}{The setup}{chapter.3}% 20
+\BOOKMARK [1][-]{section.3.3}{Early integration}{chapter.3}% 21
+\BOOKMARK [1][-]{section.3.4}{Late integration}{chapter.3}% 22
+\BOOKMARK [1][-]{section.3.5}{Intermediate integration}{chapter.3}% 23
+\BOOKMARK [1][-]{section.3.6}{Conclusion}{chapter.3}% 24
+\BOOKMARK [0][-]{chapter.4}{Evaluation of integration strategies}{}% 25
+\BOOKMARK [1][-]{section.4.1}{Introduction}{chapter.4}% 26
+\BOOKMARK [1][-]{section.4.2}{Evaluating a logistic regression model}{chapter.4}% 27
+\BOOKMARK [1][-]{section.4.3}{Predicting stage outcome}{chapter.4}% 28
+\BOOKMARK [1][-]{section.4.4}{Evaluating a cox proportional hazards model}{chapter.4}% 29
+\BOOKMARK [1][-]{section.4.5}{Predicting survival curves}{chapter.4}% 30
+\BOOKMARK [1][-]{section.4.6}{Conclusion}{chapter.4}% 31
+\BOOKMARK [0][-]{chapter.5}{Tool for automated evaluation}{}% 32
+\BOOKMARK [1][-]{section.5.1}{Introduction}{chapter.5}% 33
+\BOOKMARK [1][-]{section.5.2}{Technologies}{chapter.5}% 34
+\BOOKMARK [1][-]{section.5.3}{Demonstration}{chapter.5}% 35
+\BOOKMARK [1][-]{section.5.4}{Conclusion}{chapter.5}% 36
+\BOOKMARK [0][-]{chapter.6}{Conclusion}{}% 37
+\BOOKMARK [0][-]{appendix.A}{The First Appendix}{}% 38
+\BOOKMARK [1][-]{section.A.1}{More Lorem}{appendix.A}% 39
+\BOOKMARK [1][-]{section.A.2}{Lorem 51}{appendix.A}% 40
+\BOOKMARK [0][-]{appendix.B}{The Last Appendix}{}% 41
+\BOOKMARK [1][-]{section.B.1}{Lorem 20-24}{appendix.B}% 42
+\BOOKMARK [1][-]{section.B.2}{Lorem 25-27}{appendix.B}% 43
+\BOOKMARK [0][-]{section*.17}{Bibliography}{}% 44

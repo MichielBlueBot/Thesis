@@ -46,30 +46,35 @@
 \contentsline {section}{\numberline {2.7}Conclusion}{14}{section.2.7}
 \contentsline {chapter}{\chapternumberline {3}Integration Strategies}{17}{chapter.3}
 \contentsline {section}{\numberline {3.1}Introduction}{17}{section.3.1}
-\contentsline {section}{\numberline {3.2}Early integration}{17}{section.3.2}
-\contentsline {section}{\numberline {3.3}Late integration}{17}{section.3.3}
-\contentsline {section}{\numberline {3.4}Intermediate integration}{17}{section.3.4}
-\contentsline {section}{\numberline {3.5}Conclusion}{17}{section.3.5}
-\contentsline {chapter}{\chapternumberline {4}Evaluation of integration strategies}{19}{chapter.4}
-\contentsline {section}{\numberline {4.1}Introduction}{19}{section.4.1}
-\contentsline {section}{\numberline {4.2}Predicting stage outcome}{19}{section.4.2}
-\contentsline {section}{\numberline {4.3}Predicting survival curves}{19}{section.4.3}
-\contentsline {section}{\numberline {4.4}Conclusion}{19}{section.4.4}
-\contentsline {chapter}{\chapternumberline {5}Tool for automated evaluation}{21}{chapter.5}
-\contentsline {section}{\numberline {5.1}Introduction}{21}{section.5.1}
-\contentsline {section}{\numberline {5.2}Technologies}{21}{section.5.2}
-\contentsline {section}{\numberline {5.3}Demonstration}{21}{section.5.3}
-\contentsline {section}{\numberline {5.4}Conclusion}{21}{section.5.4}
-\contentsline {chapter}{\chapternumberline {6}Conclusion}{23}{chapter.6}
-\contentsline {appendix}{\chapternumberline {A}The First Appendix}{27}{appendix.A}
-\contentsline {section}{\numberline {A.1}More Lorem}{27}{section.A.1}
-\contentsline {subsection}{\numberline {A.1.1}Lorem 15--17}{27}{subsection.A.1.1}
-\contentsline {subsection}{\numberline {A.1.2}Lorem 18--19}{28}{subsection.A.1.2}
-\contentsline {section}{\numberline {A.2}Lorem 51}{28}{section.A.2}
-\contentsline {appendix}{\chapternumberline {B}The Last Appendix}{29}{appendix.B}
-\contentsline {section}{\numberline {B.1}Lorem 20-24}{29}{section.B.1}
-\contentsline {section}{\numberline {B.2}Lorem 25-27}{30}{section.B.2}
-\contentsline {chapter}{Bibliography}{31}{section*.17}
+\contentsline {section}{\numberline {3.2}The setup}{17}{section.3.2}
+\contentsline {section}{\numberline {3.3}Early integration}{18}{section.3.3}
+\contentsline {section}{\numberline {3.4}Late integration}{18}{section.3.4}
+\contentsline {section}{\numberline {3.5}Intermediate integration}{19}{section.3.5}
+\contentsline {section}{\numberline {3.6}Conclusion}{20}{section.3.6}
+\contentsline {chapter}{\chapternumberline {4}Evaluation of integration strategies}{23}{chapter.4}
+\contentsline {section}{\numberline {4.1}Introduction}{23}{section.4.1}
+\contentsline {section}{\numberline {4.2}Evaluating a logistic regression model}{23}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Confusion matrix}{23}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Receiver Operating Characteristic curve}{23}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}Predicting stage outcome}{23}{section.4.3}
+\contentsline {section}{\numberline {4.4}Evaluating a cox proportional hazards model}{23}{section.4.4}
+\contentsline {section}{\numberline {4.5}Predicting survival curves}{23}{section.4.5}
+\contentsline {section}{\numberline {4.6}Conclusion}{23}{section.4.6}
+\contentsline {chapter}{\chapternumberline {5}Tool for automated evaluation}{25}{chapter.5}
+\contentsline {section}{\numberline {5.1}Introduction}{25}{section.5.1}
+\contentsline {section}{\numberline {5.2}Technologies}{25}{section.5.2}
+\contentsline {section}{\numberline {5.3}Demonstration}{25}{section.5.3}
+\contentsline {section}{\numberline {5.4}Conclusion}{25}{section.5.4}
+\contentsline {chapter}{\chapternumberline {6}Conclusion}{27}{chapter.6}
+\contentsline {appendix}{\chapternumberline {A}The First Appendix}{31}{appendix.A}
+\contentsline {section}{\numberline {A.1}More Lorem}{31}{section.A.1}
+\contentsline {subsection}{\numberline {A.1.1}Lorem 15--17}{31}{subsection.A.1.1}
+\contentsline {subsection}{\numberline {A.1.2}Lorem 18--19}{32}{subsection.A.1.2}
+\contentsline {section}{\numberline {A.2}Lorem 51}{32}{section.A.2}
+\contentsline {appendix}{\chapternumberline {B}The Last Appendix}{33}{appendix.B}
+\contentsline {section}{\numberline {B.1}Lorem 20-24}{33}{section.B.1}
+\contentsline {section}{\numberline {B.2}Lorem 25-27}{34}{section.B.2}
+\contentsline {chapter}{Bibliography}{35}{section*.17}
 \select@language {dutch}
 \select@language {english}
 \select@language {dutch}
