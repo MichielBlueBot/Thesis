@@ -1,9 +1,13 @@
 \chapter{Generalized Linear Models}
-\label{cha:1}
+\label{cha:glm}
+
+\section{Introduction}
+\label{sec:glm-introduction}
 In this chapter I will explain the current standard in machine learning when it comes to generalized linear models. This term indicates a generalization of simple linear regression that allows for a wide range of output variables. \\
 First I will go over the basics of linear models, gradually building up to the definition of generalized linear models. Next, I will describe what actual data looks like and how this data is transformed into a useful model.\\ After that I will tackle the more recent innovation of regularization that will greatly improve our previous models by exploiting the bias-variance trade-off to reduce overfitting. Lastly I will outline the validation method that will be used to test the performance of the models.
 
 \section{Classical linear models}
+\label{sec:glm-classicallinearmodels}
 When we think of classical linear models, we can imagine a set of numeric explanatory (or input) variables and a numerical dependent (or output) variable. By making a linear combination of the explanatory variables we attempt to estimate a value for the dependent variable. Depending on the type of dependent variable the linear method gets a different name. In the following sections I will outline several of them.
 
 \subsection{Linear Regression}
@@ -24,8 +28,10 @@ The idea is still the same. We will make a linear combination of the input varia
 The logistic regression method is the one that will be most widely used throughout this thesis.
 
 \section{Training a model}
+\label{sec:glm-trainingamodel}
 In order to understand the integration strategies that will be explained later on, it is useful to know how exactly the models come to be. This section will explain what the input data for our linear models actually looks like, and how we get from this data to a model that we can use for future predictions.
 \subsection{The data}
+
 The data we use consists of two parts: the input data, which can be seen as a matrix where the columns are the explanatory variables and each row is an example (or patient). And secondly the output data, which can be seen as a vector where each value indicates the value of the dependent variable for a single example. \\
 It is easy to see that the length of the output vector has to be equal to the amount of rows in the input matrix, indeed there should be one output value for each example. This amount is often called the size of the dataset and we would like it to be as big as possible. Especially when we are dealing with a large number of explanatory variables, it is essential to have a reasonably amount of examples aswell. This will be discussed in more detail later on //TODO REFERENCE. 
 
@@ -93,6 +99,7 @@ The stopcondition however is a bigger issue and usually the way to go here is to
 In the version of logistic regression explained here, it can however be shown that the error surface we are dealing with is a very nice convex surface. This makes it very easy to find its minimum and we don't need very complex initialization and stopping criteria to get good results. In other machine learning methods however these surfaces aren't always as nice, and the issue of local minima versus global minima becomes a big deal. There has been much research on this topic however and many sophisticated methods have been developped to deal with this issue.
 
 \section{Overfitting}
+\label{sec:glm-overfitting}
 Now that we have established a method of computing our models, it is time to deal with an issue known as overfitting. Overfitting points to the fact that there are several mechanisms at work when we are building a model that prevent us from reaching the perfect model (a model that predicts correctly at all times). These mechanisms essentially originate from noise and uncertainty in many aspects of the learning process (the input data, choice of model, choice of algorithm, ...). We can however try to decompose this noise into several components and then attempt to influence them by making changes to our model computation. I will present two ways in which overfitting can be tackled: regularization and validation.
 
 \subsection{The problem of overfitting}
@@ -138,13 +145,14 @@ Secondly, as we increase the complexity of the hypothesis set, it becomes increa
 \subsubsection{The tradeoff}
 Having both bias and variance defined we can see that they are not disconnected, there is a tradeoff. If we look purely at bias we could think that simply choosing a super complex hypothesis set is always optimal. Indeed our bias will be zero since the target function will always be inside our hypothesis set. \\
 However, an increasingly complex hypothesis set makes it harder to actually find the optimal hypothesis. We know that the optimal hypothesis is there, but we just cannot find it. The take-away message here is that we have to choose a hypothesis set complexity based on the resources that we have. In this case the resource is our dataset. The larger the dataset that we can learn from, the more complex hypothesis sets we can afford, and the better our results will be. But there is no gain in choosing overly complex hypothesis sets when you don't have the resources to afford them. This will simply cause you to find hypothesis' that fit your training data very well (imagine fitting 3 datapoints with a 7th order polynomial, you would get an exact fit) but this model will not generalize to anything in the real world, it is a complete overfit.
-\subsection{Regularization}
+\section{Regularization}
+\label{sec:glm-regularization}
 Now that we have the concepts of bias and variance, let's use this information to try and improve our models. The first method is called regularization. In very simple terms this method will add a very small amount of bias in order to greatly decrease the amount of variance, reducing the overall error we make.
-\subsubsection{Adding bias}
+\subsection{Adding bias}
 Remember that bias is defined as the distance between the average (or best) hypothesis $\bar{h}$ and our target function $f$. Adding bias effectively means we are going to make another choice, which will impact the average hypothesis. The choice we are about to introduce is based on the following observation: when confronted with a set of similarly performing models, the simplest model is usually the best. Or in other words we should try to prefer simple models over very complex ones. \\
 This observation does not have a mathematical proof, it is rather an observation from experience and reason. One good argument is the fact that noise is usually of high frequency. Meaning that distortions of our dataset (for instance measurement errors) will often be very scattered and random, while the underlying pattern that really makes up the data will be rather smooth. A similar argument can be made for the error due to bias, when we choose a hypothesis set that does not contain the target function, the error due to bias will be mostly random and of high frequency. Therefore if we want to reduce the impact of this noise in our final model, we should prefer models that are not able to fit these high frequencies exactly. Lastly we can remark that if we look at our current understanding of nature (let's say at a larger scale), systems almost always have smooth transitions. The most important laws of nature that we find are all written down in small, simple formulas. Nature doesn't work with instantaneous changes (high frequency), but rather it has smooth functions that govern the basic principle, and then it adds random noise and fluctuations on top of it. This principle is what we try to extrapolate here to machine learning.\\
 Thus, the choice we will make is that we will prefer simple models over complex ones by adding a constraint to the weights.
-\subsubsection{Regularization types}
+\subsection{Regularization types}
 There are many kinds of constraints that we could add to the weights and, depending on the constraint we choose, the regularization gets a different name and it will have a different effect. One of the most famous regularizers is called ridge or weight-decay. The constraint for this regularizer is the following:
 $$
 \sum_{i=1}^{N}w_{i}^{2} \leq C
@@ -164,7 +172,7 @@ The last form of regularizer I wish to demonstrate is called the elastic net pen
 $$
 \alpha \sum_{i=1}^{N}w_{i}^{2} + (1-\alpha)\sum_{i=1}^{N}\lvert w_{i}\rvert \leq C
 $$
-\subsubsection{Lambda}
+\subsection{Lambda}
 Using a regularizer introduces a constraint, this means that we now have to deal with a constrained optimization problem which is much harder to solve than an unconstrained problem. Fortunately, through some clever mathematics it is possible to convert the constrained minimization problem to an unconstrained one by incorporating the regularization constraint in the formula for the error itself. //TODO ADD APPENDIX WITH FULL DERIVATION OR NOT ... The formula for the error with regularization then becomes:
 $$
 E_{in}(w) = \frac{1}{N}\sum_{n=1}^{N}e(x_{n},y_{n},w)+\lambda R(w)
@@ -180,14 +188,28 @@ where
 	\item $w$ is the vector of weights, our model parameters that we are trying to find.
 \end{itemize}
 Notice that we now again have an error measure that we want to minimize, and it is an unconstrained optimization problem. The important new part is $\lambda$. This is the amount of regularization we want to use. It is a new form for the constraint constant $C$ that was earlier introduced in the types of regularization. The higher $\lambda$ the tighter the constraint (lower $C$) and vice versa. The value of $\lambda$ will prove to be critical in getting good models. The way to calculate it is through validation.
-\subsection{Validation} 
-
-\subsubsection{The sample size dilemma}
-
-\subsubsection{Cross-validation}
+\section{Validation}
+\label{sec:glm-validation}
+In this section I will explain the method of validation which is used to estimate the out-of-sample error. I will first explain the issue of sample size and then present a method to work around this limitation.
+\subsection{The sample size dilemma}
+Remember that when we are training a model we use the in-sample error to navigate the hypothesis space. We do this because we believe that the in-sample error is a valid surrogate for the out-of-sample error (which is the error we actually want to minimize).
+A valid question to ask is: why don't we just estimate the out-of-sample error and minimize it directly? Consider the following situation: \\
+We are given a dataset of $N$ samples. I will use $K$ samples of the dataset to train my model, this leaves me with $N-K$ samples that are not used for training. Since $K$ samples were used for training, if I would compute the error the model makes on these samples I would be computing the in-sample error. If I want to estimate the out-of-sample error I have to use the $N-K$ samples that were not used for training. This sample set of $N-K$ samples if often called the validation set.\\
+We can now make the following observations:
+\begin{itemize}
+	\item The larger we choose K, the more samples are available for training and thus the better our model can be (due to lower variance!)
+	\item The larger we choose K, the less accurate our out-of-sample error estimate is, because we have fewer datapoints for the estimation
+\end{itemize}
+So now it is clear that we have a tradeoff to make. We would like K to be as large as possible so that we have a large amount of samples to train a model from. On the other hand we would like K to be as small as possible so that we have enough samples to estimate the out-of-sample error. The solution to this apparent contradiction will be cross-validation.
+\subsection{Cross-validation}
+Cross-validation is a technique that allows us to have plenty of samples left for training, while still getting a pretty good estimate for the out-of-sample error. The method is as follows: divide the dataset of $N$ samples into $K$ equal parts (often called folds). Each fold now has $N/K$ samples. Train a model on $K-1$ folds and use the remaining fold to estimate the out-of-sample error. Repeat this process $K$ times, one time for each of the $K$ folds, each time leaving out a different fold. In the end we have $K$ estimates of the out-of-sample error and we can average them to get a final result.\\ \\
+Notice that we are really using all samples for validation and training, but never both at the same time. It feels a bit like cheating, but in practice this method works wonderfully. Validation is often used to determine parameters of the learning process, for instance the $\lambda$ parameter for regularization. We simply try several values for $\lambda$, compute the out-of-sample error using validation, and pick the $\lambda$ that gives the lowest error. Once we have decided this $\lambda$ we can then train a model on the full dataset of $N$ points and use the $\lambda$ we have just calculated to be optimal. \\ \\
+We have to remark however that when we use validation to calculate a value for $\lambda$ as described above, we are really using the validation to help train the model. In this case we can no longer make the statement that the validation samples are not used for training. This is called data pollution. We are using the same data to train training parameters aswell as training the model itself and it is obvious that this will give rise to additional correlations in the data. However in practice it is generally accepted that if you use this technique to decide on just a few learning parameters (often just $\lambda$), and you have a big enough dataset, the data pollution is minimal and the results and estimates you get are still reliable. \\ \\
+Cross-validation is not only used to estimate learning parameters. It can also be used to simply test the performance of the model. In this case the fold that is not used for training is usually not called a validation set, but rather a test set. Because samples in this set will be used to test the models performance. 
 
 \section{Conclusion}
-
+\label{sec:glm-conclusion}
+We have now covered the basis of Generalized Linear Models. We have described the gradient descent method that we can use to navigate the hypothesis space by minimizing an error function. We have seen that overfitting is a serious issue that is caused by noise at different levels of the learning process. We have broken down this noise into bias and variance and shown that we can have an impact on this process. We can use regularization to add a slight bias in order to greatly decrease the error due to variance and we have based this on the principle that we should prefer simple and smooth models. Lastly we have covered the method of validation. A method that we can use to estimate the out-of-sample error and which gives us the ability to choose learning parameters like $\lambda$ and also test the performance of our model.
 
 %%% Local Variables: 
 %%% mode: latex
