@@ -11,9 +11,54 @@ The case I am showing here uses datasets created by the University Hospital of L
 The dependent variable is a binary outcome based on whether the patient got a pathologically complete response. For a more in-depth explanation on what this means see appendix //TODO EXPLAIN STAGE SYSTEM IN APPENDIX. For now, we can view a positive outcome as a patient who has recovered from the cancer, and a negative outcome as a patient that has not. The aim is now to build a model that gets the variables from the scans as input, and predicts the outcome for that patient.
 \section{Evaluating a logistic regression model}
 \label{sec:evaluation-logisticregression}
-The first comparison will be made for the logistic regression model. This is a model computed for a dependent variable that has a binomial distribution.
-\subsection{Confusion matrix}
+The first evaluation will be made using a logistic regression model. This is a model computed for a dependent variable that has a binomial distribution. To evaluate such model, a common technique used is called Receiver-Operating-Characteristic analysis or ROC analysis for short. Remember that when we are using a logistic regression model to predict outcomes, we have to define a threshold to separate positive from negative cases. An ROC curve shows the performance of the model for any possible threshold, using metrics such as sensitivity and specificity. This gives a very good general impression of the performance of the model.
+\subsection{Predictions using validation}
+What we really want to do is estimate the out-of-sample error for our model. To do this we have seen that we can use the technique of cross-validation. In this case we are not going to compute any learning parameter but we are going to use the validation set as a test set. We will split our dataset into $K$ folds. We will train a model on $K-1$ folds and we will use this model to predict the outcomes of the remaining samples in the test fold. By repeating this process for each folds we obtain a predicted outcome for each sample in the dataset. Notice however that we also have the real outcome of the samples in our dataset, and thus we can compare our predictions with the real values to estimate our out-of-sample error.
+\subsection{Metrics}
+When we compare our predictions with the real outcomes, there are four possible scenario's:
+\begin{itemize}
+	\item True Positive (TP): we predicted positive and this is correct
+	\item True Negative (TN): we predicted negative and this is correct
+	\item False Positive(FP): we predicted positive and this is wrong (type 1 error)
+	\item False Negative (FN): we predicted negative and this is wrong (type 2 error)
+\end{itemize}
+Notice that this gives us more information than just registering whether we are right or wrong. It also tells us the type of mistake we made. This is a very important distinction because depending on the application there is usually a different cost attached to making type 1 or type 2 errors. And as we will see later on, there is a tradeoff between the two and we can tune our system to be more resistant towards making one type of error. \\ \\
+Now that we have established the notion of typed errors, there are several ways in which these numbers are combined to form evaluation metrics. Depending on your field of research these often get different names, I will use the ones applicable to the biomedical field.
+\subsubsection{Sensitivity}
+Sensitivity measures the proportion of the real positive samples that our model correctly predicted as positive. It can be calculated with the following formula:
+$$
+Sensitivity = \frac{\sum{TP}}{\sum{P}}
+$$
+where
+\begin{itemize}
+	\item $\sum{TP}$ is the number of true positives
+	\item $\sum{P}$ is the number of real positive cases in the dataset
+\end{itemize}
+Sensitivity can be thought of, as its name suggests, as how sensitive the model is to detecting positive cases. If the model gets a real positive sample, what is the probability that it will detect it as such. A sensitivity of 1 means that our model is capable of correctly identifying all positive cases in the dataset. This means that the higher the sensitivity, the lower the type 2 error rate.
+\subsubsection{Specificity}
+Specificity is the analogous metric to sensitivity, but for negative cases. It measures the proportion of the real negative samples that our model correctly predicted as negative.
+$$
+Specificity = \frac{\sum{TN}}{\sum{N}}
+$$
+where
+\begin{itemize}
+\item $\sum{TN}$ is the number of true negatives
+\item $\sum{P}$ is the number of real negative cases in the dataset
+\end{itemize}
+
+A specificity of 1 means that our model is capable of correctly identifying all negative cases in the dataset. This means that the higher the specificity, the lower the type 1 error rate.
+\subsubsection{The tradeoff}
+At this point it is obvious that we would like to maximize both sensitivity and specificity. Indeed, if both metrics are 1 then we make no errors and we have a perfect model. In practice however this is nearly impossible to achieve. It is easy to see that there is a tradeoff between the two metrics: when we try to increase the sensitivity, we will lose out on specificity and vice versa. \\ \\ 
+Consider the totally useless model that has a threshold lower than the smallest possible output. Meaning that this model will always predict a positive outcome regardless of the input. This model will have a sensitivity of 1, as we will get all positive cases correct. But it will also have a specificity of 0 because we get none of the negative cases correct. As we gradually increase the threshold we will cross critical values where some sample inputs will now produce an output below the threshold and thus be classified as negatives. If this happens to be a correct prediction our specificity will go up and sensitivity will remain unchanged. If it happens to be an error, specificity is unchanged and sensitivity will go down. The gradual increase of the threshold will thus cause sensitivity to drop and specificity to increase, up to the point where we reach the other extreme. The threshold is now bigger than the biggest possible output and the model always predicts negative regardless of the input. This threshold gives us a sensitivity of 0 and a specificity of 1.
 \subsection{Receiver Operating Characteristic curve}
+The ROC curve is a way of showing exactly this gradual increase of the threshold. The typical way of constructing a ROC curve is to put $(1-specificity)$ on the X-axis and $sensitivity$ on the Y axis. The values for these matrics are then plotted for values of the threshold ranging from the all-positive model to the all-negative model. An example ROC curve is shown on figure \ref{fig:evaluation-roc}.
+//TODO CHANGE FIGURE TO ROC CURVE
+\begin{figure}
+	\centering
+	\includegraphics[scale=1]{images/intermediate_integration}
+	\caption{Example ROC curve}
+	\label{fig:evaluation-roc}
+\end{figure}
 \section{Predicting stage outcome}
 \label{sec:evaluation-predictingstage}
 \section{Evaluating a cox proportional hazards model}

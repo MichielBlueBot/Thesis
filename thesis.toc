@@ -53,28 +53,33 @@
 \contentsline {section}{\numberline {3.6}Conclusion}{20}{section.3.6}
 \contentsline {chapter}{\chapternumberline {4}Evaluation of integration strategies}{23}{chapter.4}
 \contentsline {section}{\numberline {4.1}Introduction}{23}{section.4.1}
-\contentsline {section}{\numberline {4.2}Evaluating a logistic regression model}{23}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Confusion matrix}{23}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Receiver Operating Characteristic curve}{23}{subsection.4.2.2}
-\contentsline {section}{\numberline {4.3}Predicting stage outcome}{23}{section.4.3}
-\contentsline {section}{\numberline {4.4}Evaluating a cox proportional hazards model}{23}{section.4.4}
-\contentsline {section}{\numberline {4.5}Predicting survival curves}{23}{section.4.5}
-\contentsline {section}{\numberline {4.6}Conclusion}{23}{section.4.6}
-\contentsline {chapter}{\chapternumberline {5}Tool for automated evaluation}{25}{chapter.5}
-\contentsline {section}{\numberline {5.1}Introduction}{25}{section.5.1}
-\contentsline {section}{\numberline {5.2}Technologies}{25}{section.5.2}
-\contentsline {section}{\numberline {5.3}Demonstration}{25}{section.5.3}
-\contentsline {section}{\numberline {5.4}Conclusion}{25}{section.5.4}
-\contentsline {chapter}{\chapternumberline {6}Conclusion}{27}{chapter.6}
-\contentsline {appendix}{\chapternumberline {A}The First Appendix}{31}{appendix.A}
-\contentsline {section}{\numberline {A.1}More Lorem}{31}{section.A.1}
-\contentsline {subsection}{\numberline {A.1.1}Lorem 15--17}{31}{subsection.A.1.1}
-\contentsline {subsection}{\numberline {A.1.2}Lorem 18--19}{32}{subsection.A.1.2}
-\contentsline {section}{\numberline {A.2}Lorem 51}{32}{section.A.2}
-\contentsline {appendix}{\chapternumberline {B}The Last Appendix}{33}{appendix.B}
-\contentsline {section}{\numberline {B.1}Lorem 20-24}{33}{section.B.1}
-\contentsline {section}{\numberline {B.2}Lorem 25-27}{34}{section.B.2}
-\contentsline {chapter}{Bibliography}{35}{section*.17}
+\contentsline {section}{\numberline {4.2}Case details}{23}{section.4.2}
+\contentsline {section}{\numberline {4.3}Evaluating a logistic regression model}{24}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Predictions using validation}{24}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Metrics}{24}{subsection.4.3.2}
+\contentsline {subsubsection}{Sensitivity}{25}{section*.16}
+\contentsline {subsubsection}{Specificity}{25}{section*.17}
+\contentsline {subsubsection}{The tradeoff}{25}{section*.18}
+\contentsline {subsection}{\numberline {4.3.3}Receiver Operating Characteristic curve}{26}{subsection.4.3.3}
+\contentsline {section}{\numberline {4.4}Predicting stage outcome}{26}{section.4.4}
+\contentsline {section}{\numberline {4.5}Evaluating a cox proportional hazards model}{26}{section.4.5}
+\contentsline {section}{\numberline {4.6}Predicting survival curves}{26}{section.4.6}
+\contentsline {section}{\numberline {4.7}Conclusion}{26}{section.4.7}
+\contentsline {chapter}{\chapternumberline {5}Tool for automated evaluation}{29}{chapter.5}
+\contentsline {section}{\numberline {5.1}Introduction}{29}{section.5.1}
+\contentsline {section}{\numberline {5.2}Technologies}{29}{section.5.2}
+\contentsline {section}{\numberline {5.3}Demonstration}{29}{section.5.3}
+\contentsline {section}{\numberline {5.4}Conclusion}{29}{section.5.4}
+\contentsline {chapter}{\chapternumberline {6}Conclusion}{31}{chapter.6}
+\contentsline {appendix}{\chapternumberline {A}The First Appendix}{35}{appendix.A}
+\contentsline {section}{\numberline {A.1}More Lorem}{35}{section.A.1}
+\contentsline {subsection}{\numberline {A.1.1}Lorem 15--17}{35}{subsection.A.1.1}
+\contentsline {subsection}{\numberline {A.1.2}Lorem 18--19}{36}{subsection.A.1.2}
+\contentsline {section}{\numberline {A.2}Lorem 51}{36}{section.A.2}
+\contentsline {appendix}{\chapternumberline {B}The Last Appendix}{37}{appendix.B}
+\contentsline {section}{\numberline {B.1}Lorem 20-24}{37}{section.B.1}
+\contentsline {section}{\numberline {B.2}Lorem 25-27}{38}{section.B.2}
+\contentsline {chapter}{Bibliography}{39}{section*.20}
 \select@language {dutch}
 \select@language {english}
 \select@language {dutch}
