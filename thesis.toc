@@ -68,18 +68,23 @@
 \contentsline {chapter}{\chapternumberline {5}Tool for automated evaluation}{29}{chapter.5}
 \contentsline {section}{\numberline {5.1}Introduction}{29}{section.5.1}
 \contentsline {section}{\numberline {5.2}Technologies}{29}{section.5.2}
-\contentsline {section}{\numberline {5.3}Demonstration}{29}{section.5.3}
-\contentsline {section}{\numberline {5.4}Conclusion}{29}{section.5.4}
-\contentsline {chapter}{\chapternumberline {6}Conclusion}{31}{chapter.6}
-\contentsline {appendix}{\chapternumberline {A}The First Appendix}{35}{appendix.A}
-\contentsline {section}{\numberline {A.1}More Lorem}{35}{section.A.1}
-\contentsline {subsection}{\numberline {A.1.1}Lorem 15--17}{35}{subsection.A.1.1}
-\contentsline {subsection}{\numberline {A.1.2}Lorem 18--19}{36}{subsection.A.1.2}
-\contentsline {section}{\numberline {A.2}Lorem 51}{36}{section.A.2}
-\contentsline {appendix}{\chapternumberline {B}The Last Appendix}{37}{appendix.B}
-\contentsline {section}{\numberline {B.1}Lorem 20-24}{37}{section.B.1}
-\contentsline {section}{\numberline {B.2}Lorem 25-27}{38}{section.B.2}
-\contentsline {chapter}{Bibliography}{39}{section*.20}
+\contentsline {subsection}{\numberline {5.2.1}The R language}{29}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Web interface}{29}{subsection.5.2.2}
+\contentsline {section}{\numberline {5.3}Demonstration}{30}{section.5.3}
+\contentsline {subsubsection}{The input tab}{30}{section*.19}
+\contentsline {subsubsection}{The individual models tab}{31}{section*.20}
+\contentsline {subsubsection}{The integration tab}{31}{section*.21}
+\contentsline {section}{\numberline {5.4}Conclusion}{32}{section.5.4}
+\contentsline {chapter}{\chapternumberline {6}Conclusion}{33}{chapter.6}
+\contentsline {appendix}{\chapternumberline {A}The First Appendix}{37}{appendix.A}
+\contentsline {section}{\numberline {A.1}More Lorem}{37}{section.A.1}
+\contentsline {subsection}{\numberline {A.1.1}Lorem 15--17}{37}{subsection.A.1.1}
+\contentsline {subsection}{\numberline {A.1.2}Lorem 18--19}{38}{subsection.A.1.2}
+\contentsline {section}{\numberline {A.2}Lorem 51}{38}{section.A.2}
+\contentsline {appendix}{\chapternumberline {B}The Last Appendix}{39}{appendix.B}
+\contentsline {section}{\numberline {B.1}Lorem 20-24}{39}{section.B.1}
+\contentsline {section}{\numberline {B.2}Lorem 25-27}{40}{section.B.2}
+\contentsline {chapter}{Bibliography}{41}{section*.23}
 \select@language {dutch}
 \select@language {english}
 \select@language {dutch}
