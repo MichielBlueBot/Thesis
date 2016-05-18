@@ -16,24 +16,30 @@ I wanted to offer a very easy-to-use interface to the application. Therefore I c
 The tool is basically divided into three sections: an input section where the user can upload their datasets, a section that computes and evaluates models for each dataset individually, and an integration section where all of the integrated models previously explained can be computed and evaluated. Currently the tool supports logistic regression models and cox proportional hazard models.
 \subsubsection{The input tab}
 The first tab allows the user to either use a preloaded dataset or upload their own datasets to the application. It is possible to define multiple dependent variables in one file, the tool then gives you the option to select which variable has to be modeled. \\ \\
-When datasets are uploaded, the tool gives a small overview of the dimensions of each dataset so the user can verify everything works correctly. Figure \ref{fig:tool-input} shows the input page where a user has uploaded some datasets.
+When datasets are uploaded, the tool gives a small overview of the dimensions of each dataset so the user can verify everything works correctly. Figures \ref{fig:tool-input} and\ref{fig:tool-input2} shows the input page where a user has uploaded some datasets.
 \begin{figure}
 	\centering
-	\includegraphics[scale=1]{images/early_integration}
+	\includegraphics[scale=.3]{images/tool_input_1}
 	\caption{The input tab of the tool}
 	\label{fig:tool-input}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[scale=.4]{images/tool_input_overview}
+	\caption{The input tab of the tool}
+	\label{fig:tool-input2}
 \end{figure}
 \subsubsection{The individual models tab}
 Once a user has uploaded their datasets they can compute a model for each dataset individually. The tool will give a concise overview of the model parameters for each model, and show an evaluation of the model. In case of logistic regression, the evaluation would be a ROC curve. Notice that the evaluation is interactive: the user can use the slider to see the performance metrics for different thresholds. Figure \ref{fig:tool-model} shows an example model description, figure \ref{fig:tool-roc} shows an example ROC curve.
 \begin{figure}
 	\centering
-	\includegraphics[scale=1]{images/early_integration}
+	\includegraphics[scale=.4]{images/tool_model_mri}
 	\caption{An example model description}
 	\label{fig:tool-model}
 \end{figure}
 \begin{figure}
 	\centering
-	\includegraphics[scale=1]{images/early_integration}
+	\includegraphics[scale=.65]{images/tool_auc}
 	\caption{An example interactive ROC curve}
 	\label{fig:tool-roc}
 \end{figure}
