@@ -1,133 +1,47 @@
-\chapter{Evaluation of integration strategies}
-\label{cha:evaluation}
-
+\chapter{Integration Strategies}
+\label{cha:integration}
 
 \section{Introduction}
-\label{sec:evaluation-introduction}
-In this chapter I will show that different integration strategies can have better performance in different situations. I will do this by computing a model using each strategy and then comparing their performance using an appropriate metric.
-\section{Evaluating a logistic regression model}
-\label{sec:evaluation-logisticregression}
-The first evaluation will be made using a logistic regression model. This is a model computed for a dependent variable that has a binomial distribution. To evaluate such model, a common technique used is called Receiver-Operating-Characteristic analysis or ROC analysis for short. Remember that when we are using a logistic regression model to predict outcomes, we have to define a threshold to separate positive from negative cases. An ROC curve shows the performance of the model for any possible threshold, using metrics such as sensitivity and specificity. This gives a very good general impression of the performance of the model.
-\subsection{Predictions using validation}
-What we really want to do is estimate the out-of-sample error for our model. To do this we have seen that we can use the technique of cross-validation. In this case we are not going to compute any learning parameter but we are going to use the validation set as a test set. We will split our dataset into $K$ folds. We will train a model on $K-1$ folds and we will use this model to predict the outcomes of the remaining samples in the test fold. By repeating this process for each folds we obtain a predicted outcome for each sample in the dataset. Notice however that we also have the real outcome of the samples in our dataset, and thus we can compare our predictions with the real values to estimate our out-of-sample error.
-\subsection{Metrics}
-When we compare our predictions with the real outcomes, there are four possible scenario's:
-\begin{itemize}
-	\item True Positive (TP): we predicted positive and this is correct
-	\item True Negative (TN): we predicted negative and this is correct
-	\item False Positive(FP): we predicted positive and this is wrong (type 1 error)
-	\item False Negative (FN): we predicted negative and this is wrong (type 2 error)
-\end{itemize}
-Notice that this gives us more information than just registering whether we are right or wrong. It also tells us the type of mistake we made. This is a very important distinction because depending on the application there is usually a different cost attached to making type 1 or type 2 errors. And as we will see later on, there is a tradeoff between the two and we can tune our system to be more resistant towards making one type of error. \\ \\
-Now that we have established the notion of typed errors, there are several ways in which these numbers are combined to form evaluation metrics. Depending on your field of research these often get different names, I will use the ones applicable to the biomedical field.
-\subsubsection{Sensitivity}
-Sensitivity measures the proportion of the real positive samples that our model correctly predicted as positive. It can be calculated with the following formula:
-$$
-Sensitivity = \frac{\sum{TP}}{\sum{P}}
-$$
-where
-\begin{itemize}
-	\item $\sum{TP}$ is the number of true positives
-	\item $\sum{P}$ is the number of real positive cases in the dataset
-\end{itemize}
-Sensitivity can be thought of, as its name suggests, as how sensitive the model is to detecting positive cases. If the model gets a real positive sample, what is the probability that it will detect it as such. A sensitivity of 1 means that our model is capable of correctly identifying all positive cases in the dataset. This means that the higher the sensitivity, the lower the type 2 error rate.
-\subsubsection{Specificity}
-Specificity is the analogous metric to sensitivity, but for negative cases. It measures the proportion of the real negative samples that our model correctly predicted as negative.
-$$
-Specificity = \frac{\sum{TN}}{\sum{N}}
-$$
-where
-\begin{itemize}
-\item $\sum{TN}$ is the number of true negatives
-\item $\sum{P}$ is the number of real negative cases in the dataset
-\end{itemize}
+\label{sec:integration-introduction}
+Current advancements in technology are leading to increasingly larger datasets. This is a trend that is becoming very apparent in many different fields of research. One of these is the biomedical field. Technology is about to reach the point where we are able to sequence anyones DNA at a very low cost. Secondly, we have a range of highly advanced imaging instruments creating massive amounts of imaging features. And on top of that, there are big discussions going on about researchers having to make their datasets open to the public to help other researchers around the world. All of these trends lead to huge amounts of data from different sources becoming available for analysis. This raises the question of how we have to integrate data from these different sources to get the most information out of them. In this chapter I will first explain the general setup that we are dealing with, followed by three different integration strategies that show how we can combine datasets from different sources.
 
-A specificity of 1 means that our model is capable of correctly identifying all negative cases in the dataset. This means that the higher the specificity, the lower the type 1 error rate.
-\subsubsection{The tradeoff}
-At this point it is obvious that we would like to maximize both sensitivity and specificity. Indeed, if both metrics are 1 then we make no errors and we have a perfect model. In practice however this is nearly impossible to achieve. It is easy to see that there is a tradeoff between the two metrics: when we try to increase the sensitivity, we will lose out on specificity and vice versa. \\ \\ 
-Consider the totally useless model that has a threshold lower than the smallest possible output. Meaning that this model will always predict a positive outcome regardless of the input. This model will have a sensitivity of 1, as we will get all positive cases correct. But it will also have a specificity of 0 because we get none of the negative cases correct. As we gradually increase the threshold we will cross critical values where some sample inputs will now produce an output below the threshold and thus be classified as negatives. If this happens to be a correct prediction our specificity will go up and sensitivity will remain unchanged. If it happens to be an error, specificity is unchanged and sensitivity will go down. The gradual increase of the threshold will thus cause sensitivity to drop and specificity to increase, up to the point where we reach the other extreme. The threshold is now bigger than the biggest possible output and the model always predicts negative regardless of the input. This threshold gives us a sensitivity of 0 and a specificity of 1.
-\subsection{Receiver Operating Characteristic curve}
-The ROC curve is a way of showing exactly this gradual increase of the threshold. The typical way of constructing a ROC curve is to put $(1-specificity)$ on the X-axis and $sensitivity$ on the Y axis. The values for these matrics are then plotted for values of the threshold ranging from the all-positive model to the all-negative model. An example ROC curve is shown on figure \ref{fig:evaluation-roc}. The metric I will use to evaluate the performance of different models is the area under the ROC curve (AUC). This metric works because it indicates how far we can optimize both sensitivity and specificity for different thresholds. It shows how close we can get to the upper left corner of the plot, which indicates the perfect model. The AUC metric ranges from 0 to 1, but in fact its value is only informative in between 0.5 and 1. Imagine a model that makes completely random predictions, this model will get a correct prediction 50\% of the time. If we would create an ROC curve for this model we would on average get a straight diagonal line from the bottom left to the top right. This line is therefore considered a lower bound for the performance of a model. In a more realistic setting we can view models with an AUC of 0.7 and above as decent models.
-//TODO CHANGE FIGURE TO ROC CURVE
+\section{The setup}
+We have a set of D datasets, each dataset can be represented by a matrix where the rows are the samples and the columns are the explanatory variables. Each dataset can have a different number of explanatory variables, but they all have the same amount of rows such that samples can be linked across datasets. For instance: imagine we have a set of 200 cancer patients. Each of these patients has had images taken of the cancer by different machines: an MRI scan, a PET scan, ... and they also had a bloodtest done measuring different prote\"{i}ne levels in the blood (an ELISA test). Each of these methods will yield a dataset: one for each imaging scan and one for the blood test. The explanatory variables are obviously different for each dataset: the imaging datasets will have image features like blobs and pixel intensities, while the bloodtest will have values that represent the prote\"{i}ne levels in the blood. Each dataset will however have 200 rows, one for each patient. \\ \\
+Now that we have our input data, we need a target function (dependent variable). In the example case this could be whether the patient fully recovers from the treatment or not. This variable has a binomial distribution and thus we could use logistic regression to try and estimate this variable. The task of integration is now the following: how do we combine the samples across the different datasets to come up with a model that uses the information in all the datasets? In the following sections I will present three ways to do this: the early integration method which is the current standard, the late integration method that is based on an ensemble of models, and the intermediate integration method that takes advantage of variable selection present in the lasso regularization.
+
+\section{Early integration}
+\label{sec:integration-early}
+The first integration method is called early integration and it is the method that is most widely uses at the time. It is also the easiest way of dealing with different data sources as we are simply going to concatenate the data for each sample. Figure \ref{fig:integration-early} shows the schema for early integration of data sources. A new large dataset is constructed by concatenating the individual datasets by matching sample. The number of samples obviously stays the same, the number of explanatory variables is equal to the sum of explanatory variables of all individual datasets. This integrated dataset can then be used to train the final model directly.
+\begin{figure}
+	\centering
+	\includegraphics[scale=1]{images/early_integration}
+	\caption{Scheme for early integration}
+	\label{fig:integration-early}
+\end{figure}
+\section{Late integration}
+\label{sec:integration-late}
+In late integration, as the name suggests, we will combine the different datasets at the end of the learning process. The schema for late integration is shown on figure \ref{fig:integration-late}. First, a model is learned for each dataset individually. This gives rise to $D$ different models. When we want to make a prediction using this set of models, we will ask each model to provide an output individually and then combine them using a linear combination. If we have no preference for any model we could simply compute the average output. This average would then be our final output for the integrated model. In this case we cannot represent the final model by some model parameters (weights) but rather we have to view the full set of $D$ models as well as the linear combination we chose as the full integrated model. \\ \\
+There is an analogy between late integration and the ensemble averaging technique in machine learning. Ensemble learning means that instead of just building one model for a dataset, we build several models for the same dataset and then average their outcomes. Late integration takes this idea but applies it to a set of data sources instead of just one. \\ \\
+The thought behind this model is that we try to learn as much as possible from each dataset individually, before we combine them. An example of this is that the variable selection by the lasso regularization now has the opportunity to select the best variables for each dataset individually. While in the case of early integration, all the variables from the datasets are competing against each other at the same time to make it into the final model.
+\begin{figure}
+	\centering
+	\includegraphics[scale=1]{images/late_integration}
+	\caption{Scheme for late integration}
+	\label{fig:integration-late}
+\end{figure}
+\section{Intermediate integration}
+\label{sec:integration-intermediate}
+Intermediate integration is possibly the most advanced integration method presented. It tries to take advantage of the variable selection when using a lasso penalty. The schema for intermediate integration is shown on figure \ref{fig:integration-intermediate}. It starts out the same way as late integration, for each dataset we compute an individual model. However, instead of using the output of these models we will simply look at the variables that were chosen by each model to be informative. We will then go back to the original datasets and extract only those explanatory variables and concatenate them together into a new integrated dataset. Lastly, we use this integrated dataset to learn a final model. \\ \\
+The intermediate integration can be seen as a two-step learning process. First we preprocess the datasets by computing individual models and we extract only the informative variables. Then we will train our final model on the reduced dataset. This is very advantageous if the initial datasets have a huge amount of explanatory variables, as the preprocessing step will reduce this amount drastically while still keeping as much useful information as possible.
 \begin{figure}
 	\centering
 	\includegraphics[scale=1]{images/intermediate_integration}
-	\caption{Example ROC curve}
-	\label{fig:evaluation-roc}
+	\caption{Scheme for intermediate integration}
+	\label{fig:integration-intermediate}
 \end{figure}
-\section{Predicting stage outcome}
-\label{sec:evaluation-predictingstage}
-\subsection{Case details}
-\label{sec:evaluation-casedetails}
-The case I am showing here uses datasets created by the University Hospital of Leuven in a study on colorectal cancer patients. There are three source datasets that all contain imaging data: a dataset from MRI (Magnetic Resonance Imaging) scans, a dataset from DWI (Diffusion Weighted Magnetic Resonance Imaging) scans, and a dataset from PET (Positron Emission Tomography) scans. It is important to note that these scans were taken 3 times per patient at different periods in their treatment: one in the beginning, one roughly in the middle, and one near the end. This means that there is some temporal information present in the datasets, but this has simply been encoded in the explanatory variables. For instance: there is a variable in the MRI dataset that shows the size change of the tumour between the first and second scan. In this way we can simply treat this as a regular explanatory variable and we don't have to worry about the temporal aspect. \\ \\
-The dependent variable is a binary outcome based on whether the patient got a pathologically complete response. For a more in-depth explanation on what this means see appendix //TODO EXPLAIN STAGE SYSTEM IN APPENDIX. For now, we can view a positive outcome as a patient who has recovered from the cancer, and a negative outcome as a patient that has not. The aim is now to build a model that gets the variables from the scans as input, and predicts the outcome for that patient.
-\subsection{The results}
-The resulting AUC's for the individual and integrated datasets are shown respectively in tables \ref{tab:evaluation-auc-individual} and \ref{tab:evaluation-auc-integrated}. We can clearly see that the model for the individual MRI dataset contains the most predictive information out of the three datasets. This however doesn't mean that the other datasets are useless. Indeed, when we integrate the other dataset with the MRI dataset we get even better performances. From table \ref{tab:evaluation-auc-integrated} we can see that in this case the intermediate integration method outperforms the other strategies regardless of which datasets are used. \\ \\
-I have also included an overview of the model parameters that were selected (on average) by each strategy. The values in this table show the weights given to each corresponding variable in the model. A positive weight indicates that a higher value for this variable increases the chance of a positive outcome. A negative weight correlates the variable with a decreased probability of positive outcome. The overview is shown in table \ref{tab:evaluation-model-parameters}. The first column shows the name of the selected variable, these are imaging features. The next three columns show the model parameters for the individual models. The last two columns show the parameters that were selected by the integrated models. It is interesting to see how all models tend to select the same kind of variables and give them similar weights. This shows us that these variables indeed do contain some predictive information. Notice that the intermediate model selects fewer variables than the other models, while still outperforming them. It removes those variables that have very small weights in other models and thus acts as a very strict variable selector. This is no surprise if we remember how the intermediate integration method uses two steps of variable selection to perform the integration (chapter \ref{cha:integration}, section \ref{sec:integration-intermediate}).
-
-\begin{table}
-	\centering
-	\begin{tabular}{lc}
-		\toprule
-		Dataset & AUC \\
-		\midrule
-		DWI & 0.67 \\
-		MRI & 0.75 \\
-		SUV & 0.65 \\
-		\bottomrule
-	\end{tabular}
-	\caption{AUC for models of individual datasets}
-	\label{tab:evaluation-auc-individual}
-\end{table}
-\begin{table}
-	\centering
-	\begin{tabular}{lcccc}
-		\toprule
-	 & All & DWI+MRI & DWI+SUV & MRI+SUV \\
-		\midrule
-		Early integration & 0.76 & 0.82 & 0.69 & 0.74 \\
-		Intermediate integration & 0.79 & 0.83 & 0.78 & 0.75 \\
-		Late integration & 0.73 & 0.78 & 0.66 & 0.70 \\
-		\bottomrule
-	\end{tabular}
-	\caption{AUC for models of various combinations of integrated datasets}
-	\label{tab:evaluation-auc-integrated}
-\end{table}
-
-
-\begin{table}
-	\rowcolors{1}{white}{lightgray}
-	\centering
-	\begin{tabular}{lccccccc} 
-		\toprule
-		\multicolumn{1}{c}{}& \multicolumn{3}{c}{Individual} & \multicolumn{2}{c}{}&  \multicolumn{2}{c}{Integrated}\\ 
-		\cmidrule{2-8}
-		Variable & DWI    & MRI & SUV & & & Early    & Intermediate\\ 
-		\midrule
-		ADCratioavg\_TP1TP3 		& 0.69	& 		&  		& & & 1.09		& 1.19	\\ 
-		ADCratiohigh\_TP1TP3 		& 0.08	&      	&  		& & & 0.50		& 0.62	\\ [10pt]
-		DeltaSphere\_TP2TP3perc 	&      	& 1.67  &  		& & & 1.35		& 1.44  \\
-		DeltaSphere\_TP1TP3perc 	&      	& 0.48  &  		& & & 1.78		& 1.64  \\
-		Volume\_TP2 				&  		& -0.99 &   	& & & 			& 		\\
-		Volume\_TP3 				&  		& -0.24 &   	& & & -0.173	& -0.94	\\ [10pt]
-		RIdiameter\_TP2TP3 			&  		&      	& 0.16  & & & 			& 		\\
-		Diameter\_TP3 				&  		&      	& -0.88 & & & -0.01		& 		\\
-		SUVmax\_TP2 				&  		&      	& -0.88 & & & -3.30		& -4.41	\\
-		deltadiameter\_TP1TP2 		&  		&      	& -0.32 & & & 			& 		\\
-		RISUVpeak\_TP1TP2 			&  		&      	&  		& & & 0.32		& 		\\
-		RITLG\_TP2TP3 				&  		&      	&  		& & & -0.08		& 		\\
-		\bottomrule
-	\end{tabular}
-	\caption{Overview of the model parameters (weights)}
-	\label{tab:evaluation-model-parameters}
-\end{table}
-
-\section{Evaluating a cox proportional hazards model}
-\label{sec:evaluation-coxph}
-\section{Predicting survival curves}
-\label{sec:evaluation-predictingsurvival}
 \section{Conclusion}
-\label{sec:evaluation-conclusion}
+\label{sec:integration-conclusion}
+In this chapter I have shown the issue of large and high-dimensional datasets that we are currently facing. I have presented three different strategies to deal with this issue. The early integration method is the na\"{i}ve method that simply concatenates the datasets together. The late integration method uses an analogous technique to ensemble learning in order to extract as much information as possible. Lastly, the intermediate integration technique introduces a two-step learning method that takes advantage of variable selection to reduce the dimensionality of the datasets.
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "thesis"

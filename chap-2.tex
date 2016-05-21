@@ -1,47 +1,70 @@
-\chapter{Integration Strategies}
-\label{cha:integration}
+\chapter{Cox proportional hazards models}
+\label{cha:cox}
 
 \section{Introduction}
-\label{sec:integration-introduction}
-Current advancements in technology are leading to increasingly larger datasets. This is a trend that is becoming very apparent in many different fields of research. One of these is the biomedical field. Technology is about to reach the point where we are able to sequence anyones DNA at a very low cost. Secondly, we have a range of highly advanced imaging instruments creating massive amounts of imaging features. And on top of that, there are big discussions going on about researchers having to make their datasets open to the public to help other researchers around the world. All of these trends lead to huge amounts of data from different sources becoming available for analysis. This raises the question of how we have to integrate data from these different sources to get the most information out of them. In this chapter I will first explain the general setup that we are dealing with, followed by three different integration strategies that show how we can combine datasets from different sources.
+\label{sec:cox-introduction}
+In this chapter I will explain the cox proportional hazards model. These are models that are used in survival analysis. The first section will explain what survival analysis means and how it is different from the generalized linear models. Next I will define what the proportional hazards assumption is and lastly I will show how these models can be used in practice.
 
-\section{The setup}
-We have a set of D datasets, each dataset can be represented by a matrix where the rows are the samples and the columns are the explanatory variables. Each dataset can have a different number of explanatory variables, but they all have the same amount of rows such that samples can be linked across datasets. For instance: imagine we have a set of 200 cancer patients. Each of these patients has had images taken of the cancer by different machines: an MRI scan, a PET scan, ... and they also had a bloodtest done measuring different prote\"{i}ne levels in the blood (an ELISA test). Each of these methods will yield a dataset: one for each imaging scan and one for the blood test. The explanatory variables are obviously different for each dataset: the imaging datasets will have image features like blobs and pixel intensities, while the bloodtest will have values that represent the prote\"{i}ne levels in the blood. Each dataset will however have 200 rows, one for each patient. \\ \\
-Now that we have our input data, we need a target function (dependent variable). In the example case this could be whether the patient fully recovers from the treatment or not. This variable has a binomial distribution and thus we could use logistic regression to try and estimate this variable. The task of integration is now the following: how do we combine the samples across the different datasets to come up with a model that uses the information in all the datasets? In the following sections I will present three ways to do this: the early integration method which is the current standard, the late integration method that is based on an ensemble of models, and the intermediate integration method that takes advantage of variable selection present in the lasso regularization.
+\section{Survival analysis}
+\label{sec:cox-survival-analysis}
+Survival analysis points to the fact that the outcome variables are timed events. A common example in biomedical research would be the time between the start of a patients treatment and the time of death. Note however that not all patients have to die in order to be useful in a survival analysis. A second outcome variable is used to indicate whether the patient survived until the end of the study, or not. This binary variable is called the censoring variable. \\ \\
+A typical outcome in survival analysis is thus represented by two vectors: a time to event vector and a censoring vector. An example is shown in table \ref{tab:cox-example-outcome}.
+\begin{table}
+	\centering
+	\begin{tabular}{cc}
+		\toprule
+		Time (days) & Censor\\
+		\midrule
+		249 & 1 \\
+		345 & 1 \\
+		152 & 1 \\
+		452 & 0 \\
+		120 & 1 \\
+		... & ... \\
+		\bottomrule
+	\end{tabular}
+	\caption{Example outcomes for survival data}
+	\label{tab:cox-example-outcome}
+\end{table}
+The idea of survival analysis is now to find a pattern between a set of explanatory variables and the time-to-event. A common term used in survival analysis is hazard, meaning 'risk of the event occurring'. A resulting model from survival analysis usually contains two components. The first component is a $\lambda_{0}(t)$ baseline hazard function. This function describes how the risk of the event occurring changes with time, assuming there is no influence from any of the explanatory variables. The second component describes the influence of each explanatory variable on the hazard. This brings us to the notion of proportional hazards.
 
-\section{Early integration}
-\label{sec:integration-early}
-The first integration method is called early integration and it is the method that is most widely uses at the time. It is also the easiest way of dealing with different data sources as we are simply going to concatenate the data for each sample. Figure \ref{fig:integration-early} shows the schema for early integration of data sources. A new large dataset is constructed by concatenating the individual datasets by matching sample. The number of samples obviously stays the same, the number of explanatory variables is equal to the sum of explanatory variables of all individual datasets. This integrated dataset can then be used to train the final model directly.
-\begin{figure}
-	\centering
-	\includegraphics[scale=1]{images/early_integration}
-	\caption{Scheme for early integration}
-	\label{fig:integration-early}
-\end{figure}
-\section{Late integration}
-\label{sec:integration-late}
-In late integration, as the name suggests, we will combine the different datasets at the end of the learning process. The schema for late integration is shown on figure \ref{fig:integration-late}. First, a model is learned for each dataset individually. This gives rise to $D$ different models. When we want to make a prediction using this set of models, we will ask each model to provide an output individually and then combine them using a linear combination. If we have no preference for any model we could simply compute the average output. This average would then be our final output for the integrated model. In this case we cannot represent the final model by some model parameters (weights) but rather we have to view the full set of $D$ models as well as the linear combination we chose as the full integrated model. \\ \\
-There is an analogy between late integration and the ensemble averaging technique in machine learning. Ensemble learning means that instead of just building one model for a dataset, we build several models for the same dataset and then average their outcomes. Late integration takes this idea but applies it to a set of data sources instead of just one. \\ \\
-The thought behind this model is that we try to learn as much as possible from each dataset individually, before we combine them. An example of this is that the variable selection by the lasso regularization now has the opportunity to select the best variables for each dataset individually. While in the case of early integration, all the variables from the datasets are competing against each other at the same time to make it into the final model.
-\begin{figure}
-	\centering
-	\includegraphics[scale=1]{images/late_integration}
-	\caption{Scheme for late integration}
-	\label{fig:integration-late}
-\end{figure}
-\section{Intermediate integration}
-\label{sec:integration-intermediate}
-Intermediate integration is possibly the most advanced integration method presented. It tries to take advantage of the variable selection when using a lasso penalty. The schema for intermediate integration is shown on figure \ref{fig:integration-intermediate}. It starts out the same way as late integration, for each dataset we compute an individual model. However, instead of using the output of these models we will simply look at the variables that were chosen by each model to be informative. We will then go back to the original datasets and extract only those explanatory variables and concatenate them together into a new integrated dataset. Lastly, we use this integrated dataset to learn a final model. \\ \\
-The intermediate integration can be seen as a two-step learning process. First we preprocess the datasets by computing individual models and we extract only the informative variables. Then we will train our final model on the reduced dataset. This is very advantageous if the initial datasets have a huge amount of explanatory variables, as the preprocessing step will reduce this amount drastically while still keeping as much useful information as possible.
-\begin{figure}
-	\centering
-	\includegraphics[scale=1]{images/intermediate_integration}
-	\caption{Scheme for intermediate integration}
-	\label{fig:integration-intermediate}
-\end{figure}
+\section{Cox proportional hazards model}
+\label{sec:cox-proportional-hazards-model}
+\subsection{Proportional hazards condition}
+The proportional hazards condition means that we assume that hazard ratios are independent of time. A hazard ratio is the relative risk between two entities (patients). Furthermore the condition states that changes in the explanatory variables have an exponential effect on the hazard. \\ \\
+If we assume the proportional hazards condition to be true then this gives us the opportunity to estimate the effect of explanatory variables without dealing with the underlying baseline hazard function. This was an observation made by Sir David Cox //TODO REFERENCE COX 1972, hence the name of the model. We can represent the cox model as follows:
+$$
+\lambda_{i}(t) = \lambda_{0}(t)e^{X_{i1}\beta_{1} + ... + X_{iN}\beta_{N}}
+$$
+where
+\begin{itemize}
+	\item $\lambda_{i}(t)$ is the hazard for patient i at time t.
+	\item $\lambda_{0}(t)$ is the baseline hazard at time t.
+	\item $X_{i1} ... X_{iN}$ are the values of the explanatory variables for patient i.
+	\item $beta_{1} ... beta_{N}$ are the values of the co\"effici\"ents for each explanatory variable.
+\end{itemize}
+Now, let's look at relative risks between two patients:
+$$
+\frac{\lambda_{i}(t)}{\lambda_{j}(t)} 
+= \frac{\lambda_{0}(t)e^{X_{i1}\beta_{1} + ... + X_{iN}\beta_{N}}}{\lambda_{0}(t)e^{X_{j1}\beta_{1} + ... + X_{jN}\beta_{N}}}
+= e^{(X_{i1}-X_{j1})\beta_{1} + ... + (X_{iN}-X_{jN})\beta_{N}}
+$$
+This quantity is called the hazard ratio. Notice that this ratio does not depend on the time. This means that if at the start of the study a patient has twice the risk of the event occurring compared to another patient, it will have twice the risk at any other time aswell. It's risk remains proportional, independent of time. \\ \\
+We can also compute the effect on the hazard for a unit increase in an explanatory variable $X_{j}$. The subscripts i to indicate the patients have been omitted since this is independent of a specific patient. The hazard ratio then becomes:
+$$
+\frac{\lambda(t|X_{j}+1)}{\lambda(t|X_{j})} = e^{(X_{j}+1-X_{j})\beta_{j}} = e^{\beta_{j}}
+$$
+It is directly given by the exponential of the co\"effici\"ent for the explanatory variable. This reflects the proportional hazards assumption that hazard ratios do not depend on time.
+\subsection{Using the hazard ratio}
+The proportional hazards assumption allows us to compute relative risks or hazard ratios without knowing the actual baseline hazard function. Knowing just relative ratios can be very useful however. Imagine the following scenario: we want to test if a certain drug increases the survivability of patients with a specific disease. We randomly give half of the patients the actual drug, the other half receives a placebo (or nothing at all). Performing a survival analysis using a cox model then allows us to compute the ratio of the hazards for the two groups. The co\"effici\"ent for the explanatory variable that indicates which patients received the drug and which did not then tells us the effect of the drug on the hazard. We could then make a statement such as: "Taking the drug tends to half the risk of the event occurring (at any time)." This is obviously a useful result to support further research or development for the drug.
+
+\subsection{Kaplan-Meier survival curves}
+
+
 \section{Conclusion}
-\label{sec:integration-conclusion}
-In this chapter I have shown the issue of large and high-dimensional datasets that we are currently facing. I have presented three different strategies to deal with this issue. The early integration method is the na\"{i}ve method that simply concatenates the datasets together. The late integration method uses an analogous technique to ensemble learning in order to extract as much information as possible. Lastly, the intermediate integration technique introduces a two-step learning method that takes advantage of variable selection to reduce the dimensionality of the datasets.
+\label{sec:cox-conclusion}
+In this chapter I have explained the cox proportional hazards method. I have shown that it is used for survival analysis, where the targets are time and censoring variables. I have explained the proportional hazards assumption and shown its implications. Lastly I have shown how we can compute survival curves using the Kaplan-Meier method.
+
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "thesis"

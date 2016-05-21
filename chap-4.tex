@@ -1,54 +1,138 @@
-\chapter{Tool for automated evaluation}
-\label{cha:tool}
+\chapter{Evaluation of integration strategies}
+\label{cha:evaluation}
+
 
 \section{Introduction}
-\label{sec:tool-introduction}
-In the previous chapter I have shown that different integration strategies do make a difference for the performance of the resulting model. However I have taken it one step further and developed a tool that allows the user to very easily compute all the integrated models and compare them.
-\section{Technologies}
-\label{sec:tool-technologies}
-To develop this tool I needed a programming language that provided a lot of support for statistical algorithms, and I also wanted to create a very user-friendly interface to make an abstraction of the complicated methods.
-\subsection{The R language}
-The language I used to create the tool is R. R is a very popular language for statistical research as it provides many state-of-the-art algorithms in statistics. R has a huge repository with packages for all kinds of purposes. The package that I used to compute models is glmnet. It is developed by researchers at the Stanford University and provides very fast implementations to compute the generalized linear models explained in chapter \ref{cha:glm}. 
-\subsection{Web interface}
-I wanted to offer a very easy-to-use interface to the application. Therefore I chose to work with shiny. Shiny is a package for R that allows you to create a web-based front-end (using html, css, javascript, ...) that can also run R code in the back-end. This provided me with exactly what I needed to create my tool.
-\section{Demonstration}
-\label{sec:tool-demonstration}
-The tool is basically divided into three sections: an input section where the user can upload their datasets, a section that computes and evaluates models for each dataset individually, and an integration section where all of the integrated models previously explained can be computed and evaluated. Currently the tool supports logistic regression models and cox proportional hazard models.
-\subsubsection{The input tab}
-The first tab allows the user to either use a preloaded dataset or upload their own datasets to the application. It is possible to define multiple dependent variables in one file, the tool then gives you the option to select which variable has to be modeled. \\ \\
-When datasets are uploaded, the tool gives a small overview of the dimensions of each dataset so the user can verify everything works correctly. Figures \ref{fig:tool-input} and\ref{fig:tool-input2} shows the input page where a user has uploaded some datasets.
+\label{sec:evaluation-introduction}
+In this chapter I will show that different integration strategies can have better performance in different situations. I will do this by computing a model using each strategy and then comparing their performance using an appropriate metric.
+\section{Evaluating a logistic regression model}
+\label{sec:evaluation-logisticregression}
+The first evaluation will be made using a logistic regression model. This is a model computed for a dependent variable that has a binomial distribution. To evaluate such model, a common technique used is called Receiver-Operating-Characteristic analysis or ROC analysis for short. Remember that when we are using a logistic regression model to predict outcomes, we have to define a threshold to separate positive from negative cases. An ROC curve shows the performance of the model for any possible threshold, using metrics such as sensitivity and specificity. This gives a very good general impression of the performance of the model.
+\subsection{Predictions using validation}
+What we really want to do is estimate the out-of-sample error for our model. To do this we have seen that we can use the technique of cross-validation. In this case we are not going to compute any learning parameter but we are going to use the validation set as a test set. We will split our dataset into $K$ folds. We will train a model on $K-1$ folds and we will use this model to predict the outcomes of the remaining samples in the test fold. By repeating this process for each folds we obtain a predicted outcome for each sample in the dataset. Notice however that we also have the real outcome of the samples in our dataset, and thus we can compare our predictions with the real values to estimate our out-of-sample error.
+\subsection{Metrics}
+When we compare our predictions with the real outcomes, there are four possible scenario's:
+\begin{itemize}
+	\item True Positive (TP): we predicted positive and this is correct
+	\item True Negative (TN): we predicted negative and this is correct
+	\item False Positive(FP): we predicted positive and this is wrong (type 1 error)
+	\item False Negative (FN): we predicted negative and this is wrong (type 2 error)
+\end{itemize}
+Notice that this gives us more information than just registering whether we are right or wrong. It also tells us the type of mistake we made. This is a very important distinction because depending on the application there is usually a different cost attached to making type 1 or type 2 errors. And as we will see later on, there is a tradeoff between the two and we can tune our system to be more resistant towards making one type of error. \\ \\
+Now that we have established the notion of typed errors, there are several ways in which these numbers are combined to form evaluation metrics. Depending on your field of research these often get different names, I will use the ones applicable to the biomedical field.
+\subsubsection{Sensitivity}
+Sensitivity measures the proportion of the real positive samples that our model correctly predicted as positive. It can be calculated with the following formula:
+$$
+Sensitivity = \frac{\sum{TP}}{\sum{P}}
+$$
+where
+\begin{itemize}
+	\item $\sum{TP}$ is the number of true positives
+	\item $\sum{P}$ is the number of real positive cases in the dataset
+\end{itemize}
+Sensitivity can be thought of, as its name suggests, as how sensitive the model is to detecting positive cases. If the model gets a real positive sample, what is the probability that it will detect it as such. A sensitivity of 1 means that our model is capable of correctly identifying all positive cases in the dataset. This means that the higher the sensitivity, the lower the type 2 error rate.
+\subsubsection{Specificity}
+Specificity is the analogous metric to sensitivity, but for negative cases. It measures the proportion of the real negative samples that our model correctly predicted as negative.
+$$
+Specificity = \frac{\sum{TN}}{\sum{N}}
+$$
+where
+\begin{itemize}
+\item $\sum{TN}$ is the number of true negatives
+\item $\sum{P}$ is the number of real negative cases in the dataset
+\end{itemize}
+
+A specificity of 1 means that our model is capable of correctly identifying all negative cases in the dataset. This means that the higher the specificity, the lower the type 1 error rate.
+\subsubsection{The tradeoff}
+At this point it is obvious that we would like to maximize both sensitivity and specificity. Indeed, if both metrics are 1 then we make no errors and we have a perfect model. In practice however this is nearly impossible to achieve. It is easy to see that there is a tradeoff between the two metrics: when we try to increase the sensitivity, we will lose out on specificity and vice versa. \\ \\ 
+Consider the totally useless model that has a threshold lower than the smallest possible output. Meaning that this model will always predict a positive outcome regardless of the input. This model will have a sensitivity of 1, as we will get all positive cases correct. But it will also have a specificity of 0 because we get none of the negative cases correct. As we gradually increase the threshold we will cross critical values where some sample inputs will now produce an output below the threshold and thus be classified as negatives. If this happens to be a correct prediction our specificity will go up and sensitivity will remain unchanged. If it happens to be an error, specificity is unchanged and sensitivity will go down. The gradual increase of the threshold will thus cause sensitivity to drop and specificity to increase, up to the point where we reach the other extreme. The threshold is now bigger than the biggest possible output and the model always predicts negative regardless of the input. This threshold gives us a sensitivity of 0 and a specificity of 1.
+\subsection{Receiver Operating Characteristic curve}
+The ROC curve is a way of showing exactly this gradual increase of the threshold. The typical way of constructing a ROC curve is to put $(1-specificity)$ on the X-axis and $sensitivity$ on the Y axis. The values for these matrics are then plotted for values of the threshold ranging from the all-positive model to the all-negative model. An example ROC curve is shown on figure \ref{fig:evaluation-roc}. The metric I will use to evaluate the performance of different models is the area under the ROC curve (AUC). This metric works because it indicates how far we can optimize both sensitivity and specificity for different thresholds. It shows how close we can get to the upper left corner of the plot, which indicates the perfect model. The AUC metric ranges from 0 to 1, but in fact its value is only informative in between 0.5 and 1. Imagine a model that makes completely random predictions, this model will get a correct prediction 50\% of the time. If we would create an ROC curve for this model we would on average get a straight diagonal line from the bottom left to the top right. This line is therefore considered a lower bound for the performance of a model. In a more realistic setting we can view models with an AUC of 0.7 and above as decent models.
+//TODO CHANGE FIGURE TO ROC CURVE
 \begin{figure}
 	\centering
-	\includegraphics[scale=.3]{images/tool_input_1}
-	\caption{The input tab of the tool}
-	\label{fig:tool-input}
+	\includegraphics[scale=1]{images/intermediate_integration}
+	\caption{Example ROC curve}
+	\label{fig:evaluation-roc}
 \end{figure}
-\begin{figure}
+\section{Predicting stage outcome}
+\label{sec:evaluation-predictingstage}
+\subsection{Case details}
+\label{sec:evaluation-casedetails}
+The case I am showing here uses datasets created by the University Hospital of Leuven in a study on colorectal cancer patients. There are three source datasets that all contain imaging data: a dataset from MRI (Magnetic Resonance Imaging) scans, a dataset from DWI (Diffusion Weighted Magnetic Resonance Imaging) scans, and a dataset from PET (Positron Emission Tomography) scans. It is important to note that these scans were taken 3 times per patient at different periods in their treatment: one in the beginning, one roughly in the middle, and one near the end. This means that there is some temporal information present in the datasets, but this has simply been encoded in the explanatory variables. For instance: there is a variable in the MRI dataset that shows the size change of the tumour between the first and second scan. In this way we can simply treat this as a regular explanatory variable and we don't have to worry about the temporal aspect. \\ \\
+The dependent variable is a binary outcome based on whether the patient got a pathologically complete response. For a more in-depth explanation on what this means see appendix //TODO EXPLAIN STAGE SYSTEM IN APPENDIX. For now, we can view a positive outcome as a patient who has recovered from the cancer, and a negative outcome as a patient that has not. The aim is now to build a model that gets the variables from the scans as input, and predicts the outcome for that patient.
+\subsection{The results}
+The resulting AUC's for the individual and integrated datasets are shown respectively in tables \ref{tab:evaluation-auc-individual} and \ref{tab:evaluation-auc-integrated}. We can clearly see that the model for the individual MRI dataset contains the most predictive information out of the three datasets. This however doesn't mean that the other datasets are useless. Indeed, when we integrate the other dataset with the MRI dataset we get even better performances. From table \ref{tab:evaluation-auc-integrated} we can see that in this case the intermediate integration method outperforms the other strategies regardless of which datasets are used. \\ \\
+I have also included an overview of the model parameters that were selected (on average) by each strategy. The values in this table show the weights given to each corresponding variable in the model. A positive weight indicates that a higher value for this variable increases the chance of a positive outcome. A negative weight correlates the variable with a decreased probability of positive outcome. The overview is shown in table \ref{tab:evaluation-model-parameters}. The first column shows the name of the selected variable, these are imaging features. The next three columns show the model parameters for the individual models. The last two columns show the parameters that were selected by the integrated models. It is interesting to see how all models tend to select the same kind of variables and give them similar weights. This shows us that these variables indeed do contain some predictive information. Notice that the intermediate model selects fewer variables than the other models, while still outperforming them. It removes those variables that have very small weights in other models and thus acts as a very strict variable selector. This is no surprise if we remember how the intermediate integration method uses two steps of variable selection to perform the integration (chapter \ref{cha:integration}, section \ref{sec:integration-intermediate}).
+
+\begin{table}
 	\centering
-	\includegraphics[scale=.4]{images/tool_input_overview}
-	\caption{The input tab of the tool}
-	\label{fig:tool-input2}
-\end{figure}
-\subsubsection{The individual models tab}
-Once a user has uploaded their datasets they can compute a model for each dataset individually. The tool will give a concise overview of the model parameters for each model, and show an evaluation of the model. In case of logistic regression, the evaluation would be a ROC curve. Notice that the evaluation is interactive: the user can use the slider to see the performance metrics for different thresholds. Figure \ref{fig:tool-model} shows an example model description, figure \ref{fig:tool-roc} shows an example ROC curve.
-\begin{figure}
+	\begin{tabular}{lc}
+		\toprule
+		Dataset & AUC \\
+		\midrule
+		DWI & 0.67 \\
+		MRI & 0.75 \\
+		SUV & 0.65 \\
+		\bottomrule
+	\end{tabular}
+	\caption{AUC for models of individual datasets}
+	\label{tab:evaluation-auc-individual}
+\end{table}
+\begin{table}
 	\centering
-	\includegraphics[scale=.4]{images/tool_model_mri}
-	\caption{An example model description}
-	\label{fig:tool-model}
-\end{figure}
-\begin{figure}
+	\begin{tabular}{lcccc}
+		\toprule
+	 & All & DWI+MRI & DWI+SUV & MRI+SUV \\
+		\midrule
+		Early integration & 0.76 & 0.82 & 0.69 & 0.74 \\
+		Intermediate integration & 0.79 & 0.83 & 0.78 & 0.75 \\
+		Late integration & 0.73 & 0.78 & 0.66 & 0.70 \\
+		\bottomrule
+	\end{tabular}
+	\caption{AUC for models of various combinations of integrated datasets}
+	\label{tab:evaluation-auc-integrated}
+\end{table}
+
+
+\begin{table}
+	\rowcolors{1}{white}{lightgray}
 	\centering
-	\includegraphics[scale=.65]{images/tool_auc}
-	\caption{An example interactive ROC curve}
-	\label{fig:tool-roc}
-\end{figure}
-\subsubsection{The integration tab}
-The integration tab is the most important part of the application, as it allows the user to compute and evaluate integrated models for their datasets. The integration tab is further split up into early-, late- and intermediate integration tabs. Each tab will allow computation and evaluation for its respective integration method. The results will look exactly the same as shown for the individual models tab as can be seen on figures \ref{fig:tool-model} and \ref{fig:tool-roc}.
+	\begin{tabular}{lccccccc} 
+		\toprule
+		\multicolumn{1}{c}{}& \multicolumn{3}{c}{Individual} & \multicolumn{2}{c}{}&  \multicolumn{2}{c}{Integrated}\\ 
+		\cmidrule{2-8}
+		Variable & DWI    & MRI & SUV & & & Early    & Intermediate\\ 
+		\midrule
+		ADCratioavg\_TP1TP3 		& 0.69	& 		&  		& & & 1.09		& 1.19	\\ 
+		ADCratiohigh\_TP1TP3 		& 0.08	&      	&  		& & & 0.50		& 0.62	\\ [10pt]
+		DeltaSphere\_TP2TP3perc 	&      	& 1.67  &  		& & & 1.35		& 1.44  \\
+		DeltaSphere\_TP1TP3perc 	&      	& 0.48  &  		& & & 1.78		& 1.64  \\
+		Volume\_TP2 				&  		& -0.99 &   	& & & 			& 		\\
+		Volume\_TP3 				&  		& -0.24 &   	& & & -0.173	& -0.94	\\ [10pt]
+		RIdiameter\_TP2TP3 			&  		&      	& 0.16  & & & 			& 		\\
+		Diameter\_TP3 				&  		&      	& -0.88 & & & -0.01		& 		\\
+		SUVmax\_TP2 				&  		&      	& -0.88 & & & -3.30		& -4.41	\\
+		deltadiameter\_TP1TP2 		&  		&      	& -0.32 & & & 			& 		\\
+		RISUVpeak\_TP1TP2 			&  		&      	&  		& & & 0.32		& 		\\
+		RITLG\_TP2TP3 				&  		&      	&  		& & & -0.08		& 		\\
+		\bottomrule
+	\end{tabular}
+	\caption{Overview of the model parameters (weights)}
+	\label{tab:evaluation-model-parameters}
+\end{table}
+
+\section{Evaluating a cox proportional hazards model}
+\label{sec:evaluation-coxph}
+The evaluation of a cox proportional hazards model is very differnt compared to logistic regression. This is because as we have seen in chapter \ref{cha:cox} we cannot compute exact predictions for individual samples, we can only work with hazard ratios. This means it is not possible to create ROC curves as we did for logistic regression. However we can still evaluate the models based on the survival curves they produce and we can compute some statistics to evaluate the significance of the models.
+
+\subsection{Kaplan-Meier survival curves}
+ 
+\section{Predicting survival outcomes}
+\label{sec:evaluation-predictingsurvival}
 
 \section{Conclusion}
-\label{sec:tool-conclusion}
-To make further research easier I have made an interactive web-based tool. The tool allows users to compute and evaluate all integration strategies explained earlier. It currently supports logistic regression models and cox proportional hazard models. The back-end uses the statistical language R and the glmnet package to compute the models. The front-end is purely web-based and this is made possible by the Shiny package that links the front-end to the back-end.
+\label{sec:evaluation-conclusion}
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "thesis"
