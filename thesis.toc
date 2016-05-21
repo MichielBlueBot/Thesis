@@ -49,52 +49,53 @@
 \contentsline {section}{\numberline {3.2}Survival analysis}{17}{section.3.2}
 \contentsline {section}{\numberline {3.3}Cox proportional hazards model}{18}{section.3.3}
 \contentsline {subsection}{\numberline {3.3.1}Proportional hazards condition}{18}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Interpreting the hazard ratio}{19}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.2}Using the hazard ratio}{19}{subsection.3.3.2}
 \contentsline {subsection}{\numberline {3.3.3}Kaplan-Meier survival curves}{19}{subsection.3.3.3}
-\contentsline {section}{\numberline {3.4}Conclusion}{19}{section.3.4}
-\contentsline {chapter}{\chapternumberline {4}Integration Strategies}{21}{chapter.4}
-\contentsline {section}{\numberline {4.1}Introduction}{21}{section.4.1}
-\contentsline {section}{\numberline {4.2}The setup}{21}{section.4.2}
-\contentsline {section}{\numberline {4.3}Early integration}{22}{section.4.3}
-\contentsline {section}{\numberline {4.4}Late integration}{22}{section.4.4}
-\contentsline {section}{\numberline {4.5}Intermediate integration}{23}{section.4.5}
-\contentsline {section}{\numberline {4.6}Conclusion}{24}{section.4.6}
-\contentsline {chapter}{\chapternumberline {5}Evaluation of integration strategies}{27}{chapter.5}
-\contentsline {section}{\numberline {5.1}Introduction}{27}{section.5.1}
-\contentsline {section}{\numberline {5.2}Evaluating a logistic regression model}{27}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Predictions using validation}{27}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Metrics}{28}{subsection.5.2.2}
-\contentsline {subsubsection}{Sensitivity}{28}{section*.16}
-\contentsline {subsubsection}{Specificity}{29}{section*.17}
-\contentsline {subsubsection}{The tradeoff}{29}{section*.18}
-\contentsline {subsection}{\numberline {5.2.3}Receiver Operating Characteristic curve}{29}{subsection.5.2.3}
-\contentsline {section}{\numberline {5.3}Predicting stage outcome}{30}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}Case details}{30}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}The results}{30}{subsection.5.3.2}
-\contentsline {section}{\numberline {5.4}Evaluating a cox proportional hazards model}{32}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}Kaplan-Meier survival curves}{33}{subsection.5.4.1}
-\contentsline {section}{\numberline {5.5}Predicting survival outcomes}{33}{section.5.5}
-\contentsline {section}{\numberline {5.6}Conclusion}{33}{section.5.6}
-\contentsline {chapter}{\chapternumberline {6}Tool for automated evaluation}{35}{chapter.6}
-\contentsline {section}{\numberline {6.1}Introduction}{35}{section.6.1}
-\contentsline {section}{\numberline {6.2}Technologies}{35}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}The R language}{35}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Web interface}{35}{subsection.6.2.2}
-\contentsline {section}{\numberline {6.3}Demonstration}{36}{section.6.3}
-\contentsline {subsubsection}{The input tab}{36}{section*.19}
-\contentsline {subsubsection}{The individual models tab}{36}{section*.20}
-\contentsline {subsubsection}{The integration tab}{37}{section*.21}
-\contentsline {section}{\numberline {6.4}Conclusion}{37}{section.6.4}
-\contentsline {chapter}{\chapternumberline {7}Conclusion}{39}{chapter.7}
-\contentsline {appendix}{\chapternumberline {A}The First Appendix}{43}{appendix.A}
-\contentsline {section}{\numberline {A.1}More Lorem}{43}{section.A.1}
-\contentsline {subsection}{\numberline {A.1.1}Lorem 15--17}{43}{subsection.A.1.1}
-\contentsline {subsection}{\numberline {A.1.2}Lorem 18--19}{44}{subsection.A.1.2}
-\contentsline {section}{\numberline {A.2}Lorem 51}{44}{section.A.2}
-\contentsline {appendix}{\chapternumberline {B}The Last Appendix}{45}{appendix.B}
-\contentsline {section}{\numberline {B.1}Lorem 20-24}{45}{section.B.1}
-\contentsline {section}{\numberline {B.2}Lorem 25-27}{46}{section.B.2}
-\contentsline {chapter}{Bibliography}{47}{section*.23}
+\contentsline {subsubsection}{Linking hazard to survival}{20}{section*.16}
+\contentsline {section}{\numberline {3.4}Conclusion}{22}{section.3.4}
+\contentsline {chapter}{\chapternumberline {4}Integration Strategies}{23}{chapter.4}
+\contentsline {section}{\numberline {4.1}Introduction}{23}{section.4.1}
+\contentsline {section}{\numberline {4.2}The setup}{23}{section.4.2}
+\contentsline {section}{\numberline {4.3}Early integration}{24}{section.4.3}
+\contentsline {section}{\numberline {4.4}Late integration}{24}{section.4.4}
+\contentsline {section}{\numberline {4.5}Intermediate integration}{25}{section.4.5}
+\contentsline {section}{\numberline {4.6}Conclusion}{26}{section.4.6}
+\contentsline {chapter}{\chapternumberline {5}Evaluation of integration strategies}{29}{chapter.5}
+\contentsline {section}{\numberline {5.1}Introduction}{29}{section.5.1}
+\contentsline {section}{\numberline {5.2}Evaluating a logistic regression model}{29}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Predictions using validation}{29}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Metrics}{30}{subsection.5.2.2}
+\contentsline {subsubsection}{Sensitivity}{30}{section*.17}
+\contentsline {subsubsection}{Specificity}{31}{section*.18}
+\contentsline {subsubsection}{The tradeoff}{31}{section*.19}
+\contentsline {subsection}{\numberline {5.2.3}Receiver Operating Characteristic curve}{31}{subsection.5.2.3}
+\contentsline {section}{\numberline {5.3}Predicting stage outcome}{32}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Case details}{32}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}The results}{32}{subsection.5.3.2}
+\contentsline {section}{\numberline {5.4}Evaluating a cox proportional hazards model}{34}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Kaplan-Meier survival curves}{35}{subsection.5.4.1}
+\contentsline {section}{\numberline {5.5}Predicting survival outcomes}{35}{section.5.5}
+\contentsline {section}{\numberline {5.6}Conclusion}{35}{section.5.6}
+\contentsline {chapter}{\chapternumberline {6}Tool for automated evaluation}{37}{chapter.6}
+\contentsline {section}{\numberline {6.1}Introduction}{37}{section.6.1}
+\contentsline {section}{\numberline {6.2}Technologies}{37}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}The R language}{37}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Web interface}{37}{subsection.6.2.2}
+\contentsline {section}{\numberline {6.3}Demonstration}{38}{section.6.3}
+\contentsline {subsubsection}{The input tab}{38}{section*.20}
+\contentsline {subsubsection}{The individual models tab}{38}{section*.21}
+\contentsline {subsubsection}{The integration tab}{39}{section*.22}
+\contentsline {section}{\numberline {6.4}Conclusion}{39}{section.6.4}
+\contentsline {chapter}{\chapternumberline {7}Conclusion}{41}{chapter.7}
+\contentsline {appendix}{\chapternumberline {A}The First Appendix}{45}{appendix.A}
+\contentsline {section}{\numberline {A.1}More Lorem}{45}{section.A.1}
+\contentsline {subsection}{\numberline {A.1.1}Lorem 15--17}{45}{subsection.A.1.1}
+\contentsline {subsection}{\numberline {A.1.2}Lorem 18--19}{46}{subsection.A.1.2}
+\contentsline {section}{\numberline {A.2}Lorem 51}{46}{section.A.2}
+\contentsline {appendix}{\chapternumberline {B}The Last Appendix}{47}{appendix.B}
+\contentsline {section}{\numberline {B.1}Lorem 20-24}{47}{section.B.1}
+\contentsline {section}{\numberline {B.2}Lorem 25-27}{48}{section.B.2}
+\contentsline {chapter}{Bibliography}{49}{section*.24}
 \select@language {dutch}
 \select@language {english}
 \select@language {dutch}
