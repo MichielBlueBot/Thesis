@@ -23,27 +23,27 @@
 \contentsline {section}{\numberline {2.2}Classical linear models}{3}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}Linear Regression}{3}{subsection.2.2.1}
 \contentsline {subsection}{\numberline {2.2.2}Linear Classification}{4}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Logistic Regression}{4}{subsection.2.2.3}
-\contentsline {section}{\numberline {2.3}Training a model}{4}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}The data}{5}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Gradient descent}{5}{subsection.2.3.2}
-\contentsline {subsubsection}{Error measure}{5}{section*.10}
-\contentsline {subsubsection}{The gradient descent method}{6}{section*.11}
-\contentsline {section}{\numberline {2.4}Overfitting}{8}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}The problem of overfitting}{8}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}The bias and variance trade-off}{9}{subsection.2.4.2}
-\contentsline {subsubsection}{Average hypothesis}{9}{section*.12}
-\contentsline {subsubsection}{Bias}{9}{section*.13}
-\contentsline {subsubsection}{Variance}{10}{section*.14}
-\contentsline {subsubsection}{The tradeoff}{10}{section*.15}
-\contentsline {section}{\numberline {2.5}Regularization}{11}{section.2.5}
-\contentsline {subsection}{\numberline {2.5.1}Adding bias}{11}{subsection.2.5.1}
-\contentsline {subsection}{\numberline {2.5.2}Regularization types}{11}{subsection.2.5.2}
-\contentsline {subsection}{\numberline {2.5.3}Lambda}{12}{subsection.2.5.3}
-\contentsline {section}{\numberline {2.6}Validation}{13}{section.2.6}
-\contentsline {subsection}{\numberline {2.6.1}The sample size dilemma}{13}{subsection.2.6.1}
-\contentsline {subsection}{\numberline {2.6.2}Cross-validation}{14}{subsection.2.6.2}
-\contentsline {section}{\numberline {2.7}Conclusion}{14}{section.2.7}
+\contentsline {subsection}{\numberline {2.2.3}Logistic Regression}{5}{subsection.2.2.3}
+\contentsline {section}{\numberline {2.3}Training a model}{6}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}The data}{6}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Gradient descent}{6}{subsection.2.3.2}
+\contentsline {subsubsection}{Error measure}{6}{section*.10}
+\contentsline {subsubsection}{The gradient descent method}{7}{section*.11}
+\contentsline {section}{\numberline {2.4}Overfitting}{9}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}The problem of overfitting}{9}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}The bias and variance trade-off}{10}{subsection.2.4.2}
+\contentsline {subsubsection}{Average hypothesis}{10}{section*.12}
+\contentsline {subsubsection}{Bias}{11}{section*.13}
+\contentsline {subsubsection}{Variance}{11}{section*.14}
+\contentsline {subsubsection}{The tradeoff}{11}{section*.15}
+\contentsline {section}{\numberline {2.5}Regularization}{12}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Adding bias}{12}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}Regularization types}{13}{subsection.2.5.2}
+\contentsline {subsection}{\numberline {2.5.3}Lambda}{13}{subsection.2.5.3}
+\contentsline {section}{\numberline {2.6}Validation}{14}{section.2.6}
+\contentsline {subsection}{\numberline {2.6.1}The sample size dilemma}{14}{subsection.2.6.1}
+\contentsline {subsection}{\numberline {2.6.2}Cross-validation}{15}{subsection.2.6.2}
+\contentsline {section}{\numberline {2.7}Conclusion}{16}{section.2.7}
 \contentsline {chapter}{\chapternumberline {3}Cox proportional hazards models}{17}{chapter.3}
 \contentsline {section}{\numberline {3.1}Introduction}{17}{section.3.1}
 \contentsline {section}{\numberline {3.2}Survival analysis}{17}{section.3.2}
@@ -74,8 +74,8 @@
 \contentsline {subsection}{\numberline {5.3.2}The results}{32}{subsection.5.3.2}
 \contentsline {section}{\numberline {5.4}Evaluating a cox proportional hazards model}{34}{section.5.4}
 \contentsline {subsection}{\numberline {5.4.1}Kaplan-Meier survival curves}{35}{subsection.5.4.1}
-\contentsline {section}{\numberline {5.5}Predicting survival outcomes}{35}{section.5.5}
-\contentsline {section}{\numberline {5.6}Conclusion}{35}{section.5.6}
+\contentsline {section}{\numberline {5.5}Predicting survival outcomes}{36}{section.5.5}
+\contentsline {section}{\numberline {5.6}Conclusion}{36}{section.5.6}
 \contentsline {chapter}{\chapternumberline {6}Tool for automated evaluation}{37}{chapter.6}
 \contentsline {section}{\numberline {6.1}Introduction}{37}{section.6.1}
 \contentsline {section}{\numberline {6.2}Technologies}{37}{section.6.2}
@@ -87,11 +87,10 @@
 \contentsline {subsubsection}{The integration tab}{39}{section*.22}
 \contentsline {section}{\numberline {6.4}Conclusion}{39}{section.6.4}
 \contentsline {chapter}{\chapternumberline {7}Conclusion}{41}{chapter.7}
-\contentsline {appendix}{\chapternumberline {A}The First Appendix}{45}{appendix.A}
-\contentsline {section}{\numberline {A.1}More Lorem}{45}{section.A.1}
-\contentsline {subsection}{\numberline {A.1.1}Lorem 15--17}{45}{subsection.A.1.1}
-\contentsline {subsection}{\numberline {A.1.2}Lorem 18--19}{46}{subsection.A.1.2}
-\contentsline {section}{\numberline {A.2}Lorem 51}{46}{section.A.2}
+\contentsline {appendix}{\chapternumberline {A}Cross-entropy error derivation}{45}{appendix.A}
+\contentsline {section}{\numberline {A.1}The setting of logistic regression}{45}{section.A.1}
+\contentsline {section}{\numberline {A.2}Likelihood}{45}{section.A.2}
+\contentsline {section}{\numberline {A.3}Lorem 51}{46}{section.A.3}
 \contentsline {appendix}{\chapternumberline {B}The Last Appendix}{47}{appendix.B}
 \contentsline {section}{\numberline {B.1}Lorem 20-24}{47}{section.B.1}
 \contentsline {section}{\numberline {B.2}Lorem 25-27}{48}{section.B.2}

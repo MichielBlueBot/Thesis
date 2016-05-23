@@ -11,12 +11,12 @@ The first evaluation will be made using a logistic regression model. This is a m
 \subsection{Predictions using validation}
 What we really want to do is estimate the out-of-sample error for our model. To do this we have seen that we can use the technique of cross-validation. In this case we are not going to compute any learning parameter but we are going to use the validation set as a test set. We will split our dataset into $K$ folds. We will train a model on $K-1$ folds and we will use this model to predict the outcomes of the remaining samples in the test fold. By repeating this process for each folds we obtain a predicted outcome for each sample in the dataset. Notice however that we also have the real outcome of the samples in our dataset, and thus we can compare our predictions with the real values to estimate our out-of-sample error.
 \subsection{Metrics}
-When we compare our predictions with the real outcomes, there are four possible scenario's:
+When we compare our models predictions with the real outcomes, there are four possible scenario's:
 \begin{itemize}
-	\item True Positive (TP): we predicted positive and this is correct
-	\item True Negative (TN): we predicted negative and this is correct
-	\item False Positive(FP): we predicted positive and this is wrong (type 1 error)
-	\item False Negative (FN): we predicted negative and this is wrong (type 2 error)
+	\item True Positive (TP): the model predicted positive and this is correct
+	\item True Negative (TN): the model predicted negative and this is correct
+	\item False Positive(FP): the model predicted positive and this is wrong (type 1 error)
+	\item False Negative (FN): the model predicted negative and this is wrong (type 2 error)
 \end{itemize}
 Notice that this gives us more information than just registering whether we are right or wrong. It also tells us the type of mistake we made. This is a very important distinction because depending on the application there is usually a different cost attached to making type 1 or type 2 errors. And as we will see later on, there is a tradeoff between the two and we can tune our system to be more resistant towards making one type of error. \\ \\
 Now that we have established the notion of typed errors, there are several ways in which these numbers are combined to form evaluation metrics. Depending on your field of research these often get different names, I will use the ones applicable to the biomedical field.
@@ -30,9 +30,9 @@ where
 	\item $\sum{TP}$ is the number of true positives
 	\item $\sum{P}$ is the number of real positive cases in the dataset
 \end{itemize}
-Sensitivity can be thought of, as its name suggests, as how sensitive the model is to detecting positive cases. If the model gets a real positive sample, what is the probability that it will detect it as such. A sensitivity of 1 means that our model is capable of correctly identifying all positive cases in the dataset. This means that the higher the sensitivity, the lower the type 2 error rate.
+Sensitivity can be thought of, as its name suggests, as how sensitive the model is to detecting positive cases. If the model gets a real positive sample's input, what is the probability that it will detect it as such. A sensitivity of 1 means that our model is capable of correctly identifying all positive cases in the dataset. This means that the higher the sensitivity, the lower the type 2 error rate.
 \subsubsection{Specificity}
-Specificity is the analogous metric to sensitivity, but for negative cases. It measures the proportion of the real negative samples that our model correctly predicted as negative.
+Specificity is the analogous metric to sensitivity, but for negative cases. It measures the proportion of the real negative samples that our model correctly predicts as negative.
 $$
 Specificity = \frac{\sum{TN}}{\sum{N}}
 $$
@@ -41,7 +41,6 @@ where
 \item $\sum{TN}$ is the number of true negatives
 \item $\sum{P}$ is the number of real negative cases in the dataset
 \end{itemize}
-
 A specificity of 1 means that our model is capable of correctly identifying all negative cases in the dataset. This means that the higher the specificity, the lower the type 1 error rate.
 \subsubsection{The tradeoff}
 At this point it is obvious that we would like to maximize both sensitivity and specificity. Indeed, if both metrics are 1 then we make no errors and we have a perfect model. In practice however this is nearly impossible to achieve. It is easy to see that there is a tradeoff between the two metrics: when we try to increase the sensitivity, we will lose out on specificity and vice versa. \\ \\ 
@@ -124,10 +123,36 @@ I have also included an overview of the model parameters that were selected (on 
 
 \section{Evaluating a cox proportional hazards model}
 \label{sec:evaluation-coxph}
-The evaluation of a cox proportional hazards model is very differnt compared to logistic regression. This is because as we have seen in chapter \ref{cha:cox} we cannot compute exact predictions for individual samples, we can only work with hazard ratios. This means it is not possible to create ROC curves as we did for logistic regression. However we can still evaluate the models based on the survival curves they produce and we can compute some statistics to evaluate the significance of the models.
+//TODO THIS WHOLE SECTION MIGHT BE INCORRECT
+The evaluation of a cox proportional hazards model is differnt compared to logistic regression. This is because, as we have seen in chapter \ref{cha:cox}, we cannot directly compute survival times from a cox proportional hazards model and compare them to the real survival times. However we can still evaluate the models based on the survival curves they produce and we can compute some statistics to evaluate the significance of the models.
 
 \subsection{Kaplan-Meier survival curves}
- 
+//TODO THIS WHOLE SECTION MIGHT BE INCORRECT
+We cannot predict survival times for each individual patient, but we can compute some other sort of prediction value. Recall the hazard ratio from chapter \ref{cha:cox} section \ref{sec:cox-proportional-hazards-model}. If we have a model computed ($\beta's$ defined) and we have a test sample (with values $X_{i}$), we could compute the following prediction quantity:
+\begin{equation}
+\begin{split}
+prediction = exp(\sum_{i=0}^{N}X_{i}\beta_{i})
+\end{split}
+\end{equation}
+where
+\begin{itemize}
+	\item $exp(x)$ is the exponential of x
+	\item $X_{i}$ are the values for the explanatory variables
+	\item $\beta_{i}$ are the model co\"effici\"ents
+\end{itemize}
+//TODO THIS WHOLE SECTION MIGHT BE INCORRECT
+ Remember that this quantity tells us how the explanatory variables influence the hazard. We can also view this as the hazard ratio between the test sample and an imaginary patient that has the value $0$ for all explanatory variables, the baseline patient (subscript $b$).
+ \begin{equation}
+ \begin{split}
+ \frac{\lambda_{i}(t)}{\lambda_{b}(t)} 
+ = \frac{\lambda_{0}(t)e^{X_{i1}\beta_{1} + ... + X_{iN}\beta_{N}}}{\lambda_{0}(t)e^{0\beta_{1} + ... + 0\beta_{N}}}
+ = e^{(X_{i1}-0)\beta_{1} + ... + (X_{iN}-0)\beta_{N}} = exp(\sum_{j=0}^{N}X_{ij}\beta_{j})
+ \end{split}
+ \end{equation}
+ //TODO THIS WHOLE SECTION MIGHT BE INCORRECT
+ What this quantity tells us is whether the risk of our test patient is higher or lower than the risk of the baseline patient (patient with all explanatory variables equal to $0$). This does not tell us anything in the absolute sense, but we can compare this prediction value in a relative way between patients. \\ \\
+ //TODO THIS WHOLE SECTION MIGHT BE INCORRECT
+ We could, as before using cross validation, compute this prediction value for all patients in our dataset. We can then compute the mean prediction value and split the dataset into two groups: respectively those with a prediction higher/lower than the mean. We can construct a kaplan-meier plot with a survival curve for each group separately. If the group with higher predictive values is clearly separable from the other group, this is an indication that there is some information/predictive value in the explanatory variables that we have used.
 \section{Predicting survival outcomes}
 \label{sec:evaluation-predictingsurvival}
 

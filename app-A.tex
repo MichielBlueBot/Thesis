@@ -1,17 +1,69 @@
-\chapter{The First Appendix}
-\label{app:A}
-Appendices hold useful data which is not essential to understand the work
-done in the master thesis. An example is a (program) source.
-An appendix can also have sections as well as figures and references\cite{h2g2}.
+\chapter{Cross-entropy error derivation}
+\label{app:cross-entropy}
+In this appendix I will explain where the cross-entropy error measure for logistic regression comes from. First I will explain the setting and make sure all used symbols are clear. Next I will introduce the notion of likelihood. And lastly I will derive the cross-entropy error function based on the likelihood idea.
 
-\section{More Lorem}
-\lipsum[50]
-
-\subsection{Lorem 15--17}
-\lipsum[15-17]
-
-\subsection{Lorem 18--19}
-\lipsum[18-19]
+\section{The setting of logistic regression}
+Remember that in logistic regression we are trying to estimate a probability. The output variable $y$ is a binary variable that comes from an underlying binomial distribution, think of tossing a coin and observing heads or tails. Let's call the target function that we wish to fit $f(x)$. This function defines the probability of finding outcome $y$ when given input $x$. We could write this in a formula:
+\begin{equation}
+\begin{split}
+P(y | x) =
+\begin{cases} 
+f(x) & for\ y=1 \\
+1-f(x) & for\ y=-1 
+\end{cases}
+\end{split}
+\end{equation}
+Here $P(y | x)$ is the probability of finding $y$ given $x$. It is equal to $f(x)$ if the event occurred and, since it is a binary event, it is equal to $1-f(x)$ if the event didn't occur. The statement that we are making in logistic regression is that we can find a linear combination of the input variables and pass it through a sigmoid function to approximate $f(x)$. Finding in this case means defining the weights of the linear combination. We will call the final set of weights the final hypothesis $h(x)$.
+\begin{equation}
+\begin{split}
+h(x) = \theta(\bm{w^{T}x}) \approx f(x)
+\end{split}
+\end{equation}
+\section{Likelihood}
+The notion of likelihood is basically an inversion of the usual thought process. What we usually think of when talking about supervised learning is: what is the probability of finding an outcome $y$ given the data $x$. Here we are going to invert the statement and define likelihood as: if $h(x) = f(x)$ how likely is it to see the data $x$ given the output $y$. Or in a formula:
+\begin{equation}
+\begin{split}
+P(y | x) =
+\begin{cases} 
+h(x) & for\ y=1 \\
+1-h(x) & for\ y=-1 
+\end{cases}
+\end{split}
+\end{equation}
+Notice that we now assume that $h(x)$ is generating the outcomes instead of $f(x)$.
+Remember that we defined $h(x) = \theta(\bm{w^{T}x})$, and thus:
+\begin{equation}
+\begin{split}
+P(y | x) =
+\begin{cases} 
+\theta(\bm{w^{T}x}) & for\ y=1 \\
+1-\theta(\bm{w^{T}x}) & for\ y=-1 
+\end{cases}
+\end{split}
+\end{equation}
+A useful property of the sigmoid function is that $\theta(-x) = 1-\theta(x)$. We can use this fact to get rid of the cases in the formula, because if we change the second case by $\theta(-x)$ we get:
+\begin{equation}
+\begin{split}
+P(y | x) =
+\begin{cases} 
+\theta(\bm{w^{T}x}) & for\ y=1 \\
+\theta(\bm{-w^{T}x}) & for\ y=-1 
+\end{cases}
+\end{split}
+\end{equation}
+Now notice that the sign in each case corresponds to the value of $y$. We could multiply each case by the corresponding value of $y$ to obtain:
+\begin{equation}
+\begin{split}
+P(y | x) = \theta(y\bm{w^{T}x})
+\end{split}
+\end{equation}
+Now we define the likelihood of the dataset $D$ by multiplying the likelihood of each sample:
+\begin{equation}
+\begin{split}
+Likelihood(D) = \prod_{n=1}^{N}P(y_{n}|x_{n}) = \prod_{n=1}^{N}\theta(y_{n}\bm{w^{T}x_{n}})
+\end{split}
+\end{equation}
+We now want to maximize the above likelihood of the dataset, given that the hypothesis $h(x)$ is indeed the correct target.
 
 \section{Lorem 51}
 \lipsum[51]
