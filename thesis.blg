@@ -11,4 +11,14 @@ A level-1 auxiliary file: app-n.aux
 The style file: abbrv.bst
 Database file #1: references.bib
 Warning--I didn't find a database entry for "h2g2"
-(There was 1 warning)
+Warning--to sort, need author or key in wikiglm
+Warning--to sort, need author or key in wikilinearregression
+Warning--to sort, need author or key in wikiclassification
+Warning--to sort, need author or key in wikilogistic
+Warning--to sort, need author or key in wikigd
+Warning--to sort, need author or key in gradientdescentvariants
+Warning--to sort, need author or key in gradientdirection
+Warning--to sort, need author or key in gradientdirection2
+Warning--to sort, need author or key in convexerrorlogistic
+Warning--can't use both volume and number fields in kohavi1995study
+(There were 11 warnings)
