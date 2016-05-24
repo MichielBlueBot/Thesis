@@ -3,7 +3,7 @@
 
 \section{Introduction}
 \label{sec:cox-introduction}
-In this chapter I will explain the cox proportional hazards model. This is a model that is used in survival analysis. The first section will explain what survival analysis means and how it is different from the generalized linear models. Next I will define what the proportional hazards assumption is and lastly I will show kaplan-meier survival curves and how we can compute them from hazard functions.
+In this chapter I will explain the cox proportional hazards model\cite{simon2011regularization}\cite{tibshirani1997lasso}\cite{wikicox}. This is a model that is used in survival analysis. The first section will explain what survival analysis means and how it is different from the generalized linear models. Next I will define what the proportional hazards assumption is and lastly I will show kaplan-meier survival curves and how we can compute them from hazard functions.
 
 \section{Survival analysis}
 \label{sec:cox-survival-analysis}
@@ -32,7 +32,7 @@ The idea of survival analysis is now to find a pattern between a set of explanat
 \label{sec:cox-proportional-hazards-model}
 \subsection{Proportional hazards condition}
 The proportional hazards condition means that we assume that hazard ratios are independent of time. A hazard ratio is the relative risk between two entities (patients). Furthermore the condition states that changes in the explanatory variables have an exponential effect on the hazard. The following paragraphs explain these statements in more detail.\\ \\
-If we assume the proportional hazards condition to be true then this gives us the opportunity to estimate the effect of explanatory variables without dealing with the underlying baseline hazard function. This was an observation made by Sir David Cox //TODO REFERENCE COX 1972, hence the name of the model. We can represent the cox model as follows:
+If we assume the proportional hazards condition to be true then this gives us the opportunity to estimate the effect of explanatory variables without dealing with the underlying baseline hazard function. This was an observation made by Sir David Cox\cite{cox1972life}, hence the name of the model. We can represent the cox model as follows:
 \begin{equation}
 \begin{split}
 \lambda_{i}(t) = \lambda_{0}(t)e^{X_{i1}\beta_{1} + ... + X_{iN}\beta_{N}}
@@ -65,7 +65,7 @@ It is directly given by the exponential of the co\"effici\"ent for the explanato
 The proportional hazards assumption allows us to compute relative risks or hazard ratios without knowing the actual baseline hazard function. Knowing just relative ratios can be very useful however. Imagine the following scenario: we want to test if a certain drug increases the survivability of patients with a specific disease. We randomly give half of the patients the actual drug, the other half receives a placebo (or nothing at all). Performing a survival analysis using a cox model then allows us to compute the ratio of the hazards for the two groups. The co\"effici\"ent for the explanatory variable that indicates which patients received the drug and which did not then tells us the effect of the drug on the hazard. We could then make a statement such as: "Taking the drug tends to half the risk of the event occurring (at any time)." This is obviously a useful result to support further research or development for the drug.
 
 \subsection{Kaplan-Meier survival curves}
-Kaplan-Meier survival curves are often used in survival analysis. These curves show the probability of surviving up to any point t. It is thus a declining curve starting from 1 at $t=0$. An example curve is shown on figure \ref{fig:cox-example-kaplan-meier}.
+Kaplan-Meier survival curves\cite{goel2010understanding} are often used in survival analysis. These curves show the probability of surviving up to any point t. It is thus a declining curve starting from 1 at $t=0$. An example curve is shown on figure \ref{fig:cox-example-kaplan-meier}.
 \begin{figure}
 	\centering
 	\includegraphics[scale=0.4]{images/example_kaplan_meier_curve}
@@ -86,7 +86,7 @@ where
 	\item $t$ is the time variable
 \end{itemize}
 \subsubsection{Linking hazard to survival}
-Creating a kaplan-meier survival curve based on the outcome vectors (time and censoring) is very straightforward to do, it is simply a visual representation of the event occurring at certain times. However when we create a model that tries to explain these outcomes from explanatory variables we end up with a hazard function. In order to create survival curves we have to link this hazard function to the survival function. Recall the hazard function $\lambda(t)$ from section \ref{sec:cox-proportional-hazards-model}. We could write this function in a similar probabilistic notation as we did for the survival function:
+Creating a kaplan-meier survival curve based on the outcome vectors (time and censoring) is very straightforward to do, it is simply a visual representation of the event occurring at certain times. However when we create a model that tries to explain these outcomes from explanatory variables we end up with a hazard function. In order to create survival curves we have to link this hazard function to the survival function\cite{survivalmodels}. Recall the hazard function $\lambda(t)$ from section \ref{sec:cox-proportional-hazards-model}. We could write this function in a similar probabilistic notation as we did for the survival function:
 \begin{equation}
 \begin{split}
 \lambda(t) = \lim\limits_{\delta\rightarrow0}\frac{P(t < T \leq t+\delta | T  > t)}{\delta}
@@ -141,7 +141,7 @@ The left hand side of equation \ref{eq:cox-int-hazard} is called the cumulative 
 S(t) &= e^{-\Lambda(t)}
 \end{split}
 \end{equation}
-Equation \ref{eq:cox-survival-hazard-link} allows us to relate the survival function to the hazard function. This allows us to plot the kaplan-meier survival curves for any form of hazard function. The only thing that is left to do is to define the baseline hazard function, because otherwise we could not compute the integral. Usually an estimator based on likelihood is used to estimate the baseline hazard function. There are many forms available for this estimator, but I will not go into any more detail here. //TODO link to examples
+Equation \ref{eq:cox-survival-hazard-link} allows us to relate the survival function to the hazard function. This allows us to create survival curves for any form of hazard function. The only thing that is left to do is to define the baseline hazard function, because otherwise we could not compute the integral. Usually an estimator based on likelihood is used to estimate the baseline hazard function. There are many forms available for this estimator\cite{royston2011estimating}, but I will not go into any more detail here.
 
 \section{Conclusion}
 \label{sec:cox-conclusion}

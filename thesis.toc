@@ -52,14 +52,14 @@
 \contentsline {subsection}{\numberline {3.3.2}Using the hazard ratio}{19}{subsection.3.3.2}
 \contentsline {subsection}{\numberline {3.3.3}Kaplan-Meier survival curves}{19}{subsection.3.3.3}
 \contentsline {subsubsection}{Linking hazard to survival}{20}{section*.16}
-\contentsline {section}{\numberline {3.4}Conclusion}{22}{section.3.4}
+\contentsline {section}{\numberline {3.4}Conclusion}{21}{section.3.4}
 \contentsline {chapter}{\chapternumberline {4}Integration Strategies}{23}{chapter.4}
 \contentsline {section}{\numberline {4.1}Introduction}{23}{section.4.1}
-\contentsline {section}{\numberline {4.2}The setup}{23}{section.4.2}
+\contentsline {section}{\numberline {4.2}Description of the data}{23}{section.4.2}
 \contentsline {section}{\numberline {4.3}Early integration}{24}{section.4.3}
 \contentsline {section}{\numberline {4.4}Late integration}{24}{section.4.4}
 \contentsline {section}{\numberline {4.5}Intermediate integration}{25}{section.4.5}
-\contentsline {section}{\numberline {4.6}Conclusion}{26}{section.4.6}
+\contentsline {section}{\numberline {4.6}Conclusion}{28}{section.4.6}
 \contentsline {chapter}{\chapternumberline {5}Evaluation of integration strategies}{29}{chapter.5}
 \contentsline {section}{\numberline {5.1}Introduction}{29}{section.5.1}
 \contentsline {section}{\numberline {5.2}Evaluating a logistic regression model}{29}{section.5.2}

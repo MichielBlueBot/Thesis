@@ -1,5 +1,9 @@
 \begin{thebibliography}{10}
 
+\bibitem{wikiensemble}
+Ensemble learning.
+\newblock \url{https://en.wikipedia.org/wiki/Ensemble_learning}.
+
 \bibitem{wikiglm}
 Generalized linear model.
 \newblock \url{https://en.wikipedia.org/wiki/Generalized_linear_model}.
@@ -34,6 +38,10 @@ Logistic regression error surface proof of convexity.
 \newblock
   \url{http://mathgotchas.blogspot.be/2011/10/why-is-error-function-minimized-in.html}.
 
+\bibitem{wikicox}
+Proportional hazards model.
+\newblock \url{https://en.wikipedia.org/wiki/Proportional_hazards_model}.
+
 \bibitem{gradientdirection2}
 Understanding the gradient.
 \newblock
@@ -50,17 +58,105 @@ M.~A. Babyak.
   introduction to overfitting in regression-type models.
 \newblock {\em Psychosomatic medicine}, 66(3):411--421, 2004.
 
+\bibitem{black1993advances}
+W.~C. Black and H.~G. Welch.
+\newblock Advances in diagnostic imaging and overestimations of disease
+  prevalence and the benefits of therapy.
+\newblock {\em New England Journal of Medicine}, 328(17):1237--1243, 1993.
+
+\bibitem{collins2003vision}
+F.~S. Collins, E.~D. Green, A.~E. Guttmacher, and M.~S. Guyer.
+\newblock A vision for the future of genomics research.
+\newblock {\em Nature}, 422(6934):835--847, 2003.
+
+\bibitem{cox1972life}
+P.~R. Cox.
+\newblock {\em Life Tables}.
+\newblock Wiley Online Library, 1972.
+
+\bibitem{dietterich2000ensemble}
+T.~G. Dietterich.
+\newblock Ensemble methods in machine learning.
+\newblock In {\em Multiple classifier systems}, pages 1--15. Springer, 2000.
+
+\bibitem{dietterich2002ensemble}
+T.~G. Dietterich.
+\newblock Ensemble learning.
+\newblock {\em The handbook of brain theory and neural networks}, 2:110--125,
+  2002.
+
 \bibitem{friedman2010regularization}
 J.~Friedman, T.~Hastie, and R.~Tibshirani.
 \newblock Regularization paths for generalized linear models via coordinate
   descent.
 \newblock {\em Journal of statistical software}, 33(1):1, 2010.
 
+\bibitem{goel2010understanding}
+M.~Goel, P.~Khanna, and J.~Kishore.
+\newblock Understanding survival analysis: Kaplan-meier estimate.
+\newblock {\em International journal of Ayurveda research}, 1(4):274, 2010.
+
+\bibitem{medicalimaging}
+S.~Healthcare.
+\newblock Medical imaging types.
+\newblock \url{http://www.medicalradiation.com/types-of-medical-imaging/}.
+
+\bibitem{tcga}
+N.~C. Institute.
+\newblock The cancer genome atlas.
+\newblock \url{http://cancergenome.nih.gov/}.
+
 \bibitem{kohavi1995study}
 R.~Kohavi et~al.
 \newblock A study of cross-validation and bootstrap for accuracy estimation and
   model selection.
 \newblock In {\em Ijcai}, volume~14, pages 1137--1145, 1995.
+
+\bibitem{survivalmodels}
+G.~Rodriguez.
+\newblock Survival models.
+\newblock \url{http://data.princeton.edu/wws509/notes/c7.pdf}.
+
+\bibitem{royston2011estimating}
+P.~Royston and A.~House.
+\newblock Estimating a smooth baseline hazard function for the cox model.
+\newblock {\em London: Department of Statistical Science, University College
+  London}, 2011.
+
+\bibitem{sandelin2004jaspar}
+A.~Sandelin, W.~Alkema, P.~Engstr{\"o}m, W.~W. Wasserman, and B.~Lenhard.
+\newblock Jaspar: an open-access database for eukaryotic transcription factor
+  binding profiles.
+\newblock {\em Nucleic acids research}, 32(suppl 1):D91--D94, 2004.
+
+\bibitem{shendure2008next}
+J.~Shendure and H.~Ji.
+\newblock Next-generation dna sequencing.
+\newblock {\em Nature biotechnology}, 26(10):1135--1145, 2008.
+
+\bibitem{simon2011regularization}
+N.~Simon, J.~Friedman, T.~Hastie, R.~Tibshirani, et~al.
+\newblock Regularization paths for coxs proportional hazards model via
+  coordinate descent.
+\newblock {\em Journal of statistical software}, 39(5):1--13, 2011.
+
+\bibitem{smith2007obo}
+B.~Smith, M.~Ashburner, C.~Rosse, J.~Bard, W.~Bug, W.~Ceusters, L.~J. Goldberg,
+  K.~Eilbeck, A.~Ireland, C.~J. Mungall, et~al.
+\newblock The obo foundry: coordinated evolution of ontologies to support
+  biomedical data integration.
+\newblock {\em Nature biotechnology}, 25(11):1251--1255, 2007.
+
+\bibitem{stark2006biogrid}
+C.~Stark, B.-J. Breitkreutz, T.~Reguly, L.~Boucher, A.~Breitkreutz, and
+  M.~Tyers.
+\newblock Biogrid: a general repository for interaction datasets.
+\newblock {\em Nucleic acids research}, 34(suppl 1):D535--D539, 2006.
+
+\bibitem{tibshirani1997lasso}
+R.~Tibshirani et~al.
+\newblock The lasso method for variable selection in the cox model.
+\newblock {\em Statistics in medicine}, 16(4):385--395, 1997.
 
 \bibitem{zou2005regularization}
 H.~Zou and T.~Hastie.
