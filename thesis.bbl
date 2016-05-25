@@ -42,6 +42,19 @@ Logistic regression error surface proof of convexity.
 Proportional hazards model.
 \newblock \url{https://en.wikipedia.org/wiki/Proportional_hazards_model}.
 
+\bibitem{wikiroc}
+Receiver operating characteristic.
+\newblock
+  \url{https://en.wikipedia.org/wiki/Receiver_operating_characteristic}.
+
+\bibitem{wikisensspec}
+Sensitivity and specificity.
+\newblock \url{https://en.wikipedia.org/wiki/Sensitivity_and_specificity}.
+
+\bibitem{shiny}
+Shiny framework for r.
+\newblock \url{http://shiny.rstudio.com/}.
+
 \bibitem{gradientdirection2}
 Understanding the gradient.
 \newblock
@@ -95,6 +108,17 @@ J.~Friedman, T.~Hastie, and R.~Tibshirani.
 M.~Goel, P.~Khanna, and J.~Kishore.
 \newblock Understanding survival analysis: Kaplan-meier estimate.
 \newblock {\em International journal of Ayurveda research}, 1(4):274, 2010.
+
+\bibitem{hajian2013receiver}
+K.~Hajian-Tilaki.
+\newblock Receiver operating characteristic (roc) curve analysis for medical
+  diagnostic test evaluation.
+\newblock {\em Caspian journal of internal medicine}, 4(2):627, 2013.
+
+\bibitem{glmnetvignette}
+P.~T. Hastie and J.~Qian.
+\newblock Glmnet vignette.
+\newblock \url{http://web.stanford.edu/~hastie/glmnet/glmnet_alpha.html}, 2014.
 
 \bibitem{medicalimaging}
 S.~Healthcare.
@@ -163,5 +187,11 @@ H.~Zou and T.~Hastie.
 \newblock Regularization and variable selection via the elastic net.
 \newblock {\em Journal of the Royal Statistical Society: Series B (Statistical
   Methodology)}, 67(2):301--320, 2005.
+
+\bibitem{zweig1993receiver}
+M.~H. Zweig and G.~Campbell.
+\newblock Receiver-operating characteristic (roc) plots: a fundamental
+  evaluation tool in clinical medicine.
+\newblock {\em Clinical chemistry}, 39(4):561--577, 1993.
 
 \end{thebibliography}

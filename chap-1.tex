@@ -10,6 +10,7 @@ In this chapter I will explain the concepts of generalized linear models\cite{ca
 When we think of classical linear models, we can imagine a set of numeric explanatory (or input) variables and a numerical dependent (or output) variable. By making a linear combination of the explanatory variables we attempt to estimate a value for the dependent variable. Depending on the type of dependent variable the linear method gets a different name. In the following sections I will outline several of them.
 
 \subsection{Linear Regression}
+\label{subsec:glm-linear-regression}
 The simplest version of a linear model is called linear regression\cite{caltechmachinelearning}\cite{wikilinearregression}. In this case the input variables are combined using a linear combination, and the result of this calculation is immediately used as the final estimate. Imagine we have a dataset of size N where each sample has M explanatory variables. Then we can write linear regression as:\\
 \begin{equation}
 \begin{split}
@@ -31,6 +32,7 @@ For the other linear methods we will define a function each time that is applied
 	\label{fig:glm-linear-regression}
 \end{figure}
 \subsection{Linear Classification}
+\label{subsec:glm-linear-classification}
 The next method is called linear classification\cite{caltechmachinelearning}\cite{wikiclassification}. The difference with linear regression is that we have a different type of output variable. In a classification task we want to predict a class from a list of potential classes. For instance, we could try to predict whether tomorrow will be a sunny day or not. Notice that there are only 2 possible outcomes: 'sunny' or 'not sunny' and we could represent these outcomes as 0 and 1 in our model. This form would be called binary classification because we have 2 possible classes. It is very easy to extend this method to multi-class classification.\\
 The computation in this method starts out exactly the same, combining the input variables using a linear combination. Next, we have to define a threshold to indicate which examples belong to one class or another. In the case of binary classification we would define 1 threshold, and if the result of the linear combination is higher than the threshold we would predict one class. If it is lower, we would predict the other class. The function used here would be called a sign function, which maps real values onto one of 2 possible outcomes. We could represent this computation with the following formula: 
 \begin{equation}
@@ -57,6 +59,7 @@ A schema for this computation is shown on figure \ref{fig:glm-linear-classificat
 	\label{fig:glm-linear-classification}
 \end{figure}
 \subsection{Logistic Regression}
+\label{subsec:glm-logistic-regression}
 The third method I want to present is called logistic regression\cite{caltechmachinelearning}\cite{wikilogistic}. In this case, the output variable we want to predict comes from a binomial distribution. This means that they are the result of a probabilistic event. An example would be tossing a coin and checking whether the result is heads or tails. While the outcome is binary (heads or tails) we know that there is an underlying probability for the coin to be heads or tails, and we would like to know this probability. \\
 The idea is still the same. We will make a linear combination of the input variables. However this time we will use a logistic function to produce our estimate. The logistic function is a function that maps real numbers onto the range $[0,1]$. This result can then be interpreted as an estimate for the probability. We could represent logistic regression mathematically as:
 \begin{equation}
@@ -201,7 +204,7 @@ Remember that bias is defined as the distance between the average (or best) hypo
 This observation does not have a mathematical proof, it is rather an observation from experience and reason. One good argument is the fact that noise is usually of high frequency. Meaning that distortions of our dataset (for instance measurement errors) will often be very scattered and random, while the underlying pattern that really makes up the data will be rather smooth. A similar argument can be made for the error due to bias, when we choose a hypothesis set that does not contain the target function, the error due to bias will be mostly random and of high frequency. Therefore if we want to reduce the impact of this noise in our final model, we should prefer models that are not able to fit these high frequencies exactly. Lastly we can remark that if we look at our current understanding of nature (let's say at a larger scale), systems almost always have smooth transitions. The most important laws of nature that we find are all written down in small, simple formulas. Nature doesn't work with instantaneous changes (high frequency), but rather it has smooth functions that govern the basic principle, and then it adds random noise and fluctuations on top of it. This principle is what we try to extrapolate here to machine learning.\\
 Thus, the choice we will make is that we will prefer simple models over complex ones by adding a constraint to the weights.
 \subsection{Regularization types}
-There are many kinds of constraints that we could add to the weights and, depending on the constraint we choose, the regularization gets a different name and it will have a different effect. One of the most famous regularizers is called ridge or weight-decay. The constraint for this regularizer is the following:
+There are many kinds of constraints that we could add to the weights and, depending on the constraint we choose, the regularization gets a different name and it will have a different effect. One of the most famous regularizers is called ridge or weight-decay\cite{friedman2010regularization}. The constraint for this regularizer is the following:
 $$
 \sum_{i=1}^{N}w_{i}^{2} \leq C
 $$
@@ -212,17 +215,42 @@ where
 \end{itemize}
 Using this regularizer will result in a preference for models with smaller weights. This keeps certain weights from getting out of control. This form of regularization is also often called the $L_{2}$ penalty. \\
 \label{insec:glm-lasso}
-Another popular regularizer is called the lasso penalty (or $L_{1}$ penalty). The constraint in this case is:
+Another popular regularizer is called the lasso penalty (or $L_{1}$ penalty)\cite{friedman2010regularization}. The constraint in this case is:
 $$
 \sum_{i=1}^{N}\lvert w_{i}\rvert \leq C
 $$
-In addition to keeping the weights small, this form of regularization also performs parameter selection. This means that instead of just keeping the weights small it will also prefer to make weights actually zero. This will cause the resulting model to have fewer parameters, but the parameters that do survive the penalty are sure to be very important. This regularizer is often used when there is a huge number of explanatory variables, and we wish to find only those that are really descriptive. Later in the thesis I will use datasets that contain gene expression information about cancer patients, these datasets often have thousands of explanatory variables and will provide a good example for using the lasso regularization. \\
+In addition to keeping the weights small, this form of regularization also performs parameter selection. This means that instead of just keeping the weights small it will also prefer to make weights actually zero for variables that don't contribute much to the model. This will cause the resulting model to have fewer parameters, but the parameters that do survive the penalty are sure to be very important. This regularizer is often used when there is a huge number of explanatory variables, and we wish to find only those that are really descriptive. Later in the thesis I will use datasets that contain gene expression information about cancer patients, these datasets often have thousands of explanatory variables and will provide a good example for using the lasso regularization (see section \ref{sec:evaluation-predictingsurvival}). \\
 The last form of regularizer I wish to demonstrate is called the elastic net penalty. This regularizer is simply a linear combination of the ridge and lasso penalties and provides a way of balancing the two. It has the following constraint:
 $$
 \alpha \sum_{i=1}^{N}w_{i}^{2} + (1-\alpha)\sum_{i=1}^{N}\lvert w_{i}\rvert \leq C
 $$
+To demonstrate the difference between the types of regularization, it is useful to look at a figure that plots the evolution of the weights as a function of the amount of regularization used. As explained in the next section (\ref{subsec:glm-lambda}), the amount of regularization used is called $\lambda$. Figure \ref{fig:glm-paths} shows the co\"effici\"ent paths respectively for ridge, lasso and elastic net regularization. These are the values of the co\"effici\"ents as a function of $\lambda$. The sample dataset in this case contained 18 explanatory variables. The ridge penalty selects all 18 variables in the model, while the lasso and elastic net penalties respectively select between 10-13 and 11-18 variables in their models, depending on the value of $\lambda$. This shows the variable selection of the lasso. Also notice how the y-axis dimension is different for the ridge regularization, showing the shrinkage of the weights.
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[scale=0.3]{images/ridge_coefficients_path}
+		\caption{Ridge ($\alpha=0$)}
+		\label{fig:glm-path-ridge}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[scale=0.3]{images/lasso_coefficients_path}
+		\caption{Lasso ($\alpha=1$)}
+		\label{fig:glm-path-lasso}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[scale=0.3]{images/elastic_coefficients_path}
+		\caption{Elastic net ($\alpha=0.5$)}
+		\label{fig:glm-path-elastic}
+	\end{subfigure}
+	\caption{Co\"effici\"ent paths as a function of $\lambda$ for different regularization types.}
+	\label{fig:glm-paths}
+\end{figure}
+
 \subsection{Lambda}
-Using a regularizer introduces a constraint, this means that we now have to deal with a constrained optimization problem which is much harder to solve than an unconstrained problem. Fortunately, through some clever mathematics it is possible to convert the constrained minimization problem to an unconstrained one by incorporating the regularization constraint in the formula for the error itself. //TODO ADD APPENDIX WITH FULL DERIVATION OR NOT ... The formula for the error with regularization then becomes:
+\label{subsec:glm-lambda}
+Using a regularizer introduces a constraint, this means that we now have to deal with a constrained optimization problem which is much harder to solve than an unconstrained problem. Fortunately, through some clever mathematics it is possible to convert the constrained minimization problem to an unconstrained one by incorporating the regularization constraint in the formula for the error itself\cite{caltechmachinelearning}. The formula for the error with regularization then becomes:
 $$
 E_{in}(w) = \frac{1}{N}\sum_{n=1}^{N}e(x_{n},y_{n},w)+\lambda R(w)
 $$

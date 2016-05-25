@@ -16,22 +16,23 @@
 \addvspace {10pt}
 \addvspace {10pt}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Schema for linear regression}}{4}{figure.2.1}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Schema for linear classification}}{5}{figure.2.2}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Schema for logistic regression}}{6}{figure.2.3}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Schema for linear regression\relax }}{4}{figure.caption.10}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Schema for linear classification\relax }}{5}{figure.caption.11}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Schema for logistic regression\relax }}{6}{figure.caption.12}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Co\"effici\"ent paths as a function of $\lambda $ for different regularization types.\relax }}{14}{figure.caption.19}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Example Kaplan-Meier survival curve. Red and green lines represent survival probabilities for treated and untreated patient-groups respectively.}}{19}{figure.3.1}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Example Kaplan-Meier survival curve. Red and green lines represent survival probabilities for treated and untreated patient-groups respectively.\relax }}{21}{figure.caption.21}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Scheme for early integration}}{25}{figure.4.1}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Scheme for late integration}}{26}{figure.4.2}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Scheme for intermediate integration}}{27}{figure.4.3}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Scheme for early integration\relax }}{27}{figure.caption.23}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Scheme for late integration\relax }}{28}{figure.caption.24}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Scheme for intermediate integration\relax }}{29}{figure.caption.25}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Example ROC curve}}{33}{figure.5.1}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Example ROC curve and metrics\relax }}{34}{figure.caption.29}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {6.1}{\ignorespaces The input tab of the tool}}{38}{figure.6.1}
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Example input overview. The boxes on the left show explanatory variable dataset dimensions, the box on the right shows the possible dependent variables.}}{39}{figure.6.2}
-\contentsline {figure}{\numberline {6.3}{\ignorespaces An example model description showing the co\"effici\"ents for the variables in the model separated by their sign.}}{39}{figure.6.3}
-\contentsline {figure}{\numberline {6.4}{\ignorespaces An example interactive ROC curve. The slider on top allows the user to vary the threshold. The plot interactively adjusts itself to the chosen threshold.}}{40}{figure.6.4}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces The input tab of the tool\relax }}{40}{figure.caption.34}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Example input overview. The boxes on the left show explanatory variable dataset dimensions, the box on the right shows the possible dependent variables.\relax }}{41}{figure.caption.35}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces An example model description showing the co\"effici\"ents for the variables in the model separated by their sign.\relax }}{41}{figure.caption.37}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces An example interactive ROC curve. The slider on top allows the user to vary the threshold. The plot interactively adjusts itself to the chosen threshold.\relax }}{42}{figure.caption.38}
 \addvspace {10pt}
 \addvspace {10pt}
 \addvspace {10pt}
