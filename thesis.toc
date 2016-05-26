@@ -38,63 +38,63 @@
 \contentsline {subsubsection}{The tradeoff}{11}{section*.18}
 \contentsline {section}{\numberline {2.5}Regularization}{12}{section.2.5}
 \contentsline {subsection}{\numberline {2.5.1}Adding bias}{12}{subsection.2.5.1}
-\contentsline {subsection}{\numberline {2.5.2}Regularization types}{13}{subsection.2.5.2}
+\contentsline {subsection}{\numberline {2.5.2}Regularization types}{12}{subsection.2.5.2}
 \contentsline {subsection}{\numberline {2.5.3}Lambda}{14}{subsection.2.5.3}
 \contentsline {section}{\numberline {2.6}Validation}{15}{section.2.6}
 \contentsline {subsection}{\numberline {2.6.1}The sample size dilemma}{15}{subsection.2.6.1}
-\contentsline {subsection}{\numberline {2.6.2}Cross-validation}{16}{subsection.2.6.2}
+\contentsline {subsection}{\numberline {2.6.2}Cross-validation}{15}{subsection.2.6.2}
 \contentsline {section}{\numberline {2.7}Conclusion}{16}{section.2.7}
-\contentsline {chapter}{\chapternumberline {3}Cox proportional hazards models}{19}{chapter.3}
-\contentsline {section}{\numberline {3.1}Introduction}{19}{section.3.1}
-\contentsline {section}{\numberline {3.2}Survival analysis}{19}{section.3.2}
-\contentsline {section}{\numberline {3.3}Cox proportional hazards model}{20}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Proportional hazards condition}{20}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Using the hazard ratio}{21}{subsection.3.3.2}
-\contentsline {subsection}{\numberline {3.3.3}Kaplan-Meier survival curves}{21}{subsection.3.3.3}
-\contentsline {subsubsection}{Linking hazard to survival}{22}{section*.22}
-\contentsline {section}{\numberline {3.4}Conclusion}{23}{section.3.4}
-\contentsline {chapter}{\chapternumberline {4}Integration Strategies}{25}{chapter.4}
-\contentsline {section}{\numberline {4.1}Introduction}{25}{section.4.1}
-\contentsline {section}{\numberline {4.2}Description of the data}{25}{section.4.2}
-\contentsline {section}{\numberline {4.3}Early integration}{26}{section.4.3}
-\contentsline {section}{\numberline {4.4}Late integration}{26}{section.4.4}
-\contentsline {section}{\numberline {4.5}Intermediate integration}{27}{section.4.5}
-\contentsline {section}{\numberline {4.6}Conclusion}{28}{section.4.6}
-\contentsline {chapter}{\chapternumberline {5}Evaluation of integration strategies}{31}{chapter.5}
-\contentsline {section}{\numberline {5.1}Introduction}{31}{section.5.1}
-\contentsline {section}{\numberline {5.2}Evaluating a logistic regression model}{31}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Predictions using validation}{31}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Metrics}{32}{subsection.5.2.2}
-\contentsline {subsubsection}{Sensitivity}{32}{section*.26}
-\contentsline {subsubsection}{Specificity}{33}{section*.27}
-\contentsline {subsubsection}{The tradeoff}{33}{section*.28}
-\contentsline {subsection}{\numberline {5.2.3}Receiver Operating Characteristic curve}{33}{subsection.5.2.3}
-\contentsline {section}{\numberline {5.3}Predicting stage outcome}{35}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}Case details}{35}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}The results}{35}{subsection.5.3.2}
-\contentsline {section}{\numberline {5.4}Evaluating a cox proportional hazards model}{37}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}Kaplan-Meier survival curves}{37}{subsection.5.4.1}
-\contentsline {section}{\numberline {5.5}Predicting survival outcomes}{38}{section.5.5}
-\contentsline {section}{\numberline {5.6}Conclusion}{38}{section.5.6}
-\contentsline {chapter}{\chapternumberline {6}Tool for automated evaluation}{39}{chapter.6}
-\contentsline {section}{\numberline {6.1}Introduction}{39}{section.6.1}
-\contentsline {section}{\numberline {6.2}Technologies}{39}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}The R language}{39}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Web interface}{39}{subsection.6.2.2}
-\contentsline {section}{\numberline {6.3}Demonstration}{40}{section.6.3}
-\contentsline {subsubsection}{The input tab}{40}{section*.33}
-\contentsline {subsubsection}{The individual models tab}{40}{section*.36}
-\contentsline {subsubsection}{The integration tab}{41}{section*.39}
-\contentsline {section}{\numberline {6.4}Conclusion}{41}{section.6.4}
-\contentsline {chapter}{\chapternumberline {7}Conclusion}{43}{chapter.7}
-\contentsline {appendix}{\chapternumberline {A}Cross-entropy error derivation}{47}{appendix.A}
-\contentsline {section}{\numberline {A.1}The setting of logistic regression}{47}{section.A.1}
-\contentsline {section}{\numberline {A.2}Likelihood}{47}{section.A.2}
-\contentsline {section}{\numberline {A.3}Lorem 51}{48}{section.A.3}
-\contentsline {appendix}{\chapternumberline {B}The Last Appendix}{49}{appendix.B}
-\contentsline {section}{\numberline {B.1}Lorem 20-24}{49}{section.B.1}
-\contentsline {section}{\numberline {B.2}Lorem 25-27}{50}{section.B.2}
-\contentsline {chapter}{Bibliography}{51}{section*.41}
+\contentsline {chapter}{\chapternumberline {3}Cox proportional hazards models}{17}{chapter.3}
+\contentsline {section}{\numberline {3.1}Introduction}{17}{section.3.1}
+\contentsline {section}{\numberline {3.2}Survival analysis}{17}{section.3.2}
+\contentsline {section}{\numberline {3.3}Cox proportional hazards model}{18}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Proportional hazards condition}{18}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Using the hazard ratio}{19}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Kaplan-Meier survival curves}{19}{subsection.3.3.3}
+\contentsline {subsubsection}{Linking hazard to survival}{20}{section*.22}
+\contentsline {section}{\numberline {3.4}Conclusion}{21}{section.3.4}
+\contentsline {chapter}{\chapternumberline {4}Integration Strategies}{23}{chapter.4}
+\contentsline {section}{\numberline {4.1}Introduction}{23}{section.4.1}
+\contentsline {section}{\numberline {4.2}Description of the data}{23}{section.4.2}
+\contentsline {section}{\numberline {4.3}Early integration}{24}{section.4.3}
+\contentsline {section}{\numberline {4.4}Late integration}{24}{section.4.4}
+\contentsline {section}{\numberline {4.5}Intermediate integration}{25}{section.4.5}
+\contentsline {section}{\numberline {4.6}Conclusion}{26}{section.4.6}
+\contentsline {chapter}{\chapternumberline {5}Evaluation of integration strategies}{29}{chapter.5}
+\contentsline {section}{\numberline {5.1}Introduction}{29}{section.5.1}
+\contentsline {section}{\numberline {5.2}Evaluating a logistic regression model}{29}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Predictions using validation}{29}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Metrics}{30}{subsection.5.2.2}
+\contentsline {subsubsection}{Sensitivity}{30}{section*.26}
+\contentsline {subsubsection}{Specificity}{31}{section*.27}
+\contentsline {subsubsection}{The tradeoff}{31}{section*.28}
+\contentsline {subsection}{\numberline {5.2.3}Receiver Operating Characteristic curve}{31}{subsection.5.2.3}
+\contentsline {section}{\numberline {5.3}Predicting stage outcome}{33}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Case details}{33}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}The results}{33}{subsection.5.3.2}
+\contentsline {section}{\numberline {5.4}Evaluating a cox proportional hazards model}{35}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Kaplan-Meier survival curves}{35}{subsection.5.4.1}
+\contentsline {section}{\numberline {5.5}Predicting survival outcomes}{36}{section.5.5}
+\contentsline {section}{\numberline {5.6}Conclusion}{36}{section.5.6}
+\contentsline {chapter}{\chapternumberline {6}Tool for automated evaluation}{37}{chapter.6}
+\contentsline {section}{\numberline {6.1}Introduction}{37}{section.6.1}
+\contentsline {section}{\numberline {6.2}Technologies}{37}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}The R language}{37}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Web interface}{37}{subsection.6.2.2}
+\contentsline {section}{\numberline {6.3}Demonstration}{38}{section.6.3}
+\contentsline {subsubsection}{The input tab}{38}{section*.33}
+\contentsline {subsubsection}{The individual models tab}{38}{section*.36}
+\contentsline {subsubsection}{The integration tab}{39}{section*.39}
+\contentsline {section}{\numberline {6.4}Conclusion}{39}{section.6.4}
+\contentsline {chapter}{\chapternumberline {7}Conclusion}{41}{chapter.7}
+\contentsline {appendix}{\chapternumberline {A}Cross-entropy error derivation}{45}{appendix.A}
+\contentsline {section}{\numberline {A.1}The setting of logistic regression}{45}{section.A.1}
+\contentsline {section}{\numberline {A.2}Likelihood}{45}{section.A.2}
+\contentsline {section}{\numberline {A.3}Lorem 51}{46}{section.A.3}
+\contentsline {appendix}{\chapternumberline {B}The Last Appendix}{47}{appendix.B}
+\contentsline {section}{\numberline {B.1}Lorem 20-24}{47}{section.B.1}
+\contentsline {section}{\numberline {B.2}Lorem 25-27}{48}{section.B.2}
+\contentsline {chapter}{Bibliography}{49}{section*.41}
 \select@language {dutch}
 \select@language {english}
 \select@language {dutch}
