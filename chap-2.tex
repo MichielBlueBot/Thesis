@@ -3,7 +3,7 @@
 
 \section{Introduction}
 \label{sec:cox-introduction}
-In this chapter I will explain the cox proportional hazards model\cite{simon2011regularization}\cite{tibshirani1997lasso}\cite{wikicox}. This is a model that is used in survival analysis. The first section will explain what survival analysis means and how it is different from the generalized linear models. Next I will define what the proportional hazards assumption is and lastly I will show kaplan-meier survival curves and how we can compute them from hazard functions.
+This chapter explains the cox proportional hazards model\cite{simon2011regularization}\cite{tibshirani1997lasso}\cite{wikicox}. This is a model that is used in survival analysis. The first section explains what survival analysis means and how it is different from the generalized linear models. Next we will define what the proportional hazards assumption is and lastly we will show kaplan-meier survival curves and how we can compute them from hazard functions.
 
 \section{Survival analysis}
 \label{sec:cox-survival-analysis}
@@ -43,7 +43,7 @@ where
 	\item $\lambda_{i}(t)$ is the hazard for patient i at time t.
 	\item $\lambda_{0}(t)$ is the baseline hazard at time t.
 	\item $X_{i1} ... X_{iN}$ are the values of the explanatory variables for patient i.
-	\item $\beta_{1} ... \beta_{N}$ are the values of the co\"effici\"ents for each explanatory variable.
+	\item $\beta_{1} ... \beta_{N}$ are the values of the coefficients for each explanatory variable.
 \end{itemize}
 Now, let's look at relative risks between two patients:
 \begin{equation}
@@ -53,16 +53,16 @@ Now, let's look at relative risks between two patients:
 = e^{(X_{i1}-X_{j1})\beta_{1} + ... + (X_{iN}-X_{jN})\beta_{N}}
 \end{split}
 \end{equation}
-This quantity is called the hazard ratio. Notice that this ratio does not depend on the time. This means that if at the start of the study a patient has twice the risk of the event occurring compared to another patient, it will have twice the risk at any other time aswell. It's risk remains proportional, independent of time. \\ \\
+This quantity is called the hazard ratio. Notice that this ratio does not depend on time. This means that if at the start of the study a patient has twice the risk of the event occurring compared to another patient, it will have twice the risk at any other time aswell. It's risk remains proportional, independent of time. \\ \\
 We can also compute the effect on the hazard for a unit increase in an explanatory variable $X_{j}$. The subscripts i to indicate the patients have been omitted since this is independent of a specific patient. The hazard ratio then becomes:
 \begin{equation}
 \begin{split}
 \frac{\lambda(t|X_{j}+1)}{\lambda(t|X_{j})} = e^{(X_{j}+1-X_{j})\beta_{j}} = e^{\beta_{j}}
 \end{split}
 \end{equation}
-It is directly given by the exponential of the co\"effici\"ent for the explanatory variable. This reflects the proportional hazards assumption that hazard ratios do not depend on time and that explanatory variables have an exponential effect on the hazard.
+It is directly given by the exponential of the coefficient for the explanatory variable. This reflects the proportional hazards assumption that hazard ratios do not depend on time and that explanatory variables have an exponential effect on the hazard.
 \subsection{Using the hazard ratio}
-The proportional hazards assumption allows us to compute relative risks or hazard ratios without knowing the actual baseline hazard function. Knowing just relative ratios can be very useful however. Imagine the following scenario: we want to test if a certain drug increases the survivability of patients with a specific disease. We randomly give half of the patients the actual drug, the other half receives a placebo (or nothing at all). Performing a survival analysis using a cox model then allows us to compute the ratio of the hazards for the two groups. The co\"effici\"ent for the explanatory variable that indicates which patients received the drug and which did not then tells us the effect of the drug on the hazard. We could then make a statement such as: "Taking the drug tends to half the risk of the event occurring (at any time)." This is obviously a useful result to support further research or development for the drug.
+The proportional hazards assumption allows us to compute relative risks or hazard ratios without knowing the actual baseline hazard function. Knowing just relative ratios can be very useful however. Imagine the following scenario: we want to test if a certain drug increases the survivability of patients with a specific disease. We randomly give half of the patients the actual drug, the other half receives a placebo (or nothing at all). Performing a survival analysis using a cox model then allows us to compute the ratio of the hazards for the two groups. The coefficient for the explanatory variable that indicates which patients received the drug and which did not then tells us the effect of the drug on the hazard. We could then make a statement such as: "Taking the drug tends to half the risk of the event occurring (at any time)." This is obviously a useful result to support further research or development for the drug.
 
 \subsection{Kaplan-Meier survival curves}
 Kaplan-Meier survival curves\cite{goel2010understanding} are often used in survival analysis. These curves show the probability of surviving up to any point t. It is thus a declining curve starting from 1 at $t=0$. An example curve is shown on figure \ref{fig:cox-example-kaplan-meier}.
@@ -104,17 +104,17 @@ this is really just the definition of hazard: the risk of the event happening at
 &= -\frac{S'(t)}{S(t)}
 \end{split}
 \end{equation}
-This result makes sense, let me explain it in a more intuitive way. Let's assume the event we are talking about is dying. The hazard function then tells me what the risk is of me dying at time $t$. Equation \ref{eq:cox-hazard} tells me that this is equal to $-\frac{S'(t)}{S(t)}$. There are three parts to explain here:
+Let's look at this result in an intuitive way. Assume the event we are talking about is dying. The hazard function then tells me what the risk is of dying at time $t$. Equation \ref{eq:cox-hazard} tells us that this is equal to $-\frac{S'(t)}{S(t)}$. There are three parts to explain here:
 \begin{itemize}
-	\item $\frac{1}{S(t)}$: The first thing I have to do is survive up to time $t$. Otherwise it makes no sense to ask what the risk of dying is at time $t$. The survival function tells me how probable it is to survive up to time $t$ so dividing by this quantity exactly gives me what I need. If $S(t)$ is large, then this means many people survive up to time $t$ and so the risk is low. If $S(t)$ is small then few people actually survive up to time $t$ and thus the risk of having to survive up to this point gets bigger.
-	\item $S'(t)$: Now that we have survived up to time $t$, we need to calculate the risk of dying at this point in time. Remember that the survival curve declines whenever people die at certain points in time. The slope of this function therefore tells me the risk of dying. If $S'(t)$ is very large, it means that the survival curve declines rapidly at this point in time, and thus many people die here. The risk of dying thus becomes large.
-	\item The hazard is supposed to be a positive quantity. Since the survival function is a strictly declining curve (people usually don't resurrect), $S'(t)$ is negative. Therefore we need the minus sign to end up with a positive result.
+	\item $\frac{1}{S(t)}$: The first thing we have to do is survive up to time $t$. Otherwise it makes no sense to ask what the risk of dying at time $t$ is. The survival function tells us how probable it is to survive up to time $t$ so dividing by this quantity exactly provides what we need. If $S(t)$ is large, then this means many people survive up to time $t$ and so the risk is low. If $S(t)$ is small then few people actually survive up to time $t$ and thus the risk of having to survive up to this point gets bigger.
+	\item $S'(t)$: Now that we have survived up to time $t$, we need to calculate the risk of dying at this point in time. Remember that the survival curve declines whenever people die at certain points in time. The slope of this function therefore tells us how many people die at that time $t$. If $S'(t)$ is very large, it means that many people die here. The risk of dying thus becomes large.
+	\item The hazard is supposed to be a positive quantity. Since the survival function is a strictly declining curve (people usually don't resurrect from the dead), $S'(t)$ is negative. Therefore we need the minus sign to end up with a positive result.
 \end{itemize}
-Next we can observe that
+Next, using the chain rule, we can observe that
 \begin{equation}
 \begin{split}
 \label{eq:cox-survival}
-\frac{\partial log(S(t))}{\partial t} = \frac{S'(t)}{S(t)} = -\lambda(t)
+\frac{\partial log(S(t))}{\partial t} = \frac{S'(t)}{S(t)}
 \end{split}
 \end{equation}
 and thus combining equations \ref{eq:cox-hazard} and \ref{eq:cox-survival}:

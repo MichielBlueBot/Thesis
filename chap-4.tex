@@ -122,12 +122,10 @@ I have also included an overview of the model parameters that were selected (on 
 
 \section{Evaluating a cox proportional hazards model}
 \label{sec:evaluation-coxph}
-//TODO THIS WHOLE SECTION MIGHT BE INCORRECT
-The evaluation of a cox proportional hazards model is differnt compared to logistic regression. This is because, as we have seen in chapter \ref{cha:cox}, we cannot directly compute survival times from a cox proportional hazards model and compare them to the real survival times. However we can still evaluate the models based on the survival curves they produce and we can compute some statistics to evaluate the significance of the models.
+The evaluation of a cox proportional hazards model is different compared to logistic regression. This is because, as we have seen in chapter \ref{cha:cox}, we normally don't directly compute survival times from a cox proportional hazards model. This means we cannot compare them to the real survival times. However we can still evaluate the models based on statistics that indicate significance.
 
 \subsection{Kaplan-Meier survival curves}
-//TODO THIS WHOLE SECTION MIGHT BE INCORRECT
-We cannot predict survival times for each individual patient, but we can compute some other sort of prediction value. Recall the hazard ratio from chapter \ref{cha:cox} section \ref{sec:cox-proportional-hazards-model}. If we have a model computed ($\beta's$ defined) and we have a test sample (with values $X_{i}$), we could compute the following prediction quantity:
+Recall the hazard ratio from section \ref{sec:cox-proportional-hazards-model}. If we have a model computed ($\beta's$ defined) and we have a test sample (with values $X_{i}$ for the explanatory variables), we could compute the following prediction quantity:
 \begin{equation}
 \begin{split}
 prediction = exp(\sum_{i=0}^{N}X_{i}\beta_{i})
@@ -137,10 +135,9 @@ where
 \begin{itemize}
 	\item $exp(x)$ is the exponential of x
 	\item $X_{i}$ are the values for the explanatory variables
-	\item $\beta_{i}$ are the model co\"effici\"ents
+	\item $\beta_{i}$ are the model coefficients
 \end{itemize}
-//TODO THIS WHOLE SECTION MIGHT BE INCORRECT
- Remember that this quantity tells us how the explanatory variables influence the hazard. We can also view this as the hazard ratio between the test sample and an imaginary patient that has the value $0$ for all explanatory variables, the baseline patient (subscript $b$).
+ We can view this as the hazard ratio between the test sample and an imaginary patient that has the value $0$ for all explanatory variables which I will call the baseline patient (subscript $b$):
  \begin{equation}
  \begin{split}
  \frac{\lambda_{i}(t)}{\lambda_{b}(t)} 
@@ -148,10 +145,31 @@ where
  = e^{(X_{i1}-0)\beta_{1} + ... + (X_{iN}-0)\beta_{N}} = exp(\sum_{j=0}^{N}X_{ij}\beta_{j})
  \end{split}
  \end{equation}
- //TODO THIS WHOLE SECTION MIGHT BE INCORRECT
- What this quantity tells us is whether the risk of our test patient is higher or lower than the risk of the baseline patient (patient with all explanatory variables equal to $0$). This does not tell us anything in the absolute sense, but we can compare this prediction value in a relative way between patients. \\ \\
- //TODO THIS WHOLE SECTION MIGHT BE INCORRECT
- We could, as before using cross validation, compute this prediction value for all patients in our dataset. We can then compute the mean prediction value and split the dataset into two groups: respectively those with a prediction higher/lower than the mean. We can construct a kaplan-meier plot with a survival curve for each group separately. If the group with higher predictive values is clearly separable from the other group, this is an indication that there is some information/predictive value in the explanatory variables that we have used.
+ What this quantity tells us is whether the risk of our test patient is higher or lower than the risk of the baseline patient. This does not tell us anything in the absolute sense about survival times, but we can compare this prediction value in a relative way between patients. \\ \\
+ We could, as we did in section \ref{sec:evaluation-logisticregression}, compute this prediction value for all patients in our dataset using cross-validation. We now want to test the predictive value of these predictions. To do this we construct a new survival model, but this time there is only one explanatory variable and that is our vector of predictions. If we can show that this variable is significant in predicting the survival, then our original model is also significant. The significance test we will use is called the Wald Test.
+ 
+ \subsection{The Wald test}
+The Wald test\cite{wikiwald} is a statistical test that can be used to test the significance of an estimated parameter. The Wald test can be used on a single parameter or on a vector of parameters at once. In the case of one parameter $\beta$ the formula for the Wald test is:
+\begin{equation}
+\begin{split}
+\frac{(\hat{\beta}-\beta_{0})^{2}}{var(\hat{\beta})} \sim \tilde{\chi}^{2}_{1}
+\end{split}
+\end{equation}
+where
+\begin{itemize}
+	\item $\hat{\beta}$ is the maximum likelihood estimate we calculated and want to test
+	\item $\beta_{0}$ is the value of $\beta$ if the null-hypothesis is true
+	\item $var(\beta)$ is the variance of $\beta$
+	\item $\tilde{\chi}^{2}_{1}$ is the chi-squared distribution with one degree of freedom
+\end{itemize}
+When we are testing the significance of a coefficient in our survival model we have to compare it against a so called null-hypothesis. In this case the null-hypothesis is the model where all coefficients are equal to zero. The values for $\hat{\beta}$ and $var(\beta)$ are defined by the model. Intuitively the Wald test computes the distance between the obtained value for the parameter and the parameter value for the null-hypothesis, relative to the variance of the parameter. If the variance is large, then we are unsure about the value for the parameter that we calculated and it is harder to reject the null-hypothesis. An example is demonstrated on figure \ref{fig:evaluation-wald-test}. \\ \\
+\begin{figure}
+	\centering
+	\includegraphics[scale=.7]{images/wald_test}
+	\caption{Example Wald test variance visualisation. Both curves give the same maximum likelihood estimate $\hat{\beta}$. The red curve however has low variance, providing good evidence to reject the null-hypothesis with value $\beta_{0}$. The blue curve has high variance, in this case $\hat{\beta}$ does not significantly differ from $\beta_{0}$ and we cannot reject the null hypothesis.}
+	\label{fig:evaluation-wald-test}
+\end{figure}
+The Wald test can tell us something about the significance of the predictions vector and therefore about the predictive ability of our initial model. We can go one step further and compute a p-value\cite{pvalue1}\cite{wikip} for the wald-test statistic. This p-value contains the exact same information as the wald-test statistic, but it is a very well known quantity statistics so I will add it for completeness.
 \section{Predicting survival outcomes}
 \label{sec:evaluation-predictingsurvival}
 

@@ -21,6 +21,9 @@ Gradient descent.
 Gradient descent variants.
 \newblock \url{http://sebastianruder.com/optimizing-gradient-descent/}.
 
+\bibitem{pvalue1}
+Hypothesis testing (p-value approach).
+
 \bibitem{wikiclassification}
 Linear classification.
 \newblock \url{https://en.wikipedia.org/wiki/Linear_classifier}.
@@ -37,6 +40,10 @@ Logistic regression.
 Logistic regression error surface proof of convexity.
 \newblock
   \url{http://mathgotchas.blogspot.be/2011/10/why-is-error-function-minimized-in.html}.
+
+\bibitem{wikip}
+P-value.
+\newblock \url{https://en.wikipedia.org/wiki/P-value}.
 
 \bibitem{wikicox}
 Proportional hazards model.
@@ -59,6 +66,10 @@ Shiny framework for r.
 Understanding the gradient.
 \newblock
   \url{https://betterexplained.com/articles/vector-calculus-understanding-the-gradient/}.
+
+\bibitem{wikiwald}
+Wald test.
+\newblock \url{https://en.wikipedia.org/wiki/Wald_test/}.
 
 \bibitem{caltechmachinelearning}
 P.~Y. Abu-Mostafa.

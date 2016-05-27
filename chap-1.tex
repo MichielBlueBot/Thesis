@@ -20,7 +20,7 @@ y_{n} = \sum_{i=1}^{M}w_{i}x_{in} = \bm{w^{T}x}   \qquad for\ n=1..N
 where
 \begin{itemize}
 	\item $y_{n}$ is the output for sample $n$
-	\item $w_{i}$ is the model parameter (co\"effici\"ent) for explanatory variable $i$
+	\item $w_{i}$ is the model parameter (coefficient) for explanatory variable $i$
 	\item $x_{in}$ is the value for explanatory variable $i$ for sample $n$
 	\item $\bm{w^{T}x}$ is the vector notation for the inner product of $\bm{w}$ and $\bm{x}$
 \end{itemize}
@@ -70,7 +70,7 @@ y_{n} = \theta(\sum_{i=1}^{M}w_{i}x_{in})= \theta(\bm{w^{T}x}) \qquad for\ n=1..
 where
 \begin{itemize}
 	\item $y_{n}$ is the output for sample $n$
-	\item $w_{i}$ is the model parameter (co\"effici\"ent) for explanatory variable $i$
+	\item $w_{i}$ is the model parameter (coefficient) for explanatory variable $i$
 	\item $x_{in}$ is the value for explanatory variable $i$ for sample $n$
 	\item $\bm{w^{T}x}$ is the vector notation for the inner product of $\bm{w}$ and $\bm{x}$
 	\item $\theta(x)$ is a logistic function, also called a sigmoid function. An example sigmoid function is $\frac{e^{x}}{1+e^{x}}$
@@ -223,7 +223,7 @@ The last form of regularizer I wish to demonstrate is called the elastic net pen
 $$
 \alpha \sum_{i=1}^{N}w_{i}^{2} + (1-\alpha)\sum_{i=1}^{N}\lvert w_{i}\rvert \leq C
 $$
-To demonstrate the difference between the types of regularization, it is useful to look at a figure that plots the evolution of the weights as a function of the amount of regularization used. As explained in the next section (\ref{subsec:glm-lambda}), the amount of regularization used is called $\lambda$. Figure \ref{fig:glm-paths} shows the co\"effici\"ent paths respectively for ridge, lasso and elastic net regularization. These are the values of the co\"effici\"ents as a function of $\lambda$. The sample dataset in this case contained 18 explanatory variables. The ridge penalty selects all 18 variables in the model, while the lasso and elastic net penalties respectively select between 10-13 and 11-18 variables in their models, depending on the value of $\lambda$. This shows the variable selection of the lasso. Also notice how the y-axis dimension is different for the ridge regularization, showing the shrinkage of the weights.
+To demonstrate the difference between the types of regularization, it is useful to look at a figure that plots the evolution of the weights as a function of the amount of regularization used. As explained in the next section (\ref{subsec:glm-lambda}), the amount of regularization used is called $\lambda$. Figure \ref{fig:glm-paths} shows the coefficient paths respectively for ridge, lasso and elastic net regularization. These are the values of the coefficients as a function of $\lambda$. The sample dataset in this case contained 18 explanatory variables. The ridge penalty selects all 18 variables in the model, while the lasso and elastic net penalties respectively select between 10-13 and 11-18 variables in their models, depending on the value of $\lambda$. This shows the variable selection of the lasso. Also notice how the y-axis dimension is different for the ridge regularization, showing the shrinkage of the weights.
 \begin{figure}
 	\centering
 	\begin{subfigure}[b]{0.3\textwidth}
@@ -278,10 +278,11 @@ We can now make the following observations:
 \end{itemize}
 So now it is clear that we have a tradeoff to make. We would like K to be as large as possible so that we have a large amount of samples to train a model from. On the other hand we would like K to be as small as possible so that we have enough samples to estimate the out-of-sample error. The solution to this apparent contradiction will be cross-validation.
 \subsection{Cross-validation}
-Cross-validation\cite{caltechmachinelearning}\cite{kohavi1995study} is a technique that allows us to have plenty of samples left for training, while still getting a pretty good estimate for the out-of-sample error. The method is as follows: divide the dataset of $N$ samples into $K$ equal parts (often called folds). Each fold now has $N/K$ samples. Train a model on $K-1$ folds and use the remaining fold to estimate the out-of-sample error. Repeat this process $K$ times, one time for each of the $K$ folds, each time leaving out a different fold. In the end we have $K$ estimates of the out-of-sample error and we can average them to get a final result.\\ \\
+Cross-validation\cite{caltechmachinelearning}\cite{kohavi1995study} is a technique that allows us to have plenty of samples left for training, while still getting a pretty good estimate for the out-of-sample error. The method is as follows: divide the dataset of $N$ samples into $F$ equal parts (often called folds). Each fold now has $N/F$ samples. Train a model on $F-1$ folds and use the remaining fold to estimate the out-of-sample error. Repeat this process $F$ times, one time for each of the $F$ folds, each time leaving out a different fold. In the end we have $F$ estimates of the out-of-sample error and we can average them to get a final result.\\ \\
 Notice that we are really using all samples for validation and training, but never both at the same time. It feels a bit like cheating, but in practice this method works wonderfully. Validation is often used to determine parameters of the learning process, for instance the $\lambda$ parameter for regularization. We simply try several values for $\lambda$, compute the out-of-sample error using validation, and pick the $\lambda$ that gives the lowest error. Once we have decided this $\lambda$ we can then train a model on the full dataset of $N$ points and use the $\lambda$ we have just calculated to be optimal. \\ \\
-We have to remark however that when we use validation to calculate a value for $\lambda$ as described above, we are really using the validation to help train the model. In this case we can no longer make the statement that the validation samples are not used for training. This is called data pollution. We are using the same data to train training parameters aswell as training the model itself and it is obvious that this will give rise to additional correlations in the data. However in practice it is generally accepted that if you use this technique to decide on just a few learning parameters (often just $\lambda$), and you have a big enough dataset, the data pollution is minimal and the results and estimates you get are still reliable. \\ \\
-Cross-validation is not only used to estimate learning parameters. It can also be used to simply test the performance of the model. In this case the fold that is not used for training is usually not called a validation set, but rather a test set. Because samples in this set will be used to test the models performance. 
+We have to remark however that when we use validation to calculate a value for $\lambda$ as described above, we are really using the validation to help train the model. In this case we can no longer make the statement that the validation samples are not used for training. This is called data pollution. We are using the same data to train training parameters aswell as training the model itself and it is obvious that this will give rise to additional correlations in the data. However in practice it is generally accepted that if you use this technique to decide on just a few learning parameters (often just $\lambda$), and you have a big enough dataset, the data pollution is minimal and the results and estimates you get are still reliable\cite{caltechmachinelearning}. \\ \\
+
+Cross-validation is not only used to estimate learning parameters. It can also be used to test the performance of the model. In this case the fold that is not used for training is usually not called a validation set, but rather a test set. Because samples in this set will be used to test the models performance. 
 
 \section{Conclusion}
 \label{sec:glm-conclusion}
