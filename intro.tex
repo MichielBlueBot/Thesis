@@ -1,14 +1,10 @@
 \chapter{Introduction}
 \label{cha:intro}
-The first contains a general introduction to the work. The goals are
-defined and the modus operandi is explained.
-
 \section{The need for data integration methods}
-
-\section{Goals}
-
-\section{Modus operandi}
-
+Current advancements in technology are leading to increasingly larger datasets\cite{collins2003vision}. This is a trend that is becoming very apparent in many different fields of research. One of these is the biomedical field. By larger datasets we mean that they are increasing both in the number of variables, aswell as in the number of samples that are available. The increase in variable count is mainly due to technology. We are reaching the point where we are able to sequence anyones DNA at a very low cost\cite{shendure2008next}. Keeping in mind that humans have around 20.000-25.000 proteine-coding genes, it is very common for current genome-datasets to have thousands of variables. Another example is that we have a range of highly advanced imaging instruments in almost every hospital\cite{black1993advances}\cite{medicalimaging}. These instruments provide high quality images from which we can extract even more feature variables to analyze. These are just two examples that show the growth of variable count. Next to the explosion of the number of variables, the number of samples that are available in databases grows aswell. This is because we are able to simply store much more data now than we could in the past, and on top of that, there are big efforts going on to make datasets open to the public to help researchers around the world work together\cite{stark2006biogrid}\cite{sandelin2004jaspar}\cite{tcga}\cite{smith2007obo}. All of these trends lead to huge amounts of data from different sources becoming available for analysis. This raises the question of how we have to combine (or integrate) data from these different sources to get the most information out of them.
+\section{Goals and modus operandi}
+The aim of this thesis is to develop several integration strategies and show that these strategies have an impact on the performance of predictive models. In order to do this we first must understand what a predictive model means and how we can compute one. The first chapter explains the first type of predictive models which are called generalized linear models. More specifically this thesis will focus on the logistic regression model. The next chapter explains the second type of predictive models which are called survival models. In this case we will take a closer look at cox proportional hazards models. Once we have established the notion of predictive modelling, we can define the different integration strategies. This is done in chapter three. In order to show that these integration strategies have an effect on the performance of the predictive models we will apply them to a real world example in two case studies, this is the content of chapter four. The first case study will use logistic regression to build predictive models using the various integration strategies, and the second case study will do the same for survival models. Once we have constructed all these models we will compare them using appropriate metrics. \\ \\
+In order to facilitate all of the previous work we designed an interactive application that streamlines this whole process. The application is capable of comparing the performance of predictive models using the various integration strategies that will be presented in chapter three. Not only did this allow for the computation of the two case studies, but it also provides a platform for future research. 
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "thesis"

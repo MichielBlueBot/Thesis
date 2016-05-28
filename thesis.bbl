@@ -23,6 +23,8 @@ Gradient descent variants.
 
 \bibitem{pvalue1}
 Hypothesis testing (p-value approach).
+\newblock \url{https://onlinecourses.science.psu.edu/statprogram/node/138};
+  school={PennState Eberly College of Science}.
 
 \bibitem{wikiclassification}
 Linear classification.
@@ -126,6 +128,13 @@ K.~Hajian-Tilaki.
   diagnostic test evaluation.
 \newblock {\em Caspian journal of internal medicine}, 4(2):627, 2013.
 
+\bibitem{harrell1996tutorial}
+F.~E. Harrell, K.~L. Lee, and D.~B. Mark.
+\newblock Tutorial in biostatistics multivariable prognostic models: issues in
+  developing models, evaluating assumptions and adequacy, and measuring and
+  reducing errors.
+\newblock {\em Statistics in medicine}, 15:361--387, 1996.
+
 \bibitem{glmnetvignette}
 P.~T. Hastie and J.~Qian.
 \newblock Glmnet vignette.
@@ -146,6 +155,12 @@ R.~Kohavi et~al.
 \newblock A study of cross-validation and bootstrap for accuracy estimation and
   model selection.
 \newblock In {\em Ijcai}, volume~14, pages 1137--1145, 1995.
+
+\bibitem{newson2010comparing}
+R.~B. Newson et~al.
+\newblock Comparing the predictive powers of survival models using harrell's c
+  or somers' d.
+\newblock {\em Stata Journal}, 10(3):339, 2010.
 
 \bibitem{survivalmodels}
 G.~Rodriguez.

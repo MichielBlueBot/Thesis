@@ -4,7 +4,7 @@
 
 \section{Introduction}
 \label{sec:evaluation-introduction}
-In this chapter I will show that different integration strategies can have better performance in different situations. I will do this by computing a model using each strategy and then comparing their performance using an appropriate metric.
+In this chapter we will show that different integration strategies can have better performance in different situations. We will do this by computing a model using each strategy and then comparing their performance using an appropriate metric.
 \section{Evaluating a logistic regression model}
 \label{sec:evaluation-logisticregression}
 The first evaluation will be made using a logistic regression model. This is a model computed for a dependent variable that has a binomial distribution. To evaluate such model, a common technique used is called Receiver-Operating-Characteristic analysis\cite{zweig1993receiver}\cite{hajian2013receiver}\cite{wikiroc} or ROC analysis for short. Remember that when we are using a logistic regression model to predict outcomes, we have to define a threshold to separate positive from negative cases. An ROC curve shows the performance of the model for any possible threshold, using metrics such as sensitivity and specificity. This gives a very good general impression of the performance of the model.
@@ -19,7 +19,7 @@ When we compare our models predictions with the real outcomes, there are four po
 	\item False Negative (FN): the model predicted negative and this is wrong (type 2 error)
 \end{itemize}
 Notice that this gives us more information than just registering whether we are right or wrong. It also tells us the type of mistake we made. This is a very important distinction because depending on the application there is usually a different cost attached to making type 1 or type 2 errors. And as we will see later on, there is a tradeoff between the two and we can tune our system to be more resistant towards making one type of error. \\ \\
-Now that we have established the notion of typed errors, there are several ways in which these numbers are combined to form evaluation metrics. Depending on your field of research these often get different names, I will use the ones applicable to the biomedical field.
+Now that we have established the notion of typed errors, there are several ways in which these numbers are combined to form evaluation metrics. Depending on your field of research these often get different names, we will use the ones applicable to the biomedical field.
 \subsubsection{Sensitivity}
 Sensitivity\cite{wikisensspec} measures the proportion of the real positive samples that our model correctly predicted as positive. It can be calculated with the following formula:
 $$
@@ -46,18 +46,18 @@ A specificity of 1 means that our model is capable of correctly identifying all 
 At this point it is obvious that we would like to maximize both sensitivity and specificity. Indeed, if both metrics are 1 then we make no errors and we have a perfect model. In practice however this is nearly impossible to achieve. It is easy to see that there is a tradeoff between the two metrics: when we try to increase the sensitivity, we will lose out on specificity and vice versa. \\ \\ 
 Consider the totally useless model that has a threshold lower than the smallest possible output. Meaning that this model will always predict a positive outcome regardless of the input. This model will have a sensitivity of 1, as we will get all positive cases correct. But it will also have a specificity of 0 because we get none of the negative cases correct. As we gradually increase the threshold we will cross critical values where some sample inputs will now produce an output below the threshold and thus be classified as negatives. If this happens to be a correct prediction our specificity will go up and sensitivity will remain unchanged. If it happens to be an error, specificity is unchanged and sensitivity will go down. The gradual increase of the threshold will thus cause sensitivity to drop and specificity to increase, up to the point where we reach the other extreme. The threshold is now bigger than the biggest possible output and the model always predicts negative regardless of the input. This threshold gives us a sensitivity of 0 and a specificity of 1.
 \subsection{Receiver Operating Characteristic curve}
-The ROC curve is a way of showing exactly this gradual increase of the threshold. The typical way of constructing a ROC curve is to put $(1-specificity)$ on the X-axis and $sensitivity$ on the Y axis. The values for these matrics are then plotted for values of the threshold ranging from the all-positive model to the all-negative model. An example ROC curve is shown on figure \ref{fig:evaluation-roc}. The metric I will use to evaluate the performance of different models is the area under the ROC curve (AUC). This metric works because it indicates how far we can optimize both sensitivity and specificity for different thresholds. It shows how close we can get to the upper left corner of the plot, which indicates the perfect model. The AUC metric ranges from 0 to 1, but in fact its value is only informative in between 0.5 and 1. Imagine a model that makes completely random predictions, this model will get a correct prediction 50\% of the time. If we would create a ROC curve for this model we would on average get a straight diagonal line from the bottom left to the top right. This line is therefore considered a lower bound for the performance of a model.
+The ROC curve is a way of showing exactly this gradual increase of the threshold. The typical way of constructing a ROC curve is to put $(1-specificity)$ on the X-axis and $sensitivity$ on the Y axis. The values for these matrics are then plotted for values of the threshold ranging from the all-positive model to the all-negative model. An example ROC curve is shown on figure \ref{fig:evaluation-roc}. The metric we will use to evaluate the performance of different models is the area under the ROC curve (AUC). This metric works because it indicates how far we can optimize both sensitivity and specificity for different thresholds. It shows how close we can get to the upper left corner of the plot, which indicates the perfect model. The AUC metric ranges from 0 to 1, but in fact its value is only informative in between 0.5 and 1. Imagine a model that makes completely random predictions, this model will get a correct prediction 50\% of the time. If we would create a ROC curve for this model we would on average get a straight diagonal line from the bottom left to the top right. This line is therefore considered a lower bound for the performance of a model.
 \begin{figure}
 	\centering
 	\includegraphics[scale=.9]{images/roc_curve}
 	\caption{Example ROC curve and metrics}
 	\label{fig:evaluation-roc}
 \end{figure}
-\section{Predicting stage outcome}
+\section{Case study 1: predicting stage outcome}
 \label{sec:evaluation-predictingstage}
 \subsection{Case details}
 \label{sec:evaluation-casedetails}
-The case I am showing here uses datasets created by the University Hospital of Leuven in a study on colorectal cancer patients. There are three source datasets that all contain imaging data: a dataset from MRI (Magnetic Resonance Imaging) scans, a dataset from DWI (Diffusion Weighted Magnetic Resonance Imaging) scans, and a dataset from PET (Positron Emission Tomography) scans. It is important to note that these scans were taken 3 times per patient at different periods in their treatment: one in the beginning, one roughly in the middle, and one near the end. This means that there is some temporal information present in the datasets, but this has been encoded in the explanatory variables. For instance: there is a variable in the MRI dataset that shows the size change of the tumour between the first and second scan. In this way we can treat this as a regular explanatory variable and we don't have to worry about the temporal aspect. \\ \\
+The case we are showing here uses datasets created by the University Hospital of Leuven in a study on colorectal cancer patients. There are three source datasets that all contain imaging data: a dataset from MRI (Magnetic Resonance Imaging) scans, a dataset from DWI (Diffusion Weighted Magnetic Resonance Imaging) scans, and a dataset from PET (Positron Emission Tomography) scans. It is important to note that these scans were taken 3 times per patient at different periods in their treatment: one in the beginning, one roughly in the middle, and one near the end. This means that there is some temporal information present in the datasets, but this has been encoded in the explanatory variables. For instance: there is a variable in the MRI dataset that shows the size change of the tumour between the first and second scan. In this way we can treat this as a regular explanatory variable and we don't have to worry about the temporal aspect. \\ \\
 The dependent variable is a binary outcome based on whether the patient got a pathologically complete response. For a more in-depth explanation on what this means see appendix //TODO EXPLAIN STAGE SYSTEM IN APPENDIX. For now, we can view a positive outcome as a patient who has recovered from the cancer, and a negative outcome as a patient that has not. The aim is now to build a model that receives the explanatory variables from the scans as input, and predicts the outcome for that patient.
 \subsection{The results}
 The resulting AUC's for the individual and integrated datasets are shown respectively in tables \ref{tab:evaluation-auc-individual} and \ref{tab:evaluation-auc-integrated}. We can clearly see that the model for the individual MRI dataset contains the most predictive information out of the three datasets. This however doesn't mean that the other datasets are useless. Indeed, when we integrate the other dataset with the MRI dataset we get even better performances. From table \ref{tab:evaluation-auc-integrated} we can see that in this case the intermediate integration method outperforms the other strategies regardless of which datasets are used. \\ \\
@@ -122,9 +122,9 @@ I have also included an overview of the model parameters that were selected (on 
 
 \section{Evaluating a cox proportional hazards model}
 \label{sec:evaluation-coxph}
-The evaluation of a cox proportional hazards model is different compared to logistic regression. This is because, as we have seen in chapter \ref{cha:cox}, we normally don't directly compute survival times from a cox proportional hazards model. This means we cannot compare them to the real survival times. However we can still evaluate the models based on statistics that indicate significance.
+The evaluation of a cox proportional hazards model is different compared to logistic regression\cite{newson2010comparing}\cite{harrell1996tutorial}. This is because, as we have seen in chapter \ref{cha:cox}, we normally don't directly compute survival times from a cox proportional hazards model. This means we cannot compare them to the real survival times. However we can still evaluate the models based on statistics that indicate significance.
 
-\subsection{Kaplan-Meier survival curves}
+\subsection{Predictions for survival models}
 Recall the hazard ratio from section \ref{sec:cox-proportional-hazards-model}. If we have a model computed ($\beta's$ defined) and we have a test sample (with values $X_{i}$ for the explanatory variables), we could compute the following prediction quantity:
 \begin{equation}
 \begin{split}
@@ -137,7 +137,7 @@ where
 	\item $X_{i}$ are the values for the explanatory variables
 	\item $\beta_{i}$ are the model coefficients
 \end{itemize}
- We can view this as the hazard ratio between the test sample and an imaginary patient that has the value $0$ for all explanatory variables which I will call the baseline patient (subscript $b$):
+ We can view this as the hazard ratio between the test sample and an imaginary patient that has the value $0$ for all explanatory variables which we will call the baseline patient (subscript $b$):
  \begin{equation}
  \begin{split}
  \frac{\lambda_{i}(t)}{\lambda_{b}(t)} 
@@ -162,15 +162,15 @@ where
 	\item $var(\beta)$ is the variance of $\beta$
 	\item $\tilde{\chi}^{2}_{1}$ is the chi-squared distribution with one degree of freedom
 \end{itemize}
-When we are testing the significance of a coefficient in our survival model we have to compare it against a so called null-hypothesis. In this case the null-hypothesis is the model where all coefficients are equal to zero. The values for $\hat{\beta}$ and $var(\beta)$ are defined by the model. Intuitively the Wald test computes the distance between the obtained value for the parameter and the parameter value for the null-hypothesis, relative to the variance of the parameter. If the variance is large, then we are unsure about the value for the parameter that we calculated and it is harder to reject the null-hypothesis. An example is demonstrated on figure \ref{fig:evaluation-wald-test}. \\ \\
+When we are testing the significance of a coefficient in our survival model we have to compare it against a so called null-hypothesis. In this case the null-hypothesis is the model where all coefficients are equal to zero. The values for $\hat{\beta}$ and $var(\beta)$ are defined by the model. Intuitively the Wald test computes the distance between the obtained value for the parameter and the parameter value under the null-hypothesis, relative to the variance of the parameter. If the variance is large, then we are unsure about the value for the parameter that we calculated and it is harder to reject the null-hypothesis. An example is demonstrated on figure \ref{fig:evaluation-wald-test}. \\ \\
 \begin{figure}
 	\centering
 	\includegraphics[scale=.7]{images/wald_test}
-	\caption{Example Wald test variance visualisation. Both curves give the same maximum likelihood estimate $\hat{\beta}$. The red curve however has low variance, providing good evidence to reject the null-hypothesis with value $\beta_{0}$. The blue curve has high variance, in this case $\hat{\beta}$ does not significantly differ from $\beta_{0}$ and we cannot reject the null hypothesis.}
+	\caption{Example Wald test variance visualisation. Both curves give the same maximum likelihood estimate $\hat{\beta}$. The red curve however has low variance, providing good evidence to reject the null-hypothesis with value $\beta_{0}$. The blue curve has high variance, in this case $\hat{\beta}$ does not significantly differ from $\beta_{0}$ and we cannot reject the null-hypothesis.}
 	\label{fig:evaluation-wald-test}
 \end{figure}
-The Wald test can tell us something about the significance of the predictions vector and therefore about the predictive ability of our initial model. We can go one step further and compute a p-value\cite{pvalue1}\cite{wikip} for the wald-test statistic. This p-value contains the exact same information as the wald-test statistic, but it is a very well known quantity statistics so I will add it for completeness.
-\section{Predicting survival outcomes}
+The Wald test can tell us something about the significance of the predictions vector and therefore about the predictive ability of our initial model. We can go one step further and compute a p-value\cite{pvalue1}\cite{wikip} for the wald-test statistic. This p-value contains the exact same information as the wald-test statistic, but it is a very well known quantity statistics so we will add it for completeness.
+\section{Case study 2: predicting survival outcomes}
 \label{sec:evaluation-predictingsurvival}
 
 \section{Conclusion}

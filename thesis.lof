@@ -28,7 +28,7 @@
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Scheme for intermediate integration\relax }}{27}{figure.caption.25}
 \addvspace {10pt}
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Example ROC curve and metrics\relax }}{32}{figure.caption.29}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Example Wald test variance visualisation. Both curves give the same maximum likelihood estimate $\mathaccentV {hat}05E{\beta }$. The red curve however has low variance, providing good evidence to reject the null-hypothesis with value $\beta _{0}$. The blue curve has high variance, in this case $\mathaccentV {hat}05E{\beta }$ does not significantly differ from $\beta _{0}$ and we cannot reject the null hypothesis.\relax }}{37}{figure.caption.33}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Example Wald test variance visualisation. Both curves give the same maximum likelihood estimate $\mathaccentV {hat}05E{\beta }$. The red curve however has low variance, providing good evidence to reject the null-hypothesis with value $\beta _{0}$. The blue curve has high variance, in this case $\mathaccentV {hat}05E{\beta }$ does not significantly differ from $\beta _{0}$ and we cannot reject the null-hypothesis.\relax }}{37}{figure.caption.33}
 \addvspace {10pt}
 \contentsline {figure}{\numberline {6.1}{\ignorespaces The input tab of the tool\relax }}{40}{figure.caption.35}
 \contentsline {figure}{\numberline {6.2}{\ignorespaces Example input overview. The boxes on the left show explanatory variable dataset dimensions, the box on the right shows the possible dependent variables.\relax }}{41}{figure.caption.36}

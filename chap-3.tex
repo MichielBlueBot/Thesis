@@ -3,7 +3,7 @@
 
 \section{Introduction}
 \label{sec:integration-introduction}
-Current advancements in technology are leading to increasingly larger datasets\cite{collins2003vision}. This is a trend that is becoming very apparent in many different fields of research. One of these is the biomedical field. Technology is about to reach the point where we are able to sequence anyones DNA at a very low cost\cite{shendure2008next}. Secondly, we have a range of highly advanced imaging instruments creating massive amounts of imaging features in almost every hospital\cite{black1993advances}\cite{medicalimaging}. And on top of that, there are big efforts going on to make datasets open to the public to help researchers around the world work together\cite{stark2006biogrid}\cite{sandelin2004jaspar}\cite{tcga}\cite{smith2007obo}. All of these trends lead to huge amounts of data from different sources becoming available for analysis. This raises the question of how we have to integrate data from these different sources to get the most information out of them. In this chapter I will first explain the general setup that we are dealing with, followed by three different integration strategies that show how we can combine datasets from different sources.
+Now that we have established a firm understanding of the methods we will use to create predictive models, it is time to turn our attention to the integration step. In this chapter we will present three different integration strategies. We will start by providing a description of the datasets that we will use to build our models, followed by the integration strategies that show how we can combine these datasets to create predictive models. The first strategy is called early integration and is based on concatenation of datasets. The second strategy is called late integration which is based on ensemble learning. The last strategy is intermediate integration which makes extensive use of the variable selection present in the lasso regularization(\ref{sec:glm-regularization}).
 
 \section{Description of the data}
 \label{sec:integration-description}
@@ -12,7 +12,7 @@ Now that we have our input data, we need a target function (dependent variable).
 
 \section{Early integration}
 \label{sec:integration-early}
-The first integration method is called early integration. It is also the easiest way of dealing with different data sources as we are simply going to concatenate the data for each sample. Figure \ref{fig:integration-early} shows the schema for early integration of data sources. A new large dataset is constructed by concatenating the individual datasets by matching sample. The number of explanatory variables is now equal to the sum of explanatory variables of all individual datasets. This integrated dataset can then be used to train a predictive model using techniques seen in previous chapters (\ref{cha:glm},\ref{cha:cox}).
+The first integration method is called early integration. In this method we are simply going to concatenate the data for each sample. Figure \ref{fig:integration-early} shows the schema for early integration of data sources. A new large dataset is constructed by concatenating the individual datasets by matching sample. The number of explanatory variables is now equal to the sum of explanatory variables of all individual datasets. This integrated dataset can then be used to train a predictive model using techniques seen in previous chapters (\ref{cha:glm},\ref{cha:cox}).
 \begin{figure}
 	\centering
 	\includegraphics[scale=1]{images/early_integration}
@@ -42,7 +42,7 @@ The intermediate integration can be seen as a two-step learning process. First w
 \end{figure}
 \section{Conclusion}
 \label{sec:integration-conclusion}
-In this chapter I have shown the issue of large and high-dimensional datasets that we are currently facing. I have presented three different strategies to deal with this issue. The early integration method is the na\"{i}ve method that simply concatenates the datasets together. The late integration method uses an analogous technique to ensemble learning in order to extract as much information as possible. Lastly, the intermediate integration technique introduces a two-step learning method that takes advantage of variable selection to reduce the dimensionality of the datasets.
+In this chapter we have shown the issue of large and high-dimensional datasets that we are currently facing. We have presented three different strategies to deal with this issue. The early integration method is the na\"{i}ve method that simply concatenates the datasets together. The late integration method uses an analogous technique to ensemble learning in order to extract as much information as possible. Lastly, the intermediate integration technique introduces a two-step learning method that takes advantage of variable selection to reduce the dimensionality of the datasets.
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "thesis"

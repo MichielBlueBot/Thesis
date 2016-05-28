@@ -3,14 +3,14 @@
 
 \section{Introduction}
 \label{sec:tool-introduction}
-In the previous chapter I have shown that different integration strategies do make a difference for the performance of the resulting model. In order to facilitate future research on this topic, I have developed a tool that allows anyone to very easily compute all the integrated models and compare them.
+In the previous chapter we have shown that different integration strategies do make a difference for the performance of the resulting model. In order to facilitate future research on this topic, we have developed a tool that allows anyone to very easily compute all the integrated models and compare them.
 \section{Technologies}
 \label{sec:tool-technologies}
-To develop this tool I needed a programming language that provided a lot of support for statistical algorithms, and I also wanted to create a very user-friendly interface to make an abstraction of the underlying machine learning methods.
+To develop this tool we needed a programming language that provided a lot of support for statistical algorithms, and we also wanted to create a very user-friendly interface to make an abstraction of the underlying machine learning methods.
 \subsection{The R language}
-The language I used to create the tool is R. R is a very popular language for statistical research as it provides many state-of-the-art algorithms in statistics. R has a huge repository with packages for all kinds of purposes. The package that I used to compute models is glmnet\cite{glmnetvignette}. It is developed by researchers at the Stanford University and provides very fast implementations to compute the generalized linear models explained in chapter \ref{cha:glm}. 
+The language we used to create the tool is R. R is a very popular language for statistical research as it provides many state-of-the-art algorithms in statistics. R has a huge repository with packages for all kinds of purposes. The package that we used to compute models is glmnet\cite{glmnetvignette}. It is developed by researchers at the Stanford University and provides very fast implementations to compute the generalized linear models explained in chapter \ref{cha:glm}. 
 \subsection{Web interface}
-I wanted to offer a very easy-to-use interface to the application. Therefore I chose to work with shiny\cite{shiny}. Shiny is a framework for R that allows you to create a web-based front-end (using html, css, javascript, ...) that can also run R code in the back-end. This allows the creating of very interactive web applications that can run the powerful statistical analyses available in R.
+I wanted to offer a very easy-to-use interface to the application. Therefore we chose to work with shiny\cite{shiny}. Shiny is a framework for R that allows you to create a web-based front-end (using html, css, javascript, ...) that can also run R code in the back-end. This allows the creating of very interactive web applications that can run the powerful statistical analyses available in R.
 \section{Demonstration}
 \label{sec:tool-demonstration}
 The tool is divided into three sections: an input section where the user can upload their datasets, a section that computes and evaluates models for each dataset individually, and an integration section where all of the integrated models, explained in chapter \ref{cha:integration}, can be computed and evaluated.
@@ -48,7 +48,7 @@ The integration tab is the most important part of the application, as it allows 
 
 \section{Conclusion}
 \label{sec:tool-conclusion}
-To make further research easier I have made an interactive web-based tool. The tool allows users to compute and evaluate all integration strategies explained earlier. It currently supports logistic regression models and cox proportional hazard models. The back-end uses the statistical language R and the glmnet package to compute the models. The front-end is purely web-based and this is made possible by the Shiny framework.
+To make further research easier we have made an interactive web-based tool. The tool allows users to compute and evaluate all integration strategies explained earlier. It currently supports logistic regression models and cox proportional hazard models. The back-end uses the statistical language R and the glmnet package to compute the models. The front-end is purely web-based and this is made possible by the Shiny framework.
 
 %%% Local Variables: 
 %%% mode: latex
