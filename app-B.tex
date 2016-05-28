@@ -1,0 +1,46 @@
+\chapter{Cancer staging}
+\label{app:cancer-staging}
+Cancer staging is a system that provides a means to indicate to what extent a cancer has developed. This allows for easier communication and the aim is to have a standardized way of classifying cancers. The simplest form of staging assigns a number from 1 to 4 to the cancer. Where stage 1 indicates an isolated cancer of a mediocre size, and 4 indicates a large tumour that has spread throughout the body (called metastasis). Another very popular, more specific staging system is the TNM system.
+
+\section{TNM staging system}
+In the TNM staging system a separation is made based on clinical stage and pathological stage. Clinical stage is based on information that can be obtained while the tumour is still present in the patient (scans, bloodtests, biopsy, ...). Pathological stage is based on information gained by microscopically inspecting the tumour after it has been removed from the patient. This process is performed by a pathologist, hence the name. \\ \\
+The TNM staging system uses three combination of a letter and a number. The three letters each point to a specific type of development for the tumour, and the number indicates what the extent is of this development. The three letters are, unsurprisingly, TNM.
+\begin{itemize}
+	\item T stands for the reach/extent of the primary tumour
+	\item N stands for the spread of the tumour to regional lymph nodes
+	\item M stands for distant spread to other parts of the body (metastasis)
+\end{itemize}
+Each letter is then joined by a number indicating the extent of the development. Unusual situations are indicated by multiple letters however. The possible combinations for each letter and their meaning is shown in table \ref{tab:TNM}.
+\begin{table}
+	\centering
+	\begin{tabular}{ll}
+		\toprule
+		Code & Meaning \\
+		\midrule
+		Tx & Tumour cannot be evaluated \\
+		Tis & Tumour cannot be evaluated \\
+		T0 & No signs of a tumour \\
+		T1,T2,T3,T4 & Tumour present, with increasing size \\
+		\midrule
+		Nx & Lymph spread cannot be evaluated \\
+		N0 & No spread to lymph nodes \\
+		N1 & Spread to small number of nearby lymph nodes \\
+		N2 & Spread to small number of distant lymph nodes \\
+		N3 & Spread to multiple distant lymph nodes \\
+		\midrule
+		M0 & No metastasis \\
+		M1 & Metastasis to distant organs \\
+		\bottomrule
+	\end{tabular}
+	\caption{TNM staging system, meaning of codes}
+	\label{tab:TNM}
+\end{table}
+An example pathologic stage for a cancer could then be $pT1N0M0$ indicating a small primary tumour but no spread to lymph nodes or metastasis.
+\section{Pathologic stage in case study 1}
+In case study 1 (\ref{sec:evaluation-predictingstage}) we are using logistic regression to predict the pathologic stage outcome. To do this, the pathologic stage for the patients had to be binary. A value of 1 was given to patients with a TNM pathologic stage of $pT0N0M0$ or $pT0N1M0$. These are basically the two best stage outcomes a patient can get, all other patients were labeled as 0.
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "thesis"
+%%% End: 
