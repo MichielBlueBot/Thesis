@@ -22,11 +22,13 @@
 \contentsline {table}{\numberline {5.1}{\ignorespaces AUC for models of individual datasets\relax }}{34}{table.caption.27}
 \contentsline {table}{\numberline {5.2}{\ignorespaces AUC for models of various combinations of integrated datasets\relax }}{34}{table.caption.28}
 \contentsline {table}{\numberline {5.3}{\ignorespaces Overview of the model parameters (weights)\relax }}{34}{table.caption.29}
+\contentsline {table}{\numberline {5.4}{\ignorespaces Dimensions for the datasets used in the survival analysis.\relax }}{38}{table.caption.31}
+\contentsline {table}{\numberline {5.5}{\ignorespaces Performance statistics for survival models of individual datasets\relax }}{39}{table.caption.32}
+\contentsline {table}{\numberline {5.6}{\ignorespaces Performance statistics for integrated survival models\relax }}{39}{table.caption.33}
 \addvspace {10pt}
 \addvspace {10pt}
 \addvspace {10pt}
-\addvspace {10pt}
-\contentsline {table}{\numberline {B.1}{\ignorespaces TNM staging system, meaning of codes\relax }}{50}{table.caption.38}
+\contentsline {table}{\numberline {A.1}{\ignorespaces TNM staging system, meaning of codes\relax }}{50}{table.caption.41}
 \select@language {dutch}
 \select@language {english}
 \select@language {dutch}

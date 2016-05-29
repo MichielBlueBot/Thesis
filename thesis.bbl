@@ -23,8 +23,7 @@ Gradient descent variants.
 
 \bibitem{pvalue1}
 Hypothesis testing (p-value approach).
-\newblock \url{https://onlinecourses.science.psu.edu/statprogram/node/138};
-  school={PennState Eberly College of Science}.
+\newblock \url{https://onlinecourses.science.psu.edu/statprogram/node/138}.
 
 \bibitem{wikiclassification}
 Linear classification.
@@ -42,6 +41,10 @@ Logistic regression.
 Logistic regression error surface proof of convexity.
 \newblock
   \url{http://mathgotchas.blogspot.be/2011/10/why-is-error-function-minimized-in.html}.
+
+\bibitem{wikimicrorna}
+Micro rna.
+\newblock \url{https://en.wikipedia.org/wiki/MicroRNA}.
 
 \bibitem{wikip}
 P-value.
@@ -150,6 +153,12 @@ N.~C. Institute.
 \newblock The cancer genome atlas.
 \newblock \url{http://cancergenome.nih.gov/}.
 
+\bibitem{iorio2005microrna}
+M.~V. Iorio, M.~Ferracin, C.-G. Liu, A.~Veronese, R.~Spizzo, S.~Sabbioni,
+  E.~Magri, M.~Pedriali, M.~Fabbri, M.~Campiglio, et~al.
+\newblock Microrna gene expression deregulation in human breast cancer.
+\newblock {\em Cancer research}, 65(16):7065--7070, 2005.
+
 \bibitem{kohavi1995study}
 R.~Kohavi et~al.
 \newblock A study of cross-validation and bootstrap for accuracy estimation and
@@ -207,6 +216,13 @@ C.~Stark, B.-J. Breitkreutz, T.~Reguly, L.~Boucher, A.~Breitkreutz, and
 R.~Tibshirani et~al.
 \newblock The lasso method for variable selection in the cox model.
 \newblock {\em Statistics in medicine}, 16(4):385--395, 1997.
+
+\bibitem{yanaihara2006unique}
+N.~Yanaihara, N.~Caplen, E.~Bowman, M.~Seike, K.~Kumamoto, M.~Yi, R.~M.
+  Stephens, A.~Okamoto, J.~Yokota, T.~Tanaka, et~al.
+\newblock Unique microrna molecular profiles in lung cancer diagnosis and
+  prognosis.
+\newblock {\em Cancer cell}, 9(3):189--198, 2006.
 
 \bibitem{zou2005regularization}
 H.~Zou and T.~Hastie.

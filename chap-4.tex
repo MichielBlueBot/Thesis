@@ -7,7 +7,7 @@
 In this chapter we will show that different integration strategies can have better performance in different situations. We will do this by computing a model using each strategy and then comparing their performance using an appropriate metric.
 \section{Evaluating a logistic regression model}
 \label{sec:evaluation-logisticregression}
-The first evaluation will be made using a logistic regression model. This is a model computed for a dependent variable that has a binomial distribution. To evaluate such model, a common technique used is called Receiver-Operating-Characteristic analysis\cite{zweig1993receiver}\cite{hajian2013receiver}\cite{wikiroc} or ROC analysis for short. Remember that when we are using a logistic regression model to predict outcomes, we have to define a threshold to separate positive from negative cases. An ROC curve shows the performance of the model for any possible threshold, using metrics such as sensitivity and specificity. This gives a very good general impression of the performance of the model.
+The first evaluation will be made using a logistic regression model. This is a model computed for a dependent variable that has a binomial distribution. To evaluate such model, a common technique used is called Receiver-Operating-Characteristic analysis~\cite{zweig1993receiver}\cite{hajian2013receiver}\cite{wikiroc} or ROC analysis for short. Remember that when we are using a logistic regression model to predict outcomes, we have to define a threshold to separate positive from negative cases. An ROC curve shows the performance of the model for any possible threshold, using metrics such as sensitivity and specificity. This gives a very good general impression of the performance of the model.
 \subsection{Predictions using validation}
 What we really want to do is estimate the out-of-sample error for our model. To do this we have seen that we can use the technique of cross-validation. In this case we are not going to compute any learning parameter but we are going to use the validation set as a test set. We will split our dataset into $K$ folds. We will train a model on $K-1$ folds and we will use this model to predict the outcomes of the remaining samples in the test fold. By repeating this process for each folds we obtain a predicted outcome for each sample in the dataset. Notice however that we also have the real outcome of the samples in our dataset, and thus we can compare our predictions with the real values to estimate our out-of-sample error.
 \subsection{Metrics}
@@ -21,7 +21,7 @@ When we compare our models predictions with the real outcomes, there are four po
 Notice that this gives us more information than just registering whether we are right or wrong. It also tells us the type of mistake we made. This is a very important distinction because depending on the application there is usually a different cost attached to making type 1 or type 2 errors. And as we will see later on, there is a tradeoff between the two and we can tune our system to be more resistant towards making one type of error. \\ \\
 Now that we have established the notion of typed errors, there are several ways in which these numbers are combined to form evaluation metrics. Depending on your field of research these often get different names, we will use the ones applicable to the biomedical field.
 \subsubsection{Sensitivity}
-Sensitivity\cite{wikisensspec} measures the proportion of the real positive samples that our model correctly predicted as positive. It can be calculated with the following formula:
+Sensitivity~\cite{wikisensspec} measures the proportion of the real positive samples that our model correctly predicted as positive. It can be calculated with the following formula:
 $$
 Sensitivity = \frac{\sum{TP}}{\sum{P}}
 $$
@@ -32,7 +32,7 @@ where
 \end{itemize}
 Sensitivity can be thought of, as its name suggests, as how sensitive the model is to detecting positive cases. If the model gets a real positive sample's input, what is the probability that it will detect it as such. A sensitivity of 1 means that our model is capable of correctly identifying all positive cases in the dataset. This means that the higher the sensitivity, the lower the type 2 error rate.
 \subsubsection{Specificity}
-Specificity\cite{wikisensspec} is the analogous metric to sensitivity, but for negative cases. It measures the proportion of the real negative samples that our model correctly predicts as negative.
+Specificity~\cite{wikisensspec} is the analogous metric to sensitivity, but for negative cases. It measures the proportion of the real negative samples that our model correctly predicts as negative.
 $$
 Specificity = \frac{\sum{TN}}{\sum{N}}
 $$
@@ -122,7 +122,7 @@ I have also included an overview of the model parameters that were selected (on 
 
 \section{Evaluating a cox proportional hazards model}
 \label{sec:evaluation-coxph}
-The evaluation of a cox proportional hazards model is different compared to logistic regression\cite{newson2010comparing}\cite{harrell1996tutorial}. This is because, as we have seen in chapter \ref{cha:cox}, we normally don't directly compute survival times from a cox proportional hazards model. This means we cannot compare them to the real survival times. However we can still evaluate the models based on statistics that indicate significance.
+The evaluation of a cox proportional hazards model is different compared to logistic regression~\cite{newson2010comparing}\cite{harrell1996tutorial}. This is because, as we have seen in chapter \ref{cha:cox}, we normally don't directly compute survival times from a cox proportional hazards model. This means we cannot compare them to the real survival times. However we can still evaluate the models based on statistics that indicate significance.
 
 \subsection{Predictions for survival models}
 Recall the hazard ratio from section \ref{sec:cox-proportional-hazards-model}. If we have a model computed ($\beta's$ defined) and we have a test sample (with values $X_{i}$ for the explanatory variables), we could compute the following prediction quantity:
@@ -149,7 +149,8 @@ where
  We could, as we did in section \ref{sec:evaluation-logisticregression}, compute this prediction value for all patients in our dataset using cross-validation. We now want to test the predictive value of these predictions. To do this we construct a new survival model, but this time there is only one explanatory variable and that is our vector of predictions. If we can show that this variable is significant in predicting the survival, then our original model is also significant. The significance test we will use is called the Wald Test.
  
  \subsection{The Wald test}
-The Wald test\cite{wikiwald} is a statistical test that can be used to test the significance of an estimated parameter. The Wald test can be used on a single parameter or on a vector of parameters at once. In the case of one parameter $\beta$ the formula for the Wald test is:
+ \label{subsec:evaluation-wald-test}
+The Wald test~\cite{wikiwald} is a statistical test that can be used to test the significance of an estimated parameter. The Wald test can be used on a single parameter or on a vector of parameters at once. In the case of one parameter $\beta$ the formula for the Wald test is:
 \begin{equation}
 \begin{split}
 \frac{(\hat{\beta}-\beta_{0})^{2}}{var(\hat{\beta})} \sim \tilde{\chi}^{2}_{1}
@@ -169,12 +170,71 @@ When we are testing the significance of a coefficient in our survival model we h
 	\caption{Example Wald test variance visualisation. Both curves give the same maximum likelihood estimate $\hat{\beta}$. The red curve however has low variance, providing good evidence to reject the null-hypothesis with value $\beta_{0}$. The blue curve has high variance, in this case $\hat{\beta}$ does not significantly differ from $\beta_{0}$ and we cannot reject the null-hypothesis.}
 	\label{fig:evaluation-wald-test}
 \end{figure}
-The Wald test can tell us something about the significance of the predictions vector and therefore about the predictive ability of our initial model. We can go one step further and compute a p-value\cite{pvalue1}\cite{wikip} for the wald-test statistic. This p-value contains the exact same information as the wald-test statistic, but it is a very well known quantity statistics so we will add it for completeness.
+The Wald test can tell us something about the significance of the predictions vector and therefore about the predictive ability of our initial model. We can go one step further and compute a p-value~\cite{pvalue1}\cite{wikip} for the wald-test statistic. This p-value contains the exact same information as the wald-test statistic, but it is a very well known quantity statistics so we will add it for completeness.
 \section{Case study 2: predicting survival outcomes}
 \label{sec:evaluation-predictingsurvival}
 
+\subsection{Case details}
+\label{sec:evaluation-casedetails2}
+The case we are showing here uses datasets from The Cancer Genome Atlas~\cite{tcga}. TCGA is a 2.5 petabyte database of cancer data for 33 different types of cancer made publicly available for research. We will only use a subset of this database for this case study. The cancer type we will use is called Colon adenocarcinoma, or COAD for short. From this cancer we will use 3 datasets: the first contains copy number variation (CNV) data. CNV's indicate the deletions or duplications of parts of DNA causing there to be more (or less) copies of this piece of DNA. The second dataset contains information about the messenger RNA (mRNA) which directly influences the expression of genes. The last dataset contains information about micro RNA (miRNA) which is known to have an RNA silencing function and also regulates gene expression. This last dataset is extra interesting because there is already evidence that abnormal expression of miRNA is correlated with cancer development\cite{iorio2005microrna}\cite{yanaihara2006unique}\cite{wikimicrorna}. The dependent variables in this case are survival data, and as we have seen in chapter \ref{cha:cox} this involves a time vector and a censoring vector. \\ \\
+Table \ref{tab:evaluation-case2-dimensions} presents the dimensions of the used datasets. It is worth mentioning that these datasets are all the result of a preprocessing step to make them ready for analysis. However the preprocessing is not the main focus of this thesis so we will not go into any more detail.
+\begin{table}
+	\centering
+	\begin{tabular}{lcc}
+		\toprule
+		Dataset name & Number of variables & Number of patients \\
+		\midrule
+		Copy Number Variations & 16 & 219\\
+		messenger RNA & 3869 & 219 \\
+		micro RNA & 414 & 219 \\
+		\bottomrule
+	\end{tabular}
+	\caption{Dimensions for the datasets used in the survival analysis.}
+	\label{tab:evaluation-case2-dimensions}
+\end{table}
+\subsection{The results}
+The resulting performance statistics for all the models are shown in tables \ref{tab:evaluation-surv-individual} and \ref{tab:evaluation-surv-integrated}. The first table shows the statistics for the models of individual datasets. The second table shows the statistics for the integrated datasets.
+\subsection{Interpretation of the statistics}
+The first statistic is the hazard ratio. This number shows the multiplicative effect on the hazard for a unit increase of the variable. Remember from section \ref{sec:evaluation-predictingsurvival} that the variable in this case is the vector of predictions. The predictions are the result of our originally trained model. A hazard ratio of 1.39 thus means that a unit increase in the outcome of the model has the effect of increasing the hazard by 39\%. \\ \\
+The second statistic is the hazard ratio confidence interval. This shows the lower and upper bounds of the 95\% confidence interval for the hazard ratio. If this interval is very wide then this means the value for the hazard ratio is uncertain. The narrower the interval, the more certain we are about the predicted value for the hazard ratio. \\ \\
+The third statistic is the wald test, which has been explained in section \ref{subsec:evaluation-wald-test}. The larger this number, the more significant the results of that model are. This is immediately related to the fourth, and last, statistic which is the p-value for the wald test. This value also indicates the significance of the model that we have obtained. A usual practice in statistics is to say that an observation (or model in this case) is significant if the p-value is below the 0.05 threshold.
+\subsection{Interpretation of the results}
+It is immediately clear that the majority of the models are not significant. The p-values are way too high, the wald test scores are too low, and the confidence intervals are too wide to say anything meaningful about the obtained hazard ratios. However it is interesting to note that all the integrated models have a significantly lower p-value when compared to the individual models. In fact, the intermediate integrated model actually reaches a p-value that is lower than the threshold of 0.05 which makes this model significant. More research would have to be performed if one really wanted to use this model to make predictions, but for our purposes this analysis is sufficient to conclude that the integrated models have outperformed the individual models and they clearly have an impact on the performance of the resulting model.
+\begin{table}
+	\centering
+	\begin{tabular}{lccc}
+		\toprule
+		 & CNV    & mRNA & miRNA \\
+		\midrule
+		Hazard ratio (HR) 			& 1.39	& 0.74	& 0.84	\\
+		HR Confidence interval 		& [0.29 - 6.72]	& [0.14 - 3.87]	& [0.64 - 1.11] \\
+		Wald test 					& 0.17 & 0.13  & 1.46 \\
+		P-value 					& 0.6799 & 0.7209  & 0.2276 \\
+		\bottomrule
+	\end{tabular}
+	\caption{Performance statistics for survival models of individual datasets}
+	\label{tab:evaluation-surv-individual}
+\end{table}
+
+\begin{table}
+	\centering
+	\begin{tabular}{lccc} 
+		\toprule
+		& Early & Intermediate & Late\\
+		\midrule
+		Hazard ratio (HR) 			& 0.96	& 0.90 & 0.13	\\
+		HR Confidence interval 		& [0.03 - 1.47]	& [0.82 - 1.00] & [0.01 - 2.24]	\\
+		Wald test 					& 2.43 & 3.89 & 1.98 \\
+		P-value 					& 0.1192 & 0.0485 & 0.1595 \\
+		\bottomrule
+	\end{tabular}
+	\caption{Performance statistics for integrated survival models}
+	\label{tab:evaluation-surv-integrated}
+\end{table}
+
 \section{Conclusion}
 \label{sec:evaluation-conclusion}
+In this chapter we have shown the results of the two case studies that we performed. The first section (\ref{sec:evaluation-logisticregression}) explains how we use ROC analysis to evaluate the logistic regression models that resulted from the first case study. The results of this case study (section (\ref{sec:evaluation-predictingstage})) show that indeed the intermediate integration strategy outperforms all other strategies aswell as the individual models, which provides evidence for the thesis aim that integration strategies have an impact on the performance of the resulting models. The third section ((\ref{sec:evaluation-coxph})) explains how we come up with predictive values in a survival analysis and how we can use the wald test to evaluate the significance of the obtained models. The last section ((\ref{sec:evaluation-predictingsurvival})) shows the results of the second case study on survival data obtained from TCGA. The results of this study are less evident than those of the first case study due to insignificance of most of the models. But we can still conclude that the integration strategies had an impact on the performance of the models.
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "thesis"

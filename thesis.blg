@@ -6,16 +6,9 @@ A level-1 auxiliary file: chap-3.aux
 A level-1 auxiliary file: chap-4.aux
 A level-1 auxiliary file: chap-5.aux
 A level-1 auxiliary file: conclusion.aux
-A level-1 auxiliary file: app-A.aux
-A level-1 auxiliary file: app-n.aux
+A level-1 auxiliary file: app-B.aux
 The style file: abbrv.bst
 Database file #1: references.bib
-I was expecting a `,' or a `}'---line 354 of file references.bib
- : 
- : @article{newson2010comparing,
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
-Warning--I didn't find a database entry for "h2g2"
 Warning--to sort, need author or key in wikiglm
 Warning--to sort, need author or key in wikilinearregression
 Warning--to sort, need author or key in wikiclassification
@@ -32,6 +25,7 @@ Warning--to sort, need author or key in wikisensspec
 Warning--to sort, need author or key in wikiwald
 Warning--to sort, need author or key in pvalue1
 Warning--to sort, need author or key in wikip
+Warning--to sort, need author or key in wikimicrorna
 Warning--to sort, need author or key in shiny
 Warning--can't use both volume and number fields in kohavi1995study
-(There was 1 error message)
+(There were 19 warnings)
