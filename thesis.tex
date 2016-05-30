@@ -46,26 +46,21 @@
 \begin{document}
 	
 	\begin{preface}
-		I would like to thank everybody who kept me busy the last year,
-		especially my promotor and my assistants. I would also like to thank the
-		jury for reading the text. My sincere gratitude also goes to my wive and
-		the rest of my family.
+		I would like to thank all of my family and friends that supported me throughout the making of this thesis. I would also like to thank the jury for taking the time to read and evaluate the text. \\ \\
+		Next I would like to thank my promotor Roel Wuyts for allowing me to make the thesis on this self-chosen topic and for providing very helpful feedback throughout the year and in the writing of the text. \\ \\
+		Last, but not least, I would like to express my deepest gratitude towards my second promotor Olivier Gevaert for giving me the opportunity to explore the world of cancer research and allowing me to visit the Gevaert research lab in San Fransisco during the month of March. On one hand this allowed me to really experience a research environment and meet some amazing people. On the other hand I also got to experience the life and environment in silicon valley, which is obviously a dream for anyone aspiring to be an engineer.
 	\end{preface}
 	
 	\tableofcontents*
 	
 	\begin{abstract}
-		
+		Technological advancements are causing datasets to become larger and larger. In the biomedical field of cancer research this is reaching the point where we are able to characterize a cancer on a multilevel scale. On the smallest scale we are able to sequence entire genomes of patients and quantify gene expression. On the middle scale we can analyze proteine and other molecule levels in the blood and look at microscopical features of individual cancer cells. And on the large scale we can image the cancer to define surface level features, development stages and indicate spread throughout the body. The challenge we are facing now is to combine all of this knowledge into a single coherent system to provide optimal prognosis prediction, find new insights into the way cancer develops and to come up with novel treatments to fight the disease.\\ \\
+		In this thesis we present three different integration strategies that can combine datasets from different sources to build a predictive model. The aim is to study whether different integration strategies have a positive impact on the performance of the resulting models. To do this we performed two case studies on real cancer data. One study focusses on logistic regression to predict a pathological stage outcome and uses ROC analysis to evaluate the models. The second study focusses on cox proportional hazards models to predict survival outcomes and uses statistical significance tests for the evaluation. Both case studies provide evidence that indeed the various integration strategies do have a positive impact on the performance of the resulting models. 
 	\end{abstract}
 	
 	\begin{abstract*}
-		In dit \texttt{abstract} environment wordt een al dan niet uitgebreide
-		Nederlandse samenvatting van het werk gegeven.
-		Wanneer de tekst voor een Nederlandstalige master in het Engels wordt
-		geschreven, wordt hier normaal een uitgebreide samenvatting verwacht,
-		bijvoorbeeld een tiental bladzijden. 
-		
-		\lipsum[1]
+		\include{intro-dutch}
+		\include{chap-1-dutch}
 	\end{abstract*}
 	
 	% Een lijst van figuren en tabellen is optioneel

@@ -5,16 +5,20 @@
 \label{sec:glm-introduction}
 In this chapter we will explain the concepts of generalized linear models~\cite{caltechmachinelearning}\cite{wikiglm}. This term indicates a generalization of simple linear regression that allows for a wide range of output variables. First we will go over the basics of linear models, gradually building up to the definition of generalized linear models. Next, we will describe what actual data looks like and how a model is computed from it. After that we will tackle the more recent innovation of regularization that will greatly improve our previous models by exploiting the bias-variance trade-off to reduce overfitting. Lastly we will outline the validation method that will be used to test the performance of the models.
 
+\section{What is a predictive model?}
+\label{sec:glm-predictive-models}
+We can define a predictive model in a general way as a mapping from input variables to an output variable. The task of a predictive model is to predict, or estimate, a value for the output variable when given values for the input variables. For example: a predictive model could be asked to estimate the average temperature for a given day. The input in this case is the date, the output is the average temperature. We can imagine that there is a correlation between the two: dates in the summer will tend to result in a higher average temperature, and dates in the winter will have lower average temperatures. We know this because we have years of experience from the past. From this we have learned that winter tends to be cold and summer tends to be warm. This is exactly what we try to capture: tendencies and patterns. Learning from experience is what we try to do when building a predictive model. We call this "training the model". When training a model we show it examples of what we want it to learn. In the example case of average temperature we would show it dates together with the corresponding average temperature for that day. By showing many of these cases to the model, it can build up experience and hopefully it will realize that winter days tend to be cold, and summer days tend to be hot. How the model remembers these patterns or tendencies (the model representation) depends on the method used to train the model and on the kind of patterns that need to be captured. In the following sections we will show examples of these representations and how they can represent different patterns.
+
 \section{Classical linear models}
 \label{sec:glm-classicallinearmodels}
-When we think of classical linear models, we can imagine a set of numeric explanatory (or input) variables and a numerical dependent (or output) variable. By making a linear combination of the explanatory variables we attempt to estimate a value for the dependent variable. Depending on the type of dependent variable the linear method gets a different name. In the following sections we will outline several of them.
+In classical linear models we assume that there is a linear relationship between the input variables (also called explanatory variables) and the output variable (also called dependent variable). In this case we can represent the model by a vector of coefficients, one for each input variable. By making a linear combination of the explanatory variables we attempt to estimate a value for the dependent variable. Depending on the type of dependent variable the linear method gets a different name. In the following sections we will outline several of them.
 
 \subsection{Linear Regression}
 \label{subsec:glm-linear-regression}
 The simplest version of a linear model is called linear regression~\cite{caltechmachinelearning}\cite{wikilinearregression}. In this case the input variables are combined using a linear combination, and the result of this calculation is immediately used as the final estimate. Imagine we have a dataset of size N where each sample has M explanatory variables. Then we can write linear regression as:\\
 \begin{equation}
 \begin{split}
-\hat{y}_{n} = \sum_{i=1}^{M}w_{i}x_{in} = \bm{w^{T}x}   \qquad for\ n=1..N
+\hat{y}_{n} = \sum_{i=1}^{M}w_{i}x_{in} = \bm{w^{T}x_{n}}   \qquad for\ n=1..N
 \end{split}
 \end{equation}
 where
@@ -22,7 +26,7 @@ where
 	\item $\hat{y}_{n}$ is the output for sample $n$
 	\item $w_{i}$ is the model parameter (coefficient) for explanatory variable $i$
 	\item $x_{in}$ is the value for explanatory variable $i$ for sample $n$
-	\item $\bm{w^{T}x}$ is the vector notation for the inner product of $\bm{w}$ and $\bm{x}$
+	\item $\bm{w^{T}x_{n}}$ is the vector notation for the inner product of $\bm{w}$ and $\bm{x_{n}}$
 \end{itemize}
 For the other linear methods we will define a function each time that is applied to the result of the linear combination. We could do the same for linear regression and say that the applied function is the identity function. A schema for this computation is shown on figure \ref{fig:glm-linear-regression}.\\
 \begin{figure}
@@ -39,8 +43,8 @@ The computation in this method starts out exactly the same, combining the input 
 \begin{split}
 \hat{y}_{n} =
 \begin{cases} 
--1 & if\ \bm{w^{T}x} \leq t \\
-1 & if\ \bm{w^{T}x} > t 
+-1 & if\ \bm{w^{T}x_{n}} \leq t \\
+1 & if\ \bm{w^{T}x_{n}} > t 
 \end{cases}
 \qquad for\ n=1..N
 \end{split}
@@ -48,7 +52,7 @@ The computation in this method starts out exactly the same, combining the input 
 where
 \begin{itemize}
 	\item $\hat{y}_{n}$ is the output for sample $n$
-	\item $\bm{w^{T}x}$ is the vector notation for the inner product of $\bm{w}$ and $\bm{x}$
+	\item $\bm{w^{T}x_{n}}$ is the vector notation for the inner product of $\bm{w}$ and $\bm{x_{n}}$
 	\item $t$ is the classification threshold
 \end{itemize}
 A schema for this computation is shown on figure \ref{fig:glm-linear-classification}.
@@ -63,8 +67,9 @@ A schema for this computation is shown on figure \ref{fig:glm-linear-classificat
 The third method we want to present is called logistic regression~\cite{caltechmachinelearning}\cite{wikilogistic}. In this case, the output variable we want to predict comes from a binomial distribution. This means that they are the result of a probabilistic event. An example would be tossing a coin and checking whether the result is heads or tails. While the outcome is binary (heads or tails) we know that there is an underlying probability for the coin to be heads or tails, and we would like to know this probability. \\
 The idea is still the same. We will make a linear combination of the input variables. However this time we will use a logistic function to produce our estimate. The logistic function is a function that maps real numbers onto the range $[0,1]$. This result can then be interpreted as an estimate for the probability. We could represent logistic regression mathematically as:
 \begin{equation}
+\label{eq:glm-logistic-regression}
 \begin{split}
-\hat{y}_{n} = \theta(\sum_{i=1}^{M}w_{i}x_{in})= \theta(\bm{w^{T}x}) \qquad for\ n=1..N
+\hat{y}_{n} = \theta(\sum_{i=1}^{M}w_{i}x_{in})= \theta(\bm{w^{T}x_{n}}) \qquad for\ n=1..N
 \end{split}
 \end{equation}
 where
@@ -72,7 +77,7 @@ where
 	\item $\hat{y}_{n}$ is the output for sample $n$
 	\item $w_{i}$ is the model parameter (coefficient) for explanatory variable $i$
 	\item $x_{in}$ is the value for explanatory variable $i$ for sample $n$
-	\item $\bm{w^{T}x}$ is the vector notation for the inner product of $\bm{w}$ and $\bm{x}$
+	\item $\bm{w^{T}x_{n}}$ is the vector notation for the inner product of $\bm{w}$ and $\bm{x_{n}}$
 	\item $\theta(x)$ is a logistic function, also called a sigmoid function. An example sigmoid function is $\frac{e^{x}}{1+e^{x}}$
 \end{itemize}
 \begin{figure}
@@ -86,16 +91,16 @@ The logistic regression method is the one that will be most widely used througho
 
 \section{Training a model}
 \label{sec:glm-trainingamodel}
-In order to understand the integration strategies that will be explained later on, it is useful to know how exactly the models come to be. This section will explain what the input data for our linear models actually looks like, and how we get from this data to a model that we can use for future predictions.
-\subsection{The data}
-
-The data we use consists of two parts: the input data, which can be seen as a matrix where the columns are the explanatory variables and each row is an example. And secondly the output data, which can be seen as a vector where each value indicates the value of the dependent variable for a single example. \\
-It is easy to see that the length of the output vector has to be equal to the amount of rows in the input matrix, indeed there should be one output value for each example. This amount is often called the size of the dataset and we would like it to be as big as possible. Especially when we are dealing with a large number of explanatory variables, it is essential to have a reasonable amount of examples aswell. This will be discussed in more detail in section \ref{sec:glm-overfitting} on overfitting. 
+In order to understand the integration strategies that will be explained later on, it is useful to know how exactly the models come to be. Remember from section \ref{sec:glm-predictive-models} that training a model means: showing it examples of what it has to learn so it can build up experience and capture patterns. This section will explain exactly what this means in the case of linear models: what the data looks like, and how we use it to build up experience.
+\subsection{Training and testing data}
+When training our model we have to let it build up experience. To do this we have to show it example datapoints generated by the function we want it to learn. An example datapoint consists of 2 parts: a vector of values, one for each of the explanatory variables and a target value for the dependent variable. If we generalize this to many datapoints, we can represent the input data by a matrix for the example datapoints, and a vector of target values. The matrix columns are equal to the explanatory variables and each row represents an example datapoint. The vector of target values contains one target value for each datapoint. It is easy to see that the length of the output vector has to be equal to the amount of rows in the input matrix, indeed there should be one target value for each example datapoint. The amount of datapoints is often called the size of the dataset. The combination of this matrix of datapoints and the vector of target values is what is called the training data. It is the data that we use to train the model, or in other words from which the model can build experience. How this experience is built up is explained in the next section \ref{subsec:glm-gradient-descent}. \\ \\
+Remember that the purpose of a predictive model is to predict (or estimate) a value of the target function when given values for the explanatory values. Once we have trained a model using the training data, it will have built up a representation for the patterns in the data that it has found (from experience). We can then use the trained model to predict an output value by giving it a new datapoint that it has never seen. Based on the experience that it has built up (in its representation) it will be able to estimate a value for the target function. This new datapoint is what we call test data. It is a datapoint that the model has never seen before, and it doesn't contain a value for the target function, because that is exactly what we are asking the model to produce. Another terminology that is often used in this case is labeled data. A datapoint together with the target value is considered a labeled datapoint. The training data we used in this case was thus labeled data. The testing data does not have a value for the target function, and thus is unlabeled data.
 
 \subsection{Gradient descent}
-In this section we will explain how we get from the input data to the model~\cite{caltechmachinelearning}\cite{wikigd}\cite{gradientdescentvariants}. The idea here is that we have some error measure. The error measure is a sort of rating for our current model as it indicates how big the mistakes are that our current model makes. Once we have a way of computing this error, we can try to minimize the error to obtain our 'best' possible model.
+\label{subsec:glm-gradient-descent}
+In this section we will explain how we get from the training data to the predictive model~\cite{caltechmachinelearning}\cite{wikigd}\cite{gradientdescentvariants}. The idea here is that we have some error measure. The error measure is a sort of rating for our current model as it indicates how big the mistakes are that our current model makes. Once we have a way of computing this error, we can try to minimize the error to obtain our 'best' possible model. Minimizing the error means that we will change the parameter values of our predictive model. Again, what the parameters of the model are depends on the type of model we use. In the case of logistic regression the representation is a vector of weights, learning thus means changing the weights $w_{i}$ for the explantory variables (see the formula for logistic regression \ref{eq:glm-logistic-regression}) such that the estimated outputs $\hat{y}_{n}$ correspond better to the real outputs $y_{n}$.
 \subsubsection{Error measure}
-In logistic regression the error measure we use is called the cross-entropy error~\cite{caltechmachinelearning}. The formula for this error is the following:
+In logistic regression an often used error measure is called the cross-entropy error~\cite{caltechmachinelearning}. The formula for this error is the following:
 $$
 	E_{in}(w) = \frac{1}{N}\sum_{n=1}^{N}ln(1+e^{-y_{n}w^{T}x_{n}})
 $$
@@ -107,9 +112,10 @@ where
 	\item $N$ is the size of our dataset.
 	\item $E_{in}(w)$ is the in-sample error. This is the cross-entropy error that we make on the examples in our dataset. It is a function of the weights $w$.
 \end{itemize}
-We can intuitively see that this is a reasonable error measure. It is an averaged sum over all examples, where for each example we compute an individual error made on that example. Notice that $w^{T}x_{n}$ is the linear combination of the input variables that our current model suggests. This is the prediction that our current model would make for example $n$ and is a real valued number. On the other hand $y_{n}$ is the actual correct prediction for example $n$ and has a value of -1 or 1. If the signs of $w^{T}x_{n}$ and $y_{n}$ agree then our current model actually makes a correct prediction for this example. We can see that in this case the exponential becomes close to 0, making our error for example $n$ very small, as we would expect. If however their signs are opposite, the exponential becomes larger as our incorrect prediction becomes larger. This in turn will increase the error, again as we would expect. Thus we can see that if we were to minimize this error, we are moving towards a model that tries to make correct predictions.
+Notice that to compute this error measure, we need to have labeled datapoints, the value of $y_{n}$ is known. We can intuitively see that this is a reasonable error measure. It is an averaged sum over examples (datapoints), where for each example we compute an individual error made on that example. Notice that $w^{T}x_{n}$ is the linear combination of the input variables that our current model suggests. This is the prediction $\hat{y}_{n}$ that our current model would make for example $n$ and is a real valued number. On the other hand $y_{n}$ is the actual correct prediction for example $n$ and has a value of -1 or 1. If the signs of $w^{T}x_{n}$ and $y_{n}$ agree then our current model actually makes a correct prediction for this example. We can see that in this case the exponential becomes close to 0, making our error for example $n$ very small, as we would expect. If however their signs are opposite, the exponential becomes larger as our incorrect prediction becomes larger. This in turn will increase the error, again as we would expect. Thus we can see that if we were to minimize this error, we are moving towards a model that tries to make correct predictions.
 \subsubsection{The gradient descent method}
-When trying to minimize a function, a general approach would be to try and compute the derivative of the function, and find the value where this derivative equals zero. In the case of logistic regression it is not possible to find an analytic solution to this problem. The best we can do is put ourselves somewhere on the error surface and try to move towards the minimum in small steps. This is called an iterative approach. Remember that our error function looks like this:
+\label{subsubsec:glm-gradient-descent}
+When trying to minimize a function, a general approach would be to try and compute the derivative of the function, and find the value where this derivative equals zero. In the case of logistic regression it is not possible to find an analytic solution to this problem \cite{caltechmachinelearning}. The best we can do is put ourselves somewhere on the error surface and try to move towards the minimum in small steps. This is called an iterative approach. Remember that our error function looks like this:
 $$
 E_{in}(w) = \frac{1}{N}\sum_{n=1}^{N}ln(1+e^{-y_{n}w^{T}x_{n}})
 $$
@@ -148,10 +154,11 @@ There are two non-trivial issues in this computation: the initialization of the 
 Weight initialization is sometimes a very tricky thing to do, in the case of logistic regression however it is acceptable to set $w(0)$ equal to the zero-vector as this corresponds to no correlation between any of the input variables and the output variable, and the result of the sigmoid function would be 0.5 or 50\% meaning the model has no preference for either outcome.\\ \\
 The stopcondition however is a bigger issue and usually the way to go here is to make a combination of several stop criteria. One criteria would be to simply limit the amount of iterations to a fixed number. This could avoid endlessly overfitting. Another criteria is to set up a target error we want to achieve (a small number), and stop when we have reached this target. This however raises the question of picking the target error, and this is mostly an application dependent choice. \\ \\
 In the version of logistic regression explained here, it can however be shown that the error surface we are dealing with is a convex surface~\cite{convexerrorlogistic}. This makes it very easy to find its minimum and we don't need very complex initialization and stopping criteria to get good results. In other machine learning methods however these surfaces aren't always as nice, and the issue of local minima versus global minima becomes a big deal. There has been much research on this topic however and many sophisticated methods have been developped to deal with this issue.
-
+\section{Summary of training a model}
+We now have seen everything that we need to train a model. The first thing we have to decide on is the method. If we believe there is a linear relationship between the input variables and the output, we could choose a linear method. Suppose the output variable comes from a binomial distribution then we know we can use logistic regression and our model representation will be a set of weights. Training then starts by initializing the weights of our model to some value $w(0)$. Next, we have seen in the gradient descent method (\ref{subsubsec:glm-gradient-descent}) that we can change our weights in such a way that our new weights will do a better job at predicting the outcomes than our old weights. Notice that we need a labeled dataset to compute this update. If we repeat this process for a large amount of labeled datapoints (until we meet a certain stopcondition) then we end up with a trained model that attempts to predict the outcome correctly for most of the examples that we have presented it.
 \section{Overfitting}
 \label{sec:glm-overfitting}
-Now that we have established a method of computing our models, it is time to deal with an issue known as overfitting~\cite{caltechmachinelearning}\cite{babyak2004you}. Overfitting points to the fact that there are several mechanisms at work when we are building a model that prevent us from reaching the perfect model (a model that predicts correctly at all times). These mechanisms essentially originate from noise and uncertainty in many aspects of the learning process (the input data, choice of model, choice of algorithm, ...). We can however try to decompose this noise into several components and then attempt to influence them by making changes to our model computation. We will present two ways in which overfitting can be tackled: regularization and validation.
+Now that we have established a method of training our models, it is time to deal with an issue known as overfitting~\cite{caltechmachinelearning}\cite{babyak2004you}. Overfitting points to the fact that there are several mechanisms at work when we are building a model that prevent us from reaching the perfect model (a model that predicts correctly at all times). These mechanisms essentially originate from noise and uncertainty in many aspects of the learning process (the input data, choice of model, choice of algorithm, ...). We can however try to decompose this noise into several components and then attempt to influence them by making changes to our model computation. We will present two ways in which overfitting can be tackled: regularization and validation.
 
 \subsection{The problem of overfitting}
 Let's introduce some notation. From now on we will refer to the notion of 'in-sample error' or in symbolic notation $E_{in}$ as the error that a model makes on the examples in our training set. The training set consists of the examples that were used to train (compute) the model in the first place. \\
@@ -166,7 +173,7 @@ The additional iteration has decreased the in-sample error, and thus we are able
 \subsection{The bias and variance trade-off}
 There are several ways of looking at overfitting and pointing out its origins. We will introduce the notions of bias and variance and how they can describe the noise in our system. \\
 \subsubsection{Average hypothesis}
-First, let me explain the playing field. We are in a situation of learning, where we are given a set of examples that are produced by some target function $f$. It is this target function $f$ that we wish to learn (or model). In order to do this we have to decide on the type of functions that we will use to model. In machine learning this is called the hypothesis set. It is the set of all functions that we consider possible candidates to fit our target $f$. Training a model then boils down to using the examples $x$ in our dataset $D$ to decide which hypothesis to pick. \\
+Before we can introduce the notions of bias and variance we first note that the data we have is produced by a target function $f$ that we wish to learn (or model). In order to do this we have to decide on the type of functions that we will use to model. In machine learning this is called the hypothesis set. It is the set of all functions that we consider possible candidates to fit our target $f$. Training a model then boils down to using the examples $x$ in our dataset $D$ to decide which hypothesis to pick. \\
 Next, let's introduce the notion of average hypothesis $\bar{h}$. Imagine we have a very large number of datasets. For each of these datasets we apply the learning process and we will pick a certain hypothesis $h$ from our hypothesis set. The average hypothesis is then equal to the average of all the hypothesis' just learned. Or in a formula:
 $$
 \bar{h} = \mathbf{E}_{D}[h^{(D)}]
@@ -217,7 +224,7 @@ Another popular regularizer is called the lasso penalty (or $L_{1}$ penalty)~\ci
 $$
 \sum_{i=1}^{N}\lvert w_{i}\rvert \leq C
 $$
-In addition to keeping the weights small, this form of regularization also performs parameter selection. This means that instead of just keeping the weights small it will also prefer to make weights actually zero for variables that don't contribute much to the model. This will cause the resulting model to have fewer parameters, but the parameters that do survive the penalty are sure to be very important. This regularizer is often used when there is a huge number of explanatory variables, and we wish to find only those that are really descriptive. Later in the thesis we will use datasets that contain gene expression information about cancer patients, these datasets often have thousands of explanatory variables and will provide a good example for using the lasso regularization (see section \ref{sec:evaluation-predictingsurvival}). \\
+In addition to keeping the weights small, this form of regularization also performs variable selection \cite{tibshirani1997lasso}. This means that instead of just keeping the weights small it will also prefer to make weights actually zero for variables that don't contribute much to the model. This will cause the resulting model to have fewer parameters, but the parameters that do survive the penalty are sure to be important. This regularizer is often used when there is a huge number of explanatory variables, and we wish to find only those that are really descriptive. Later in the thesis we will use datasets that contain gene expression information about cancer patients, these datasets often have thousands of explanatory variables and will provide a good example for using the lasso regularization (see section \ref{sec:evaluation-predictingsurvival}). \\
 The last form of regularizer we wish to demonstrate is called the elastic net penalty. This regularizer is simply a linear combination of the ridge and lasso penalties and provides a way of balancing the two. It has the following constraint:
 $$
 \alpha \sum_{i=1}^{N}w_{i}^{2} + (1-\alpha)\sum_{i=1}^{N}\lvert w_{i}\rvert \leq C

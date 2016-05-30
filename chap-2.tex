@@ -26,7 +26,7 @@ A typical outcome in survival analysis is thus represented by two vectors: a tim
 	\caption{Example outcomes for survival data}
 	\label{tab:cox-example-outcome}
 \end{table}
-The idea of survival analysis is now to find a pattern between a set of explanatory variables and the time-to-event. A common term used in survival analysis is hazard, meaning 'risk of the event occurring'. A resulting model from survival analysis usually contains two components. The first component is a $\lambda_{0}(t)$ baseline hazard function. This function describes how the risk of the event occurring changes with time, assuming there is no influence from any of the explanatory variables. The second component describes the influence of each explanatory variable on the hazard. This brings us to the notion of proportional hazards.
+The idea of survival analysis is now to find a pattern between a set of explanatory variables and the time-to-event. A common term used in survival analysis is hazard, meaning 'risk of the event occurring'. A resulting model from survival analysis usually contains two components. The first component is a $\lambda_{0}(t)$ baseline hazard function. This function describes how the risk of the event occurring changes with time, assuming there is no influence from any of the explanatory variables. The second component describes the influence of each explanatory variable on the hazard. This brings us to the notion of proportional hazards which is the topic of the next section.
 
 \section{Cox proportional hazards model}
 \label{sec:cox-proportional-hazards-model}
@@ -54,7 +54,7 @@ Now, let's look at relative risks between two patients:
 \end{split}
 \end{equation}
 This quantity is called the hazard ratio. Notice that this ratio does not depend on time. This means that if at the start of the study a patient has twice the risk of the event occurring compared to another patient, it will have twice the risk at any other time aswell. It's risk remains proportional, independent of time. \\ \\
-We can also compute the effect on the hazard for a unit increase in an explanatory variable $X_{j}$. The subscripts i to indicate the patients have been omitted since this is independent of a specific patient. The hazard ratio then becomes:
+We can also compute the effect on the hazard for a unit increase in an explanatory variable $X_{j}$. In the following formula the subscripts i that were used to indicate the patient have been omitted since this is patient independent. The hazard ratio then becomes:
 \begin{equation}
 \begin{split}
 \frac{\lambda(t|X_{j}+1)}{\lambda(t|X_{j})} = e^{(X_{j}+1-X_{j})\beta_{j}} = e^{\beta_{j}}
