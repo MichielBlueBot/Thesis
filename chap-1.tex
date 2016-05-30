@@ -37,7 +37,7 @@ For the other linear methods we will define a function each time that is applied
 \end{figure}
 \subsection{Linear Classification}
 \label{subsec:glm-linear-classification}
-The next method is called linear classification~\cite{caltechmachinelearning}\cite{wikiclassification}. The difference with linear regression is that we have a different type of output variable. In a classification task we want to predict a class from a list of potential classes. For instance, we could try to predict whether tomorrow will be a sunny day or not. Notice that there are only 2 possible outcomes: 'sunny' or 'not sunny' and we could represent these outcomes as -1 and 1 in our model. This form would be called binary classification because we have 2 possible classes. It is very easy to extend this method to multi-class classification.\\
+The next method is called linear classification~\cite{caltechmachinelearning}\cite{wikiclassification}. The difference with linear regression is that we have a different type of output variable. In a classification task we want to predict a class from a list of potential classes. For instance, we could try to predict whether tomorrow will be a sunny day or not. Notice that there are only two possible outcomes: 'sunny' or 'not sunny' and we could represent these outcomes as -1 and 1 in our model. This form would be called binary classification because we have two possible classes. It is very easy to extend this method to multi-class classification.\\
 The computation in this method starts out exactly the same, combining the input variables using a linear combination. Next, we have to define a threshold to indicate which examples belong to one class or another. In the case of binary classification we would define 1 threshold, and if the result of the linear combination is higher than the threshold we would predict one class. If it is lower, we would predict the other class. The function used here would be called a sign function, which maps real values onto one of 2 possible outcomes. We could represent this computation with the following formula: 
 \begin{equation}
 \begin{split}
@@ -65,6 +65,7 @@ A schema for this computation is shown on figure \ref{fig:glm-linear-classificat
 \subsection{Logistic Regression}
 \label{subsec:glm-logistic-regression}
 The third method we want to present is called logistic regression~\cite{caltechmachinelearning}\cite{wikilogistic}. In this case, the output variable we want to predict comes from a binomial distribution. This means that they are the result of a probabilistic event. An example would be tossing a coin and checking whether the result is heads or tails. While the outcome is binary (heads or tails) we know that there is an underlying probability for the coin to be heads or tails, and we would like to know this probability. \\
+
 The idea is still the same. We will make a linear combination of the input variables. However this time we will use a logistic function to produce our estimate. The logistic function is a function that maps real numbers onto the range $[0,1]$. This result can then be interpreted as an estimate for the probability. We could represent logistic regression mathematically as:
 \begin{equation}
 \label{eq:glm-logistic-regression}
@@ -138,7 +139,9 @@ Remember that the gradient of a function at a certain point always points toward
 $$
 v = -\frac{\nabla E_{in}(w(t))}{\lVert\nabla E_{in}(w(t))\rVert}
 $$
-We can now summarize the gradient descent method as follows: \\ \\
+We can now summarize the gradient descent method as follows:
+
+\vspace{1em}
 \begin{algorithm}[H]
 	\KwData{x, y}
 	initialize weights w(0) \\
@@ -147,9 +150,10 @@ We can now summarize the gradient descent method as follows: \\ \\
 		Compute update direction $v$ \\
 		Update weights $w(t+1) = w(t) + \eta v$
 	}
+\SetAlCapSkip{1em}
 \caption{Gradient Descent algorithm}
 \end{algorithm}
-
+\vspace{1em}
 There are two non-trivial issues in this computation: the initialization of the weights and the stopcondition. \\ \\
 Weight initialization is sometimes a very tricky thing to do, in the case of logistic regression however it is acceptable to set $w(0)$ equal to the zero-vector as this corresponds to no correlation between any of the input variables and the output variable, and the result of the sigmoid function would be 0.5 or 50\% meaning the model has no preference for either outcome.\\ \\
 The stopcondition however is a bigger issue and usually the way to go here is to make a combination of several stop criteria. One criteria would be to simply limit the amount of iterations to a fixed number. This could avoid endlessly overfitting. Another criteria is to set up a target error we want to achieve (a small number), and stop when we have reached this target. This however raises the question of picking the target error, and this is mostly an application dependent choice. \\ \\
@@ -209,6 +213,7 @@ Remember that bias is defined as the distance between the average (or best) hypo
 This observation does not have a mathematical proof, it is rather an observation from experience and reason. One good argument is the fact that noise is usually of high frequency \cite{caltechmachinelearning}. Meaning that distortions of our dataset (for instance measurement errors) will often be very scattered and random, while the underlying pattern that really makes up the data will be rather smooth. A similar argument can be made for the error due to bias, when we choose a hypothesis set that does not contain the target function, the error due to bias will be mostly random and of high frequency \cite{caltechmachinelearning}. Therefore if we want to reduce the impact of this noise in our final model, we should prefer models that are not able to fit these high frequencies exactly. Lastly we can remark that if we look at our current understanding of nature (let's say at a larger scale), systems almost always have smooth transitions. The most important laws of nature that we find are all written down in small, simple formulas. Nature doesn't work with instantaneous changes (high frequency), but rather it has smooth functions that govern the basic principle, and then it adds random noise and fluctuations on top of it. This principle is what we try to extrapolate here to machine learning.\\\\
 Thus, the choice we will make is that we will prefer simple models over complex ones by adding a constraint to the weights in our model.
 \subsection{Regularization types}
+\label{subsec:glm-regularization-types}
 Adding a constraint to the weights is called regularization. There are many kinds of constraints that we could add to the weights and, depending on the constraint we choose, the regularization gets a different name and it will have a different effect. One of the most famous regularizers is called ridge or weight-decay~\cite{friedman2010regularization}. The constraint for this regularizer is the following:
 $$
 \sum_{i=1}^{N}w_{i}^{2} \leq C
@@ -249,7 +254,7 @@ To demonstrate the difference between the types of regularization, it is useful 
 		\caption{Elastic net ($\alpha=0.5$)}
 		\label{fig:glm-path-elastic}
 	\end{subfigure}
-	\caption{Co\"effici\"ent paths as a function of $\lambda$ for different regularization types.}
+	\caption{Coefficient paths as a function of $\lambda$ for different regularization types.}
 	\label{fig:glm-paths}
 \end{figure}
 
@@ -263,13 +268,13 @@ where
 \begin{itemize}
 	\item $E_{in}(w)$ is the in-sample error.
 	\item $e(x_{n},y_{n},w)$ is the individual error made on example n. In the case of logistic regression this would be a cross-entropy error term $ln(1+e^{-y_{n}w^{T}x_{n}})$.
-	\item $\lambda$ is the regularization parameter that will be explained below.
-	\item $R(w)$ is the regularization term dependent on the type of regularization used. For instance: $\sum_{i=1}^{N}\lvert w_{i}\rvert$ for lasso, $\sum_{i=1}^{N}w_{i}^{2}$ for ridge, ...
 	\item $x_{n}$ is the n'th sample in the dataset.
 	\item $y_{n}$ is the outcome for the n'th sample in the dataset.
 	\item $w$ is the vector of weights, our model parameters that we are trying to find.
+	\item $\lambda$ is the regularization parameter that will be explained below.
+	\item $R(w)$ is the regularization term dependent on the type of regularization used. For instance: $\sum_{i=1}^{N}\lvert w_{i}\rvert$ for lasso, $\sum_{i=1}^{N}w_{i}^{2}$ for ridge, ...
 \end{itemize}
-Notice that we now again have an error measure that we want to minimize, and it is an unconstrained optimization problem. The important new part is $\lambda$. This is the amount of regularization we want to use. It is a new form for the constraint constant $C$ that was earlier introduced in the types of regularization. The higher $\lambda$ the tighter the constraint (lower $C$) and vice versa. The value of $\lambda$ will prove to be critical in getting good models. The way to calculate it is through validation.
+Notice that we now again have an error measure that we want to minimize, and it is an unconstrained optimization problem. The important new part is $\lambda$. This is the amount of regularization we want to use. It is a new form for the constraint constant $C$ that was introduced earlier in the types of regularization (section \ref{subsec:glm-regularization-types}). The higher $\lambda$ the tighter the constraint (lower $C$) and vice versa. The value of $\lambda$ will prove to be critical in getting good models. The way to calculate it is through validation, which is the topic of the next section.
 \section{Validation}
 \label{sec:glm-validation}
 In this section we will explain the method of validation which is used to estimate the out-of-sample error, remember that this is the error we make on samples that were not used for training. We will first explain the issue of sample size and then present a method to work around this limitation.

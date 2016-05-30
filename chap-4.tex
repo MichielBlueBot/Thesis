@@ -57,7 +57,7 @@ The ROC curve is a way of showing exactly this gradual increase of the threshold
 \label{sec:evaluation-predictingstage}
 \subsection{Case details}
 \label{sec:evaluation-casedetails}
-The case we are showing here uses datasets created by the University Hospital of Leuven in a study on colorectal cancer patients. There are three source datasets that all contain imaging data: a dataset from MRI (Magnetic Resonance Imaging) scans, a dataset from DWI (Diffusion Weighted Magnetic Resonance Imaging) scans, and a dataset from PET (Positron Emission Tomography) scans. It is important to note that these scans were taken 3 times per patient at different periods in their treatment: one in the beginning, one roughly in the middle, and one near the end. This means that there is some temporal information present in the datasets, but this has been encoded in the explanatory variables. For instance: there is a variable in the MRI dataset that shows the size change of the tumour between the first and second scan. In this way we can treat this as a regular explanatory variable and we don't have to worry about the temporal aspect. \\ \\
+The case we are showing here uses datasets created by the University Hospital of Leuven in a study on colorectal cancer patients. There are three source datasets that all contain imaging data: a dataset from MRI (Magnetic Resonance Imaging) scans, a dataset from DWI (Diffusion Weighted Magnetic Resonance Imaging) scans, and a dataset from PET (Positron Emission Tomography) scans. It is important to note that these scans were taken three times per patient at different periods in their treatment: one in the beginning, one roughly in the middle, and one near the end. This means that there is some temporal information present in the datasets, but this has been encoded in the explanatory variables. For instance: there is a variable in the MRI dataset that shows the size change of the tumour between the first and second scan. In this way we can treat this as a regular explanatory variable and we don't have to worry about the temporal aspect. \\ \\
 The dependent variable is a binary outcome based on whether the patient got a pathologically complete response. For a more in-depth explanation on what this means see appendix \ref{app:cancer-staging}. For now, we can view a positive outcome as a patient who has recovered from the cancer, and a negative outcome as a patient that has not. The aim is now to build a model that receives the explanatory variables from the scans as input, and predicts the outcome for that patient.
 \subsection{The results}
 The resulting AUC's for the individual and integrated datasets are shown respectively in tables \ref{tab:evaluation-auc-individual} and \ref{tab:evaluation-auc-integrated}. We can clearly see that the model for the individual MRI dataset contains the most predictive information out of the three datasets. This however doesn't mean that the other datasets are useless. Indeed, when we integrate the other dataset with the MRI dataset we get even better performances. From table \ref{tab:evaluation-auc-integrated} we can see that in this case the intermediate integration method outperforms the other strategies regardless of which datasets are used. \\ \\
@@ -74,7 +74,7 @@ I have also included an overview of the model parameters that were selected (on 
 		SUV & 0.65 \\
 		\bottomrule
 	\end{tabular}
-	\caption{AUC for models of individual datasets}
+	\caption{Area under the ROC curve for models of individual datasets}
 	\label{tab:evaluation-auc-individual}
 \end{table}
 \begin{table}
@@ -88,7 +88,7 @@ I have also included an overview of the model parameters that were selected (on 
 		Late integration & 0.73 & 0.78 & 0.66 & 0.70 \\
 		\bottomrule
 	\end{tabular}
-	\caption{AUC for models of various combinations of integrated datasets}
+	\caption{Area under the ROC curve for models of various combinations of integrated datasets}
 	\label{tab:evaluation-auc-integrated}
 \end{table}
 
@@ -116,7 +116,7 @@ I have also included an overview of the model parameters that were selected (on 
 		RITLG\_TP2TP3 				&  		&      	&  		& & & -0.08		& 		\\
 		\bottomrule
 	\end{tabular}
-	\caption{Overview of the model parameters (weights)}
+	\caption{Overview of the model parameters (weights) for all of the computed models}
 	\label{tab:evaluation-model-parameters}
 \end{table}
 

@@ -15,7 +15,7 @@ Now that we have our input data, we need a target function (dependent variable).
 The first integration method is called early integration. In this method we are simply going to concatenate the data for each sample. Figure \ref{fig:integration-early} shows the schema for early integration of data sources. A new large dataset is constructed by concatenating the individual datasets by matching sample. The number of explanatory variables is now equal to the sum of explanatory variables of all individual datasets. This integrated dataset can then be used to train a predictive model using techniques seen in previous chapters (\ref{cha:glm},\ref{cha:cox}).
 \begin{figure}
 	\centering
-	\includegraphics[scale=1]{images/early_integration}
+	\includegraphics[scale=.8]{images/early_integration}
 	\caption{Scheme for early integration}
 	\label{fig:integration-early}
 \end{figure}
@@ -26,7 +26,7 @@ There is an analogy between late integration and the ensemble averaging techniqu
 The thought behind this model is that we try to learn as much as possible from each dataset individually, before we combine them. An example of this is that the variable selection by the lasso regularization (section \ref{insec:glm-lasso}) now has the opportunity to select the best variables for each dataset individually. While in the case of early integration, all the variables from the datasets are competing against each other at the same time to make it into the final model.
 \begin{figure}
 	\centering
-	\includegraphics[scale=1]{images/late_integration}
+	\includegraphics[scale=.8]{images/late_integration}
 	\caption{Scheme for late integration}
 	\label{fig:integration-late}
 \end{figure}
@@ -36,7 +36,7 @@ Intermediate integration is a novel integration technique that tries to take adv
 The intermediate integration can be seen as a two-step learning process. First we preprocess the datasets by computing individual models and we extract only the informative variables. Then we will train our final model on the reduced dataset. This is very advantageous if the initial datasets have a huge amount of explanatory variables, as the preprocessing step will reduce this amount drastically while still keeping as much useful information as possible.
 \begin{figure}
 	\centering
-	\includegraphics[scale=1]{images/intermediate_integration}
+	\includegraphics[scale=.8]{images/intermediate_integration}
 	\caption{Scheme for intermediate integration}
 	\label{fig:integration-intermediate}
 \end{figure}

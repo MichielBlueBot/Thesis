@@ -17,9 +17,10 @@
 \contentsline {chapter}{Predictieve modellen}{viii}{chapter*.7}
 \contentsline {section}{Introductie}{viii}{section*.8}
 \contentsline {section}{Wat is een predictief model?}{viii}{section*.9}
-\contentsline {subsection}{Logistieke regressie}{ix}{section*.10}
+\contentsline {section}{Logistieke regressie}{ix}{section*.10}
+\contentsline {section}{Cox proportionele risico modellen}{ix}{section*.11}
 \select@language {english}
-\contentsline {chapter}{List of Figures and Tables}{x}{chapter*.11}
+\contentsline {chapter}{List of Figures and Tables}{x}{chapter*.12}
 \contentsline {chapter}{\chapternumberline {1}Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}The need for data integration methods}{1}{section.1.1}
 \contentsline {section}{\numberline {1.2}Goals and modus operandi}{1}{section.1.2}
@@ -33,16 +34,16 @@
 \contentsline {section}{\numberline {2.4}Training a model}{6}{section.2.4}
 \contentsline {subsection}{\numberline {2.4.1}Training and testing data}{7}{subsection.2.4.1}
 \contentsline {subsection}{\numberline {2.4.2}Gradient descent}{7}{subsection.2.4.2}
-\contentsline {subsubsection}{Error measure}{8}{section*.17}
-\contentsline {subsubsection}{The gradient descent method}{8}{section*.18}
+\contentsline {subsubsection}{Error measure}{8}{section*.18}
+\contentsline {subsubsection}{The gradient descent method}{8}{section*.19}
 \contentsline {section}{\numberline {2.5}Summary of training a model}{10}{section.2.5}
 \contentsline {section}{\numberline {2.6}Overfitting}{10}{section.2.6}
 \contentsline {subsection}{\numberline {2.6.1}The problem of overfitting}{11}{subsection.2.6.1}
 \contentsline {subsection}{\numberline {2.6.2}The bias and variance trade-off}{11}{subsection.2.6.2}
-\contentsline {subsubsection}{Average hypothesis}{11}{section*.19}
-\contentsline {subsubsection}{Bias}{12}{section*.20}
-\contentsline {subsubsection}{Variance}{12}{section*.21}
-\contentsline {subsubsection}{The tradeoff}{13}{section*.22}
+\contentsline {subsubsection}{Average hypothesis}{11}{section*.20}
+\contentsline {subsubsection}{Bias}{12}{section*.21}
+\contentsline {subsubsection}{Variance}{12}{section*.22}
+\contentsline {subsubsection}{The tradeoff}{13}{section*.23}
 \contentsline {section}{\numberline {2.7}Regularization}{13}{section.2.7}
 \contentsline {subsection}{\numberline {2.7.1}Adding bias}{13}{subsection.2.7.1}
 \contentsline {subsection}{\numberline {2.7.2}Regularization types}{14}{subsection.2.7.2}
@@ -58,13 +59,13 @@
 \contentsline {subsection}{\numberline {3.3.1}Proportional hazards condition}{20}{subsection.3.3.1}
 \contentsline {subsection}{\numberline {3.3.2}Using the hazard ratio}{21}{subsection.3.3.2}
 \contentsline {subsection}{\numberline {3.3.3}Kaplan-Meier survival curves}{21}{subsection.3.3.3}
-\contentsline {subsubsection}{Linking hazard to survival}{22}{section*.26}
+\contentsline {subsubsection}{Linking hazard to survival}{22}{section*.27}
 \contentsline {section}{\numberline {3.4}Conclusion}{24}{section.3.4}
 \contentsline {chapter}{\chapternumberline {4}Integration Strategies}{25}{chapter.4}
 \contentsline {section}{\numberline {4.1}Introduction}{25}{section.4.1}
 \contentsline {section}{\numberline {4.2}Description of the data}{25}{section.4.2}
 \contentsline {section}{\numberline {4.3}Early integration}{26}{section.4.3}
-\contentsline {section}{\numberline {4.4}Late integration}{26}{section.4.4}
+\contentsline {section}{\numberline {4.4}Late integration}{27}{section.4.4}
 \contentsline {section}{\numberline {4.5}Intermediate integration}{27}{section.4.5}
 \contentsline {section}{\numberline {4.6}Conclusion}{28}{section.4.6}
 \contentsline {chapter}{\chapternumberline {5}Evaluation of integration strategies}{31}{chapter.5}
@@ -72,9 +73,9 @@
 \contentsline {section}{\numberline {5.2}Evaluating a logistic regression model}{31}{section.5.2}
 \contentsline {subsection}{\numberline {5.2.1}Predictions using validation}{31}{subsection.5.2.1}
 \contentsline {subsection}{\numberline {5.2.2}Metrics}{32}{subsection.5.2.2}
-\contentsline {subsubsection}{Sensitivity}{32}{section*.30}
-\contentsline {subsubsection}{Specificity}{33}{section*.31}
-\contentsline {subsubsection}{The tradeoff}{33}{section*.32}
+\contentsline {subsubsection}{Sensitivity}{32}{section*.31}
+\contentsline {subsubsection}{Specificity}{33}{section*.32}
+\contentsline {subsubsection}{The tradeoff}{33}{section*.33}
 \contentsline {subsection}{\numberline {5.2.3}Receiver Operating Characteristic curve}{33}{subsection.5.2.3}
 \contentsline {section}{\numberline {5.3}Case study 1: predicting stage outcome}{35}{section.5.3}
 \contentsline {subsection}{\numberline {5.3.1}Case details}{35}{subsection.5.3.1}
@@ -94,15 +95,15 @@
 \contentsline {subsection}{\numberline {6.2.1}The R language}{43}{subsection.6.2.1}
 \contentsline {subsection}{\numberline {6.2.2}Web interface}{43}{subsection.6.2.2}
 \contentsline {section}{\numberline {6.3}Demonstration}{44}{section.6.3}
-\contentsline {subsubsection}{The input tab}{44}{section*.41}
-\contentsline {subsubsection}{The individual models tab}{44}{section*.44}
-\contentsline {subsubsection}{The integration tab}{45}{section*.47}
+\contentsline {subsubsection}{The input tab}{44}{section*.42}
+\contentsline {subsubsection}{The individual models tab}{44}{section*.45}
+\contentsline {subsubsection}{The integration tab}{45}{section*.48}
 \contentsline {section}{\numberline {6.4}Conclusion}{45}{section.6.4}
 \contentsline {chapter}{\chapternumberline {7}Conclusion}{47}{chapter.7}
 \contentsline {appendix}{\chapternumberline {A}Cancer staging}{51}{appendix.A}
 \contentsline {section}{\numberline {A.1}TNM staging system}{51}{section.A.1}
 \contentsline {section}{\numberline {A.2}Pathologic stage in case study 1}{52}{section.A.2}
-\contentsline {chapter}{Bibliography}{53}{section*.50}
+\contentsline {chapter}{Bibliography}{53}{section*.51}
 \select@language {dutch}
 \select@language {english}
 \select@language {dutch}
