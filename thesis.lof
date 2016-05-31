@@ -9,34 +9,37 @@
 \select@language {english}
 \addvspace {10pt}
 \addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Schema for linear regression\relax }}{5}{figure.caption.6}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Schema for linear classification\relax }}{5}{figure.caption.7}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Schema for logistic regression\relax }}{6}{figure.caption.8}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Coefficient paths as a function of $\lambda $ for different regularization types.\relax }}{16}{figure.caption.15}
+\addvspace {10pt}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Example Kaplan-Meier survival curve. Red and green lines represent survival probabilities for treated and untreated patient-groups respectively.\relax }}{23}{figure.caption.17}
+\addvspace {10pt}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Scheme for early integration\relax }}{28}{figure.caption.19}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Scheme for late integration\relax }}{30}{figure.caption.20}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Scheme for intermediate integration\relax }}{31}{figure.caption.21}
+\addvspace {10pt}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Example ROC curve and metrics\relax }}{36}{figure.caption.25}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Example Wald test variance visualisation. Both curves give the same maximum likelihood estimate $\mathaccentV {hat}05E{\beta }$. The red curve however has low variance, providing good evidence to reject the null-hypothesis with value $\beta _{0}$. The blue curve has high variance, in this case $\mathaccentV {hat}05E{\beta }$ does not significantly differ from $\beta _{0}$ and we cannot reject the null-hypothesis.\relax }}{41}{figure.caption.29}
+\addvspace {10pt}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces The input tab of the tool\relax }}{46}{figure.caption.34}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Example input overview. The boxes on the left show explanatory variable dataset dimensions, the box on the right shows the possible dependent variables.\relax }}{47}{figure.caption.35}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces An example model description showing the coefficients for the variables in the model separated by their sign.\relax }}{47}{figure.caption.37}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces An example interactive ROC curve. The slider on top allows the user to vary the threshold. The plot interactively adjusts itself to the chosen threshold.\relax }}{48}{figure.caption.38}
+\addvspace {10pt}
+\addvspace {10pt}
 \select@language {dutch}
 \addvspace {10pt}
-\addvspace {10pt}
-\addvspace {10pt}
-\select@language {english}
-\addvspace {10pt}
-\addvspace {10pt}
-\addvspace {10pt}
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Schema for linear regression\relax }}{5}{figure.caption.15}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Schema for linear classification\relax }}{5}{figure.caption.16}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Schema for logistic regression\relax }}{6}{figure.caption.17}
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Coefficient paths as a function of $\lambda $ for different regularization types.\relax }}{15}{figure.caption.24}
-\addvspace {10pt}
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Example Kaplan-Meier survival curve. Red and green lines represent survival probabilities for treated and untreated patient-groups respectively.\relax }}{21}{figure.caption.26}
-\addvspace {10pt}
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Scheme for early integration\relax }}{26}{figure.caption.28}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Scheme for late integration\relax }}{28}{figure.caption.29}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Scheme for intermediate integration\relax }}{29}{figure.caption.30}
-\addvspace {10pt}
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Example ROC curve and metrics\relax }}{34}{figure.caption.34}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Example Wald test variance visualisation. Both curves give the same maximum likelihood estimate $\mathaccentV {hat}05E{\beta }$. The red curve however has low variance, providing good evidence to reject the null-hypothesis with value $\beta _{0}$. The blue curve has high variance, in this case $\mathaccentV {hat}05E{\beta }$ does not significantly differ from $\beta _{0}$ and we cannot reject the null-hypothesis.\relax }}{39}{figure.caption.38}
-\addvspace {10pt}
-\contentsline {figure}{\numberline {6.1}{\ignorespaces The input tab of the tool\relax }}{44}{figure.caption.43}
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Example input overview. The boxes on the left show explanatory variable dataset dimensions, the box on the right shows the possible dependent variables.\relax }}{45}{figure.caption.44}
-\contentsline {figure}{\numberline {6.3}{\ignorespaces An example model description showing the coefficients for the variables in the model separated by their sign.\relax }}{45}{figure.caption.46}
-\contentsline {figure}{\numberline {6.4}{\ignorespaces An example interactive ROC curve. The slider on top allows the user to vary the threshold. The plot interactively adjusts itself to the chosen threshold.\relax }}{46}{figure.caption.47}
-\addvspace {10pt}
-\addvspace {10pt}
+\contentsline {figure}{\numberline {B.1}{\ignorespaces Voorbeeld kaplan-meier survival curves. De X-as geeft de tijd weer, de Y-as geeft de kans weer op overleving.\relax }}{58}{figure.caption.41}
+\contentsline {figure}{\numberline {B.2}{\ignorespaces Schema voor vroege integratie\relax }}{62}{figure.caption.47}
+\contentsline {figure}{\numberline {B.3}{\ignorespaces Schema voor late integratie\relax }}{63}{figure.caption.48}
+\contentsline {figure}{\numberline {B.4}{\ignorespaces Schema voor parti\"ele integratie\relax }}{64}{figure.caption.49}
+\contentsline {figure}{\numberline {B.5}{\ignorespaces Voorbeeld ROC curve en metrieken\relax }}{67}{figure.caption.52}
+\contentsline {figure}{\numberline {B.6}{\ignorespaces Voorbeeld Wald test variantie visualisatie. Beide curves geven dezelfde maximum likelihood schatting voor $\mathaccentV {hat}05E{\beta }$. De rode curve heeft echter een lage variantie, wat veel evidentie biedt om de null-hypothese te verwerpen. De blauwe curve heeft een hoge variantie, in dit geval is het niet meteen duidelijk dat $\mathaccentV {hat}05E{\beta }$ echt verschilt van $\beta _{0}$ en dus kunnen we de null-hypothese niet verwerpen.\relax }}{69}{figure.caption.57}
 \select@language {dutch}
 \select@language {english}
 \select@language {dutch}

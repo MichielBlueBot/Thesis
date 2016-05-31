@@ -9,28 +9,30 @@
 \select@language {english}
 \addvspace {10pt}
 \addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\contentsline {table}{\numberline {3.1}{\ignorespaces Example outcomes for survival data\relax }}{22}{table.caption.16}
+\addvspace {10pt}
+\addvspace {10pt}
+\contentsline {table}{\numberline {5.1}{\ignorespaces Area under the ROC curve for models of individual datasets\relax }}{38}{table.caption.26}
+\contentsline {table}{\numberline {5.2}{\ignorespaces Area under the ROC curve for models of various combinations of integrated datasets\relax }}{38}{table.caption.27}
+\contentsline {table}{\numberline {5.3}{\ignorespaces Overview of the model parameters (weights) for all of the computed models\relax }}{38}{table.caption.28}
+\contentsline {table}{\numberline {5.4}{\ignorespaces Dimensions for the datasets used in the survival analysis.\relax }}{42}{table.caption.30}
+\contentsline {table}{\numberline {5.5}{\ignorespaces Performance statistics for survival models of individual datasets\relax }}{43}{table.caption.31}
+\contentsline {table}{\numberline {5.6}{\ignorespaces Performance statistics for integrated survival models\relax }}{43}{table.caption.32}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\contentsline {table}{\numberline {A.1}{\ignorespaces TNM staging system, meaning of codes\relax }}{54}{table.caption.40}
 \select@language {dutch}
 \addvspace {10pt}
-\addvspace {10pt}
-\addvspace {10pt}
-\select@language {english}
-\addvspace {10pt}
-\addvspace {10pt}
-\addvspace {10pt}
-\addvspace {10pt}
-\contentsline {table}{\numberline {3.1}{\ignorespaces Example outcomes for survival data\relax }}{20}{table.caption.25}
-\addvspace {10pt}
-\addvspace {10pt}
-\contentsline {table}{\numberline {5.1}{\ignorespaces AUC for models of individual datasets\relax }}{36}{table.caption.35}
-\contentsline {table}{\numberline {5.2}{\ignorespaces AUC for models of various combinations of integrated datasets\relax }}{36}{table.caption.36}
-\contentsline {table}{\numberline {5.3}{\ignorespaces Overview of the model parameters (weights)\relax }}{36}{table.caption.37}
-\contentsline {table}{\numberline {5.4}{\ignorespaces Dimensions for the datasets used in the survival analysis.\relax }}{40}{table.caption.39}
-\contentsline {table}{\numberline {5.5}{\ignorespaces Performance statistics for survival models of individual datasets\relax }}{41}{table.caption.40}
-\contentsline {table}{\numberline {5.6}{\ignorespaces Performance statistics for integrated survival models\relax }}{41}{table.caption.41}
-\addvspace {10pt}
-\addvspace {10pt}
-\addvspace {10pt}
-\contentsline {table}{\numberline {A.1}{\ignorespaces TNM staging system, meaning of codes\relax }}{52}{table.caption.49}
+\contentsline {table}{\numberline {B.1}{\ignorespaces AUC voor modellen getraind op individuele datasets\relax }}{66}{table.caption.53}
+\contentsline {table}{\numberline {B.2}{\ignorespaces AUC voor ge\"integreerde modellen voor verschillende combinaties van de datasets\relax }}{67}{table.caption.54}
+\contentsline {table}{\numberline {B.3}{\ignorespaces Dimensies voor de datasets die gebruikt werden in de overlevingsanalyse.\relax }}{70}{table.caption.58}
+\contentsline {table}{\numberline {B.4}{\ignorespaces Significantie waarden voor de overlevingsmodellen voor individuele datasets\relax }}{70}{table.caption.59}
+\contentsline {table}{\numberline {B.5}{\ignorespaces Significantie waarden voor de ge\"integreerde overlevingsmodellen\relax }}{70}{table.caption.60}
 \select@language {dutch}
 \select@language {english}
 \select@language {dutch}

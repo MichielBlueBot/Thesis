@@ -159,6 +159,11 @@ M.~V. Iorio, M.~Ferracin, C.-G. Liu, A.~Veronese, R.~Spizzo, S.~Sabbioni,
 \newblock Microrna gene expression deregulation in human breast cancer.
 \newblock {\em Cancer research}, 65(16):7065--7070, 2005.
 
+\bibitem{jones2001taxonomy}
+D.~R. Jones.
+\newblock A taxonomy of global optimization methods based on response surfaces.
+\newblock {\em Journal of global optimization}, 21(4):345--383, 2001.
+
 \bibitem{kohavi1995study}
 R.~Kohavi et~al.
 \newblock A study of cross-validation and bootstrap for accuracy estimation and

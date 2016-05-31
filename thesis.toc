@@ -9,18 +9,7 @@
 \select@language {english}
 \contentsline {chapter}{Preface}{i}{chapter*.1}
 \contentsline {chapter}{Abstract}{iv}{chapter*.2}
-\select@language {dutch}
-\contentsline {chapter}{Samenvatting}{v}{chapter*.3}
-\contentsline {chapter}{Introductie}{vi}{chapter*.4}
-\contentsline {section}{De nood aan data integratie methoden}{vi}{section*.5}
-\contentsline {section}{Doel en werkwijze}{vi}{section*.6}
-\contentsline {chapter}{Predictieve modellen}{viii}{chapter*.7}
-\contentsline {section}{Introductie}{viii}{section*.8}
-\contentsline {section}{Wat is een predictief model?}{viii}{section*.9}
-\contentsline {section}{Logistieke regressie}{ix}{section*.10}
-\contentsline {section}{Cox proportionele risico modellen}{ix}{section*.11}
-\select@language {english}
-\contentsline {chapter}{List of Figures and Tables}{x}{chapter*.12}
+\contentsline {chapter}{List of Figures and Tables}{v}{chapter*.3}
 \contentsline {chapter}{\chapternumberline {1}Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}The need for data integration methods}{1}{section.1.1}
 \contentsline {section}{\numberline {1.2}Goals and modus operandi}{1}{section.1.2}
@@ -34,76 +23,110 @@
 \contentsline {section}{\numberline {2.4}Training a model}{6}{section.2.4}
 \contentsline {subsection}{\numberline {2.4.1}Training and testing data}{7}{subsection.2.4.1}
 \contentsline {subsection}{\numberline {2.4.2}Gradient descent}{7}{subsection.2.4.2}
-\contentsline {subsubsection}{Error measure}{8}{section*.18}
-\contentsline {subsubsection}{The gradient descent method}{8}{section*.19}
+\contentsline {subsubsection}{Error measure}{8}{section*.9}
+\contentsline {subsubsection}{The gradient descent method}{8}{section*.10}
 \contentsline {section}{\numberline {2.5}Summary of training a model}{10}{section.2.5}
 \contentsline {section}{\numberline {2.6}Overfitting}{10}{section.2.6}
 \contentsline {subsection}{\numberline {2.6.1}The problem of overfitting}{11}{subsection.2.6.1}
 \contentsline {subsection}{\numberline {2.6.2}The bias and variance trade-off}{11}{subsection.2.6.2}
-\contentsline {subsubsection}{Average hypothesis}{11}{section*.20}
-\contentsline {subsubsection}{Bias}{12}{section*.21}
-\contentsline {subsubsection}{Variance}{12}{section*.22}
-\contentsline {subsubsection}{The tradeoff}{13}{section*.23}
-\contentsline {section}{\numberline {2.7}Regularization}{13}{section.2.7}
-\contentsline {subsection}{\numberline {2.7.1}Adding bias}{13}{subsection.2.7.1}
+\contentsline {subsubsection}{Average hypothesis}{11}{section*.11}
+\contentsline {subsubsection}{Bias}{12}{section*.12}
+\contentsline {subsubsection}{Variance}{13}{section*.13}
+\contentsline {subsubsection}{The tradeoff}{13}{section*.14}
+\contentsline {section}{\numberline {2.7}Regularization}{14}{section.2.7}
+\contentsline {subsection}{\numberline {2.7.1}Adding bias}{14}{subsection.2.7.1}
 \contentsline {subsection}{\numberline {2.7.2}Regularization types}{14}{subsection.2.7.2}
 \contentsline {subsection}{\numberline {2.7.3}Lambda}{16}{subsection.2.7.3}
-\contentsline {section}{\numberline {2.8}Validation}{16}{section.2.8}
+\contentsline {section}{\numberline {2.8}Validation}{17}{section.2.8}
 \contentsline {subsection}{\numberline {2.8.1}The sample size dilemma}{17}{subsection.2.8.1}
-\contentsline {subsection}{\numberline {2.8.2}Cross-validation}{17}{subsection.2.8.2}
+\contentsline {subsection}{\numberline {2.8.2}Cross-validation}{18}{subsection.2.8.2}
 \contentsline {section}{\numberline {2.9}Conclusion}{18}{section.2.9}
-\contentsline {chapter}{\chapternumberline {3}Cox proportional hazards models}{19}{chapter.3}
-\contentsline {section}{\numberline {3.1}Introduction}{19}{section.3.1}
-\contentsline {section}{\numberline {3.2}Survival analysis}{19}{section.3.2}
-\contentsline {section}{\numberline {3.3}Cox proportional hazards model}{20}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Proportional hazards condition}{20}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Using the hazard ratio}{21}{subsection.3.3.2}
-\contentsline {subsection}{\numberline {3.3.3}Kaplan-Meier survival curves}{21}{subsection.3.3.3}
-\contentsline {subsubsection}{Linking hazard to survival}{22}{section*.27}
-\contentsline {section}{\numberline {3.4}Conclusion}{24}{section.3.4}
-\contentsline {chapter}{\chapternumberline {4}Integration Strategies}{25}{chapter.4}
-\contentsline {section}{\numberline {4.1}Introduction}{25}{section.4.1}
-\contentsline {section}{\numberline {4.2}Description of the data}{25}{section.4.2}
-\contentsline {section}{\numberline {4.3}Early integration}{26}{section.4.3}
-\contentsline {section}{\numberline {4.4}Late integration}{27}{section.4.4}
-\contentsline {section}{\numberline {4.5}Intermediate integration}{27}{section.4.5}
-\contentsline {section}{\numberline {4.6}Conclusion}{28}{section.4.6}
-\contentsline {chapter}{\chapternumberline {5}Evaluation of integration strategies}{31}{chapter.5}
-\contentsline {section}{\numberline {5.1}Introduction}{31}{section.5.1}
-\contentsline {section}{\numberline {5.2}Evaluating a logistic regression model}{31}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Predictions using validation}{31}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Metrics}{32}{subsection.5.2.2}
-\contentsline {subsubsection}{Sensitivity}{32}{section*.31}
-\contentsline {subsubsection}{Specificity}{33}{section*.32}
-\contentsline {subsubsection}{The tradeoff}{33}{section*.33}
-\contentsline {subsection}{\numberline {5.2.3}Receiver Operating Characteristic curve}{33}{subsection.5.2.3}
-\contentsline {section}{\numberline {5.3}Case study 1: predicting stage outcome}{35}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}Case details}{35}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}The results}{35}{subsection.5.3.2}
-\contentsline {section}{\numberline {5.4}Evaluating a cox proportional hazards model}{37}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}Predictions for survival models}{37}{subsection.5.4.1}
-\contentsline {subsection}{\numberline {5.4.2}The Wald test}{38}{subsection.5.4.2}
-\contentsline {section}{\numberline {5.5}Case study 2: predicting survival outcomes}{38}{section.5.5}
-\contentsline {subsection}{\numberline {5.5.1}Case details}{38}{subsection.5.5.1}
-\contentsline {subsection}{\numberline {5.5.2}The results}{40}{subsection.5.5.2}
-\contentsline {subsection}{\numberline {5.5.3}Interpretation of the statistics}{40}{subsection.5.5.3}
-\contentsline {subsection}{\numberline {5.5.4}Interpretation of the results}{40}{subsection.5.5.4}
-\contentsline {section}{\numberline {5.6}Conclusion}{41}{section.5.6}
-\contentsline {chapter}{\chapternumberline {6}Tool for automated evaluation}{43}{chapter.6}
-\contentsline {section}{\numberline {6.1}Introduction}{43}{section.6.1}
-\contentsline {section}{\numberline {6.2}Technologies}{43}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}The R language}{43}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Web interface}{43}{subsection.6.2.2}
-\contentsline {section}{\numberline {6.3}Demonstration}{44}{section.6.3}
-\contentsline {subsubsection}{The input tab}{44}{section*.42}
-\contentsline {subsubsection}{The individual models tab}{44}{section*.45}
-\contentsline {subsubsection}{The integration tab}{45}{section*.48}
-\contentsline {section}{\numberline {6.4}Conclusion}{45}{section.6.4}
-\contentsline {chapter}{\chapternumberline {7}Conclusion}{47}{chapter.7}
-\contentsline {appendix}{\chapternumberline {A}Cancer staging}{51}{appendix.A}
-\contentsline {section}{\numberline {A.1}TNM staging system}{51}{section.A.1}
-\contentsline {section}{\numberline {A.2}Pathologic stage in case study 1}{52}{section.A.2}
-\contentsline {chapter}{Bibliography}{53}{section*.51}
+\contentsline {chapter}{\chapternumberline {3}Cox proportional hazards models}{21}{chapter.3}
+\contentsline {section}{\numberline {3.1}Introduction}{21}{section.3.1}
+\contentsline {section}{\numberline {3.2}Survival analysis}{21}{section.3.2}
+\contentsline {section}{\numberline {3.3}Cox proportional hazards model}{22}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Proportional hazards condition}{22}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Using the hazard ratio}{23}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Kaplan-Meier survival curves}{23}{subsection.3.3.3}
+\contentsline {subsubsection}{Linking hazard to survival}{24}{section*.18}
+\contentsline {section}{\numberline {3.4}Conclusion}{26}{section.3.4}
+\contentsline {chapter}{\chapternumberline {4}Integration Strategies}{27}{chapter.4}
+\contentsline {section}{\numberline {4.1}Introduction}{27}{section.4.1}
+\contentsline {section}{\numberline {4.2}Description of the data}{27}{section.4.2}
+\contentsline {section}{\numberline {4.3}Early integration}{28}{section.4.3}
+\contentsline {section}{\numberline {4.4}Late integration}{29}{section.4.4}
+\contentsline {section}{\numberline {4.5}Intermediate integration}{29}{section.4.5}
+\contentsline {section}{\numberline {4.6}Conclusion}{30}{section.4.6}
+\contentsline {chapter}{\chapternumberline {5}Evaluation of integration strategies}{33}{chapter.5}
+\contentsline {section}{\numberline {5.1}Introduction}{33}{section.5.1}
+\contentsline {section}{\numberline {5.2}Evaluating a logistic regression model}{33}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Predictions using validation}{33}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Metrics}{34}{subsection.5.2.2}
+\contentsline {subsubsection}{Sensitivity}{34}{section*.22}
+\contentsline {subsubsection}{Specificity}{35}{section*.23}
+\contentsline {subsubsection}{The tradeoff}{35}{section*.24}
+\contentsline {subsection}{\numberline {5.2.3}Receiver Operating Characteristic curve}{35}{subsection.5.2.3}
+\contentsline {section}{\numberline {5.3}Case study 1: predicting stage outcome}{37}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Case details}{37}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}The results}{37}{subsection.5.3.2}
+\contentsline {section}{\numberline {5.4}Evaluating a cox proportional hazards model}{39}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Predictions for survival models}{39}{subsection.5.4.1}
+\contentsline {subsection}{\numberline {5.4.2}The Wald test}{40}{subsection.5.4.2}
+\contentsline {section}{\numberline {5.5}Case study 2: predicting survival outcomes}{40}{section.5.5}
+\contentsline {subsection}{\numberline {5.5.1}Case details}{40}{subsection.5.5.1}
+\contentsline {subsection}{\numberline {5.5.2}The results}{42}{subsection.5.5.2}
+\contentsline {subsection}{\numberline {5.5.3}Interpretation of the statistics}{42}{subsection.5.5.3}
+\contentsline {subsection}{\numberline {5.5.4}Interpretation of the results}{42}{subsection.5.5.4}
+\contentsline {section}{\numberline {5.6}Conclusion}{43}{section.5.6}
+\contentsline {chapter}{\chapternumberline {6}Tool for automated evaluation}{45}{chapter.6}
+\contentsline {section}{\numberline {6.1}Introduction}{45}{section.6.1}
+\contentsline {section}{\numberline {6.2}Technologies}{45}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}The R language}{45}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Web interface}{45}{subsection.6.2.2}
+\contentsline {section}{\numberline {6.3}Demonstration}{46}{section.6.3}
+\contentsline {subsubsection}{The input tab}{46}{section*.33}
+\contentsline {subsubsection}{The individual models tab}{46}{section*.36}
+\contentsline {subsubsection}{The integration tab}{47}{section*.39}
+\contentsline {section}{\numberline {6.4}Conclusion}{47}{section.6.4}
+\contentsline {chapter}{\chapternumberline {7}Conclusion}{49}{chapter.7}
+\contentsline {appendix}{\chapternumberline {A}Cancer staging}{53}{appendix.A}
+\contentsline {section}{\numberline {A.1}TNM staging system}{53}{section.A.1}
+\contentsline {section}{\numberline {A.2}Pathologic stage in case study 1}{54}{section.A.2}
+\select@language {dutch}
+\contentsline {appendix}{\chapternumberline {B}Samenvatting}{55}{appendix.B}
+\contentsline {section}{\numberline {B.1}Introductie}{55}{section.B.1}
+\contentsline {subsection}{\numberline {B.1.1}De nood aan data integratie methoden}{55}{subsection.B.1.1}
+\contentsline {subsection}{\numberline {B.1.2}Doel en werkwijze}{56}{subsection.B.1.2}
+\contentsline {section}{\numberline {B.2}Predictieve modellen}{56}{section.B.2}
+\contentsline {subsection}{\numberline {B.2.1}Introductie}{56}{subsection.B.2.1}
+\contentsline {subsection}{\numberline {B.2.2}Wat is een predictief model?}{56}{subsection.B.2.2}
+\contentsline {subsection}{\numberline {B.2.3}Logistieke regressie}{57}{subsection.B.2.3}
+\contentsline {subsection}{\numberline {B.2.4}Cox proportionele risico modellen}{58}{subsection.B.2.4}
+\contentsline {subsubsection}{Het predictief overlevingsmodel}{59}{section*.42}
+\contentsline {subsection}{\numberline {B.2.5}Regularizatie}{59}{subsection.B.2.5}
+\contentsline {subsubsection}{Ridge penalty}{60}{section*.43}
+\contentsline {subsubsection}{Lasso penalty}{60}{section*.44}
+\contentsline {subsubsection}{Elastisch-net penalty}{60}{section*.45}
+\contentsline {subsubsection}{De parameter $\lambda $}{60}{section*.46}
+\contentsline {subsection}{\numberline {B.2.6}Validatie}{61}{subsection.B.2.6}
+\contentsline {section}{\numberline {B.3}Integratie technieken}{61}{section.B.3}
+\contentsline {subsection}{\numberline {B.3.1}Inleiding}{61}{subsection.B.3.1}
+\contentsline {subsection}{\numberline {B.3.2}Beschrijving van de data}{61}{subsection.B.3.2}
+\contentsline {subsection}{\numberline {B.3.3}Vroege integratie}{62}{subsection.B.3.3}
+\contentsline {subsection}{\numberline {B.3.4}Late integratie}{62}{subsection.B.3.4}
+\contentsline {subsection}{\numberline {B.3.5}Parti\"ele integratie}{63}{subsection.B.3.5}
+\contentsline {section}{\numberline {B.4}Evaluatie van integratie methoden}{65}{section.B.4}
+\contentsline {subsection}{\numberline {B.4.1}Introductie}{65}{subsection.B.4.1}
+\contentsline {subsection}{\numberline {B.4.2}Case studie 1: logistieke regressie}{65}{subsection.B.4.2}
+\contentsline {subsubsection}{Case overzicht}{65}{section*.50}
+\contentsline {subsubsection}{Evaluatie methode}{65}{section*.51}
+\contentsline {subsection}{\numberline {B.4.3}Resultaten}{66}{subsection.B.4.3}
+\contentsline {subsection}{\numberline {B.4.4}Case studie 2: cox proportionele risico modellen}{68}{subsection.B.4.4}
+\contentsline {subsubsection}{Case overzicht}{68}{section*.55}
+\contentsline {subsubsection}{Evaluatie methode}{68}{section*.56}
+\contentsline {subsection}{\numberline {B.4.5}Resultaten}{69}{subsection.B.4.5}
+\contentsline {section}{\numberline {B.5}Conclusion}{70}{section.B.5}
+\contentsline {chapter}{Bibliography}{73}{section*.62}
 \select@language {dutch}
 \select@language {english}
 \select@language {dutch}

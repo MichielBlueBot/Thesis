@@ -1,54 +1,51 @@
 \BOOKMARK [0][-]{chapter*.1}{Preface}{}% 1
 \BOOKMARK [0][-]{chapter*.2}{Abstract}{}% 2
-\BOOKMARK [0][-]{chapter*.3}{Samenvatting}{}% 3
-\BOOKMARK [0][-]{chapter*.4}{Introductie}{}% 4
-\BOOKMARK [1][-]{section*.5}{De nood aan data integratie methoden}{chapter*.4}% 5
-\BOOKMARK [1][-]{section*.6}{Doel en werkwijze}{chapter*.4}% 6
-\BOOKMARK [0][-]{chapter*.7}{Predictieve modellen}{}% 7
-\BOOKMARK [1][-]{section*.8}{Introductie}{chapter*.7}% 8
-\BOOKMARK [1][-]{section*.9}{Wat is een predictief model?}{chapter*.7}% 9
-\BOOKMARK [1][-]{section*.10}{Logistieke regressie}{chapter*.7}% 10
-\BOOKMARK [1][-]{section*.11}{Cox proportionele risico modellen}{chapter*.7}% 11
-\BOOKMARK [0][-]{chapter*.12}{List of Figures and Tables}{}% 12
-\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 13
-\BOOKMARK [1][-]{section.1.1}{The need for data integration methods}{chapter.1}% 14
-\BOOKMARK [1][-]{section.1.2}{Goals and modus operandi}{chapter.1}% 15
-\BOOKMARK [0][-]{chapter.2}{Generalized Linear Models}{}% 16
-\BOOKMARK [1][-]{section.2.1}{Introduction}{chapter.2}% 17
-\BOOKMARK [1][-]{section.2.2}{What is a predictive model?}{chapter.2}% 18
-\BOOKMARK [1][-]{section.2.3}{Classical linear models}{chapter.2}% 19
-\BOOKMARK [1][-]{section.2.4}{Training a model}{chapter.2}% 20
-\BOOKMARK [1][-]{section.2.5}{Summary of training a model}{chapter.2}% 21
-\BOOKMARK [1][-]{section.2.6}{Overfitting}{chapter.2}% 22
-\BOOKMARK [1][-]{section.2.7}{Regularization}{chapter.2}% 23
-\BOOKMARK [1][-]{section.2.8}{Validation}{chapter.2}% 24
-\BOOKMARK [1][-]{section.2.9}{Conclusion}{chapter.2}% 25
-\BOOKMARK [0][-]{chapter.3}{Cox proportional hazards models}{}% 26
-\BOOKMARK [1][-]{section.3.1}{Introduction}{chapter.3}% 27
-\BOOKMARK [1][-]{section.3.2}{Survival analysis}{chapter.3}% 28
-\BOOKMARK [1][-]{section.3.3}{Cox proportional hazards model}{chapter.3}% 29
-\BOOKMARK [1][-]{section.3.4}{Conclusion}{chapter.3}% 30
-\BOOKMARK [0][-]{chapter.4}{Integration Strategies}{}% 31
-\BOOKMARK [1][-]{section.4.1}{Introduction}{chapter.4}% 32
-\BOOKMARK [1][-]{section.4.2}{Description of the data}{chapter.4}% 33
-\BOOKMARK [1][-]{section.4.3}{Early integration}{chapter.4}% 34
-\BOOKMARK [1][-]{section.4.4}{Late integration}{chapter.4}% 35
-\BOOKMARK [1][-]{section.4.5}{Intermediate integration}{chapter.4}% 36
-\BOOKMARK [1][-]{section.4.6}{Conclusion}{chapter.4}% 37
-\BOOKMARK [0][-]{chapter.5}{Evaluation of integration strategies}{}% 38
-\BOOKMARK [1][-]{section.5.1}{Introduction}{chapter.5}% 39
-\BOOKMARK [1][-]{section.5.2}{Evaluating a logistic regression model}{chapter.5}% 40
-\BOOKMARK [1][-]{section.5.3}{Case study 1: predicting stage outcome}{chapter.5}% 41
-\BOOKMARK [1][-]{section.5.4}{Evaluating a cox proportional hazards model}{chapter.5}% 42
-\BOOKMARK [1][-]{section.5.5}{Case study 2: predicting survival outcomes}{chapter.5}% 43
-\BOOKMARK [1][-]{section.5.6}{Conclusion}{chapter.5}% 44
-\BOOKMARK [0][-]{chapter.6}{Tool for automated evaluation}{}% 45
-\BOOKMARK [1][-]{section.6.1}{Introduction}{chapter.6}% 46
-\BOOKMARK [1][-]{section.6.2}{Technologies}{chapter.6}% 47
-\BOOKMARK [1][-]{section.6.3}{Demonstration}{chapter.6}% 48
-\BOOKMARK [1][-]{section.6.4}{Conclusion}{chapter.6}% 49
-\BOOKMARK [0][-]{chapter.7}{Conclusion}{}% 50
-\BOOKMARK [0][-]{appendix.A}{Cancer staging}{}% 51
-\BOOKMARK [1][-]{section.A.1}{TNM staging system}{appendix.A}% 52
-\BOOKMARK [1][-]{section.A.2}{Pathologic stage in case study 1}{appendix.A}% 53
-\BOOKMARK [0][-]{section*.51}{Bibliography}{}% 54
+\BOOKMARK [0][-]{chapter*.3}{List of Figures and Tables}{}% 3
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 4
+\BOOKMARK [1][-]{section.1.1}{The need for data integration methods}{chapter.1}% 5
+\BOOKMARK [1][-]{section.1.2}{Goals and modus operandi}{chapter.1}% 6
+\BOOKMARK [0][-]{chapter.2}{Generalized Linear Models}{}% 7
+\BOOKMARK [1][-]{section.2.1}{Introduction}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.2}{What is a predictive model?}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.3}{Classical linear models}{chapter.2}% 10
+\BOOKMARK [1][-]{section.2.4}{Training a model}{chapter.2}% 11
+\BOOKMARK [1][-]{section.2.5}{Summary of training a model}{chapter.2}% 12
+\BOOKMARK [1][-]{section.2.6}{Overfitting}{chapter.2}% 13
+\BOOKMARK [1][-]{section.2.7}{Regularization}{chapter.2}% 14
+\BOOKMARK [1][-]{section.2.8}{Validation}{chapter.2}% 15
+\BOOKMARK [1][-]{section.2.9}{Conclusion}{chapter.2}% 16
+\BOOKMARK [0][-]{chapter.3}{Cox proportional hazards models}{}% 17
+\BOOKMARK [1][-]{section.3.1}{Introduction}{chapter.3}% 18
+\BOOKMARK [1][-]{section.3.2}{Survival analysis}{chapter.3}% 19
+\BOOKMARK [1][-]{section.3.3}{Cox proportional hazards model}{chapter.3}% 20
+\BOOKMARK [1][-]{section.3.4}{Conclusion}{chapter.3}% 21
+\BOOKMARK [0][-]{chapter.4}{Integration Strategies}{}% 22
+\BOOKMARK [1][-]{section.4.1}{Introduction}{chapter.4}% 23
+\BOOKMARK [1][-]{section.4.2}{Description of the data}{chapter.4}% 24
+\BOOKMARK [1][-]{section.4.3}{Early integration}{chapter.4}% 25
+\BOOKMARK [1][-]{section.4.4}{Late integration}{chapter.4}% 26
+\BOOKMARK [1][-]{section.4.5}{Intermediate integration}{chapter.4}% 27
+\BOOKMARK [1][-]{section.4.6}{Conclusion}{chapter.4}% 28
+\BOOKMARK [0][-]{chapter.5}{Evaluation of integration strategies}{}% 29
+\BOOKMARK [1][-]{section.5.1}{Introduction}{chapter.5}% 30
+\BOOKMARK [1][-]{section.5.2}{Evaluating a logistic regression model}{chapter.5}% 31
+\BOOKMARK [1][-]{section.5.3}{Case study 1: predicting stage outcome}{chapter.5}% 32
+\BOOKMARK [1][-]{section.5.4}{Evaluating a cox proportional hazards model}{chapter.5}% 33
+\BOOKMARK [1][-]{section.5.5}{Case study 2: predicting survival outcomes}{chapter.5}% 34
+\BOOKMARK [1][-]{section.5.6}{Conclusion}{chapter.5}% 35
+\BOOKMARK [0][-]{chapter.6}{Tool for automated evaluation}{}% 36
+\BOOKMARK [1][-]{section.6.1}{Introduction}{chapter.6}% 37
+\BOOKMARK [1][-]{section.6.2}{Technologies}{chapter.6}% 38
+\BOOKMARK [1][-]{section.6.3}{Demonstration}{chapter.6}% 39
+\BOOKMARK [1][-]{section.6.4}{Conclusion}{chapter.6}% 40
+\BOOKMARK [0][-]{chapter.7}{Conclusion}{}% 41
+\BOOKMARK [0][-]{appendix.A}{Cancer staging}{}% 42
+\BOOKMARK [1][-]{section.A.1}{TNM staging system}{appendix.A}% 43
+\BOOKMARK [1][-]{section.A.2}{Pathologic stage in case study 1}{appendix.A}% 44
+\BOOKMARK [0][-]{appendix.B}{Samenvatting}{}% 45
+\BOOKMARK [1][-]{section.B.1}{Introductie}{appendix.B}% 46
+\BOOKMARK [1][-]{section.B.2}{Predictieve modellen}{appendix.B}% 47
+\BOOKMARK [1][-]{section.B.3}{Integratie technieken}{appendix.B}% 48
+\BOOKMARK [1][-]{section.B.4}{Evaluatie van integratie methoden}{appendix.B}% 49
+\BOOKMARK [1][-]{section.B.5}{Conclusion}{appendix.B}% 50
+\BOOKMARK [0][-]{section*.62}{Bibliography}{}% 51

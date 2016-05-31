@@ -1,6 +1,4 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: thesis.aux
-A level-1 auxiliary file: intro-dutch.aux
-A level-1 auxiliary file: chap-1-dutch.aux
 A level-1 auxiliary file: intro.aux
 A level-1 auxiliary file: chap-1.aux
 A level-1 auxiliary file: chap-2.aux
@@ -9,8 +7,14 @@ A level-1 auxiliary file: chap-4.aux
 A level-1 auxiliary file: chap-5.aux
 A level-1 auxiliary file: conclusion.aux
 A level-1 auxiliary file: app-B.aux
+A level-1 auxiliary file: intro-dutch.aux
+A level-1 auxiliary file: chap-1-dutch.aux
+A level-1 auxiliary file: chap-2-dutch.aux
+A level-1 auxiliary file: chap-3-dutch.aux
+A level-1 auxiliary file: conclusion-dutch.aux
 The style file: abbrv.bst
 Database file #1: references.bib
+Warning--to sort, need author or key in wikiglm
 Warning--to sort, need author or key in wikilinearregression
 Warning--to sort, need author or key in wikiclassification
 Warning--to sort, need author or key in wikilogistic
@@ -19,7 +23,6 @@ Warning--to sort, need author or key in gradientdescentvariants
 Warning--to sort, need author or key in gradientdirection
 Warning--to sort, need author or key in gradientdirection2
 Warning--to sort, need author or key in convexerrorlogistic
-Warning--to sort, need author or key in wikiglm
 Warning--to sort, need author or key in wikicox
 Warning--to sort, need author or key in wikiensemble
 Warning--to sort, need author or key in wikiroc

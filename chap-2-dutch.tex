@@ -1,0 +1,47 @@
+\chapter{Integratie technieken}
+\label{cha:D:integratie}
+
+\section{Inleiding}
+\label{sec:D:integratie-inleiding}
+In dit hoofdstuk stellen we drie verschillende integratie technieken voor. Eerst zullen we kort overlopen hoe de data eruit ziet waar we van vertrekken, en vervolgens zullen we de drie technieken overlopen. De eerste strategie noemen we vroege-integratie en is gebaseerd op het aan elkaar voegen van datasets. De tweede strategie heet late-integratie en is gebaseerd op het concept van 'ensemble-learning'. De laatste techniek heet parti\"ele integratie en maakt gebruik van de variabele selectie in de lasso regularizatie. 
+
+\section{Beschrijving van de data}
+\label{sec:D:integratie-beschrijving}
+Integratie duidt op het combineren van verschillende elementen. In dit geval zijn de elementen waarmee we te maken hebben datasets. Herinner je dat we, om een model te trainen, een lijst van gelabelde datapunten nodig hadden. Zo een lijst noemen we een dataset. Nu hebben we te maken met meerdere datasets, en moeten we een strategie bedenken om deze verschillende datasets te gebruiken om een model te trainen. Merk op dat het noodzakelijk is om datapunten over verschillende datasets aan elkaar te koppelen. Met andere woorden, alle datapunten in de datasets moeten een vorm van unieke identificatie krijgen waardoor we gegevens van verschillende datasets, die spreken over eenzelfde datapunt, aan elkaar kunnen koppelen.
+
+\section{Vroege integratie}
+\label{sec:D:integratie-vroeg}
+Bij vroege integratie gaan we op voorhand (voor het trainen) alle gegevens over eenzelfde datapunt aan elkaar koppelen. Dit is mogelijk omdat elk datapunt een unieke identificatie krijgt. We kunnen dit bezien als het aan elkaar plakken van alle datasets, waardoor we uiteindelijk overblijven met slechts $\acute{e}\acute{e}n$ grotere dataset. Een schematisch overzicht van vroege integratie wordt gegeven op figuur \ref{fig:D:integratie-vroeg}.
+\begin{figure}
+	\centering
+	\includegraphics[scale=.8]{images/early_integration}
+	\caption{Schema voor vroege integratie}
+	\label{fig:D:integratie-vroeg}
+\end{figure}
+
+\section{Late integratie}
+\label{sec:D:integratie-laat}
+Bij late integratie zullen we eerst voor elke dataset apart een model trainen. Als het aantal datasets gelijk is aan $D$ dan zullen we dus ook $D$ predictieve modellen bekomen. Wanneer we dan voor een nieuw (ongezien) datapunt een predictie moeten maken, zullen we dit datapunt aan elk van de $D$ predictieve modellen geven. Zij zullen elk individueel een predictie maken. Vervolgens combineren we de $D$ voorspelde waarden in een lineaire combinatie om tot een finale predictie waarde te komen. Indien we geen extra waarde willen hechten aan een van de $D$ modellen kunnen we voor deze lineaire combinatie gewoon het gemiddelde nemen van alle voorspelde waarden. \\ \\
+In het veld van machine-leren is het concept van ensemble-leren reeds bekend. Dit houdt in dat voor een bepaald probleem meerdere verschillende modellen worden getraind op dezelfde dataset. Het combineren van de output van de verschillende modellen kan dan een beter resultaat geven vergeleken met een enkel model. Dit komt doordat de verschillende modellen mogelijks fouten maken op verschillende vlakken, en door uitmiddeling van de outputs worden deze fouten relatief verkleint. De late integratie techniek neemt deze gedachtengang over. We gebruiken nu niet meerdere modellen voor dezelfde dataset, maar we gebruiken meerdere modellen voor meerdere datasets. Door deze uitmiddeling hopen we echter eenzelfde foutenreductie te bekomen. Een schematisch overzicht van de late integratie techniek wordt getoond op figuur \ref{fig:D:integratie-laat}.
+\begin{figure}
+	\centering
+	\includegraphics[scale=.8]{images/late_integration}
+	\caption{Schema voor late integratie}
+	\label{fig:D:integratie-laat}
+\end{figure}
+
+\section{Parti\"ele integratie}
+\label{sec:D:integratie-partieel}
+De laatste methode die we voorstellen is de parti\"ele integratie. Deze methode vertrekt analoog aan de late integratie door voor elke dataset individueel een predictief model op te stellen. Belangrijk hierbij is op te merken dat bij het trainen van deze modellen de lasso regularizatie wordt gebruikt. Dit doen we om gebruik te maken van de variabele selectie eigenschap. Door deze variabele selectie zullen de resulterende modellen ons namelijk vertellen welke variabelen zij belangrijk achten in de datasets. De volgende stap is dan om uit elke dataset enkel die variabelen te extraheren die door de modellen geselecteerd werden. Deze geselecteerde gegevens worden dan aan elkaar geplakt zoals in de vroege integratie, op basis van unieke identificatie van de datapunten. Dit geeft ons een nieuwe, gereduceerde, dataset. Deze dataset gebruiken we vervolgens om opnieuw een predictief model op te stellen, dit is het finale ge\"integreerde model dat we zullen gebruiken voor predictie. Merk op dat deze techniek dus in twee stappen werkt, er zijn twee training fases. Een schematische voorstelling van de parti\"ele integratie wordt gegeven op figuur \ref{fig:D:integratie-partieel}.
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=.8]{images/intermediate_integration}
+	\caption{Schema voor parti\"ele integratie}
+	\label{fig:D:integratie-partieel}
+\end{figure}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "thesis"
+%%% End: 
