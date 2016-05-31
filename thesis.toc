@@ -54,7 +54,7 @@
 \contentsline {section}{\numberline {4.1}Introduction}{27}{section.4.1}
 \contentsline {section}{\numberline {4.2}Description of the data}{27}{section.4.2}
 \contentsline {section}{\numberline {4.3}Early integration}{28}{section.4.3}
-\contentsline {section}{\numberline {4.4}Late integration}{29}{section.4.4}
+\contentsline {section}{\numberline {4.4}Late integration}{28}{section.4.4}
 \contentsline {section}{\numberline {4.5}Intermediate integration}{29}{section.4.5}
 \contentsline {section}{\numberline {4.6}Conclusion}{30}{section.4.6}
 \contentsline {chapter}{\chapternumberline {5}Evaluation of integration strategies}{33}{chapter.5}
@@ -125,7 +125,7 @@
 \contentsline {subsubsection}{Case overzicht}{68}{section*.55}
 \contentsline {subsubsection}{Evaluatie methode}{68}{section*.56}
 \contentsline {subsection}{\numberline {B.4.5}Resultaten}{69}{subsection.B.4.5}
-\contentsline {section}{\numberline {B.5}Conclusion}{70}{section.B.5}
+\contentsline {section}{\numberline {B.5}Conclusie}{70}{section.B.5}
 \contentsline {chapter}{Bibliography}{73}{section*.62}
 \select@language {dutch}
 \select@language {english}

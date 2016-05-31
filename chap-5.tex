@@ -3,7 +3,7 @@
 
 \section{Introduction}
 \label{sec:tool-introduction}
-In the previous chapter we have shown that different integration strategies do make a difference for the performance of the resulting model. In order to facilitate future research on this topic, we have developed a tool that allows anyone to very easily compute all the integrated models and compare them.
+In the previous chapter we have shown that different integration strategies do make a difference for the performance of the resulting model. In order to facilitate future research on this topic, we have developed a tool that allows anyone to very easily compute all the integrated models and compare them. In this chapter we will give an overview of the used technologies (\ref{sec:tool-technologies}) and a quick demonstration of the application (\ref{sec:tool-demonstration}).
 \section{Technologies}
 \label{sec:tool-technologies}
 To develop this tool we needed a programming language that provided a lot of support for statistical algorithms, and we also wanted to create a very user-friendly interface to make an abstraction of the underlying machine learning methods.
@@ -13,7 +13,7 @@ The language we used to create the tool is R. R is a very popular language for s
 We wanted to offer a very easy-to-use interface to the application. Therefore we chose to work with shiny \cite{shiny}. Shiny is a framework for R that allows you to create a web-based front-end (using html, css, javascript, ...) that can also run R code in the back-end. This allows the creating of very interactive web applications that can run the powerful statistical analyses available in R.
 \section{Demonstration}
 \label{sec:tool-demonstration}
-The tool is divided into three sections: an input section where the user can upload their datasets, a section that computes and evaluates models for each dataset individually, and an integration section where all of the integrated models, explained in chapter \ref{cha:integration}, can be computed and evaluated.
+The tool we developed is divided into three sections: an input section where the user can upload their datasets, a section that computes and evaluates models for each dataset individually, and an integration section where all of the integrated models, explained in chapter \ref{cha:integration}, can be computed and evaluated.
 \subsubsection{The input tab}
 The input tab allows the user to either use a preloaded dataset or upload their own datasets to the application. It is possible to define multiple dependent variables in one file, the tool then gives you the option to select which variable has to be modeled. \\ \\
 When datasets are uploaded, the tool gives a small overview of the dimensions of each dataset so the user can verify everything works correctly. Figures \ref{fig:tool-input} and \ref{fig:tool-input2} show the input page where a user has uploaded some datasets.

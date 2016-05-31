@@ -3,7 +3,7 @@
 
 \section{Introduction}
 \label{sec:cox-introduction}
-This chapter explains the cox proportional hazards model~\cite{simon2011regularization}\cite{tibshirani1997lasso}\cite{wikicox}. This is a model that is used in survival analysis. The first section explains what survival analysis means and how it is different from the generalized linear models. Next we will define what the proportional hazards assumption is and lastly we will show kaplan-meier survival curves and how we can compute them from hazard functions.
+Since the second case study will use survival models, it is essential that we know what these models are. This chapter explains the cox proportional hazards model~\cite{simon2011regularization}\cite{tibshirani1997lasso}\cite{wikicox} which is the type of survival model that we will be using. The first section explains what survival analysis means and how it is different from the generalized linear models (\ref{sec:cox-survival-analysis}). Next we will define what the proportional hazards assumption is (\ref{sec:cox-proportional-hazards-model}) and lastly we will show kaplan-meier survival curves and how we can compute them from hazard functions (\ref{subsec:cox-km}).
 
 \section{Survival analysis}
 \label{sec:cox-survival-analysis}
@@ -65,6 +65,7 @@ It is directly given by the exponential of the coefficient for the explanatory v
 The proportional hazards assumption allows us to compute relative risks or hazard ratios without knowing the actual baseline hazard function. Knowing just relative ratios can be very useful however. Imagine the following scenario: we want to test if a certain drug increases the survivability of patients with a specific disease. We randomly give half of the patients the actual drug, the other half receives a placebo (or nothing at all). Performing a survival analysis using a cox model then allows us to compute the ratio of the hazards for the two groups. The coefficient for the explanatory variable that indicates which patients received the drug and which did not then tells us the effect of the drug on the hazard. We could then make a statement such as: "Taking the drug tends to half the risk of the event occurring (at any time)." This is obviously a useful result to support further research or development for the drug.
 
 \subsection{Kaplan-Meier survival curves}
+\label{subsec:cox-km}
 Kaplan-Meier survival curves~\cite{goel2010understanding} are often used in survival analysis. These curves show the probability of surviving up to any point t. It is thus a declining curve starting from 1 at $t=0$. An example curve is shown on figure \ref{fig:cox-example-kaplan-meier}.
 \begin{figure}
 	\centering

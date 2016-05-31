@@ -1,10 +1,11 @@
 \chapter{Evaluation of integration strategies}
 \label{cha:evaluation}
 
-
 \section{Introduction}
 \label{sec:evaluation-introduction}
-In this chapter we will investigate whether different integration strategies have an impact on the performance of the resulting models. We will do this by computing a model using each strategy and then comparing their performance using an appropriate metric.
+In this chapter we will investigate whether different integration strategies have an impact on the performance of the resulting models. We will start of by explaining ROC analysis which is the method we use to evaluate the logistic regression models in the first case study (\ref{sec:evaluation-logisticregression}). The next section will provide details on the first case study and shows the results (\ref{sec:evaluation-predictingstage}). After that we will explain the Wald test and how we will use it to evaluate the survival models that are trained in the second case study (\ref{sec:evaluation-coxph}). The last section shows the details of the second case study and presents the results (\ref{sec:evaluation-predictingsurvival}).
+
+
 \section{Evaluating a logistic regression model}
 \label{sec:evaluation-logisticregression}
 The first evaluation will be made using a logistic regression model. This is a model computed for a dependent variable that has a binomial distribution. To evaluate such model, a common technique used is called Receiver-Operating-Characteristic analysis~\cite{zweig1993receiver}\cite{hajian2013receiver}\cite{wikiroc} or ROC analysis for short. Remember that when we are using a logistic regression model to predict outcomes, we have to define a threshold to separate positive from negative cases. An ROC curve shows the performance of the model for any possible threshold, using metrics such as sensitivity and specificity. This gives a very good general impression of the performance of the model.
