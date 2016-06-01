@@ -126,7 +126,10 @@
 \contentsline {subsubsection}{Evaluatie methode}{68}{section*.56}
 \contentsline {subsection}{\numberline {B.4.5}Resultaten}{69}{subsection.B.4.5}
 \contentsline {section}{\numberline {B.5}Conclusie}{70}{section.B.5}
-\contentsline {chapter}{Bibliography}{73}{section*.62}
+\select@language {english}
+\contentsline {appendix}{\chapternumberline {C}Scientific paper}{73}{appendix.C}
+\contentsline {appendix}{\chapternumberline {D}Poster}{77}{appendix.D}
+\contentsline {chapter}{Bibliography}{79}{section*.62}
 \select@language {dutch}
 \select@language {english}
 \select@language {dutch}

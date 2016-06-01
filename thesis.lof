@@ -40,6 +40,9 @@
 \contentsline {figure}{\numberline {B.4}{\ignorespaces Schema voor parti\"ele integratie\relax }}{64}{figure.caption.49}
 \contentsline {figure}{\numberline {B.5}{\ignorespaces Voorbeeld ROC curve en metrieken\relax }}{67}{figure.caption.52}
 \contentsline {figure}{\numberline {B.6}{\ignorespaces Voorbeeld Wald test variantie visualisatie. Beide curves geven dezelfde maximum likelihood schatting voor $\mathaccentV {hat}05E{\beta }$. De rode curve heeft echter een lage variantie, wat veel evidentie biedt om de null-hypothese te verwerpen. De blauwe curve heeft een hoge variantie, in dit geval is het niet meteen duidelijk dat $\mathaccentV {hat}05E{\beta }$ echt verschilt van $\beta _{0}$ en dus kunnen we de null-hypothese niet verwerpen.\relax }}{69}{figure.caption.57}
+\select@language {english}
+\addvspace {10pt}
+\addvspace {10pt}
 \select@language {dutch}
 \select@language {english}
 \select@language {dutch}
